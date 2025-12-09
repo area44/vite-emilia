@@ -5,7 +5,7 @@ const config: GatsbyConfig = {
     siteTitle: `Gatsby Starter Emilia`,
     siteTitleAlt: `Gatsby Starter Emilia | AREA44`,
     siteHeadline: `Gatsby Starter Emilia | AREA44`,
-    siteUrl: `https://gatsby-starter-emilia.vercel.app`,
+    siteUrl: `https://starter-emilia.netlify.app`,
     siteDescription:
       'Minimalistic portfolio/photography site with masonry grid, page transitions and big images.',
     siteImage: `/og-image.jpg`,

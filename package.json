@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@lekoarts/gatsby-theme-emilia": "^5.1.8",
-    "gatsby": "^5.15.0",
+    "gatsby": "^5.17.0-next.0",
     "gatsby-plugin-manifest": "^5.15.0",
     "gatsby-plugin-sitemap": "^6.15.0",
     "react": "^19.2.1",

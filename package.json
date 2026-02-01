@@ -15,14 +15,14 @@
   "dependencies": {
     "@lekoarts/gatsby-theme-emilia": "^5.1.8",
     "gatsby": "^5.17.0-react19.0",
-    "gatsby-plugin-manifest": "^5.15.0",
-    "gatsby-plugin-sitemap": "^6.15.0",
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "gatsby-plugin-manifest": "^5.16.0",
+    "gatsby-plugin-sitemap": "^6.16.0",
+    "react": "^19.2.4",
+    "react-dom": "^19.2.4"
   },
   "devDependencies": {
-    "@types/node": "^25.0.10",
-    "@types/react": "^19.2.9",
+    "@types/node": "^25.1.0",
+    "@types/react": "^19.2.10",
     "@types/react-dom": "^19.2.3",
     "prettier": "^3.8.1",
     "typescript": "^5.9.3"

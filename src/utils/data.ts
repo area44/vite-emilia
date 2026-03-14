@@ -36,9 +36,7 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 
   const projects = Object.entries(modules).map(([path, module]) => {
     const projectDir = path.replace('index.mdx', '')
-    const slug = path
-      .split('/')
-      .slice(-2, -1)[0]
+    const slug = path.split('/').slice(-2, -1)[0]
     const { frontmatter } = module
 
     // Resolve cover image path using the globbed images
@@ -82,9 +80,12 @@ export const getProjectImages = async (
     },
   )
 
-  let projectDir = ""
+  let projectDir = ''
   for (const [path, module] of Object.entries(modules)) {
-    if (module.frontmatter.slug === slug || path.includes(`/${slug.replace("/", "")}/`)) {
+    if (
+      module.frontmatter.slug === slug ||
+      path.includes(`/${slug.replace('/', '')}/`)
+    ) {
       projectDir = path.replace('index.mdx', '')
       break
     }
@@ -93,9 +94,7 @@ export const getProjectImages = async (
   if (!projectDir) return []
 
   return Object.entries(allImages)
-    .filter(
-      ([path]) => path.startsWith(projectDir) && !path.includes('avatar'),
-    )
+    .filter(([path]) => path.startsWith(projectDir) && !path.includes('avatar'))
     .map(([path, module]) => ({
       name: path.split('/').pop() || '',
       url: module.default,

@@ -4,6 +4,7 @@
   "private": true,
   "description": "Minimalistic portfolio/photography site that features a masonry grid, page transitions, and large images",
   "author": "AREA44",
+  "packageManager": "pnpm@10.30.3",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

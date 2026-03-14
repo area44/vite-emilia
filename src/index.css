@@ -13,6 +13,12 @@
   --color-toggle-icon: #000000;
   --color-muted: #e2e8f0;
 
+  --color-primary-dark: #63b3ed;
+  --color-secondary-dark: #4299e1;
+  --color-text-dark: #e2e8f0;
+  --color-background-dark: #1a202c;
+  --color-background-pattern-dark: #2d3748;
+
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
   --breakpoint-lg: 1024px;
@@ -22,7 +28,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-text font-sans antialiased;
+    @apply bg-background text-text font-sans antialiased dark:bg-background-dark dark:text-text-dark transition-colors duration-300;
     text-rendering: optimizeLegibility;
   }
   a {

@@ -22,20 +22,23 @@ interface ImageModule {
 }
 
 const allImages = import.meta.glob<ImageModule>(
-  '/content/projects/**/*.(jpg|jpeg|png|webp)',
+  '../../content/projects/**/*.(jpg|jpeg|png|webp)',
   { eager: true },
 )
 
 export const getProjects = async (): Promise<ProjectData[]> => {
-  const modules = import.meta.glob<MdxModule>('/content/projects/*/index.mdx', {
-    eager: true,
-  })
+  const modules = import.meta.glob<MdxModule>(
+    '../../content/projects/*/index.mdx',
+    {
+      eager: true,
+    },
+  )
 
   const projects = Object.entries(modules).map(([path, module]) => {
     const projectDir = path.replace('index.mdx', '')
     const slug = path
-      .replace('/content/projects/', '')
-      .replace('/index.mdx', '')
+      .split('/')
+      .slice(-2, -1)[0]
     const { frontmatter } = module
 
     // Resolve cover image path using the globbed images
@@ -44,7 +47,7 @@ export const getProjects = async (): Promise<ProjectData[]> => {
     const coverUrl = allImages[fullCoverPath]?.default || fullCoverPath
 
     return {
-      slug: `/${slug}`,
+      slug: frontmatter.slug || `/${slug}`,
       title: frontmatter.title,
       date: frontmatter.date,
       areas: frontmatter.areas,
@@ -63,13 +66,35 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 export const getProjectImages = async (
   slug: string,
 ): Promise<{ name: string; url: string }[]> => {
-  const projectSlug = slug.replace('/', '')
-  const projectPathPrefix = `/content/projects/${projectSlug}/`
+  // Find the directory for this slug
+  const allProjects = await getProjects()
+  const currentProject = allProjects.find((p) => p.slug === slug)
+  if (!currentProject) return []
+
+  // We need to find the project directory in allImages.
+  // We'll use a heuristic: find an image that is in a directory ending with the slug (or part of it)
+  // or better, just re-scan modules to find the directory mapping.
+
+  const modules = import.meta.glob<MdxModule>(
+    '../../content/projects/*/index.mdx',
+    {
+      eager: true,
+    },
+  )
+
+  let projectDir = ""
+  for (const [path, module] of Object.entries(modules)) {
+    if (module.frontmatter.slug === slug || path.includes(`/${slug.replace("/", "")}/`)) {
+      projectDir = path.replace('index.mdx', '')
+      break
+    }
+  }
+
+  if (!projectDir) return []
 
   return Object.entries(allImages)
     .filter(
-      ([path]) =>
-        path.startsWith(projectPathPrefix) && !path.includes('avatar'),
+      ([path]) => path.startsWith(projectDir) && !path.includes('avatar'),
     )
     .map(([path, module]) => ({
       name: path.split('/').pop() || '',

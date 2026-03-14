@@ -1,9 +1,8 @@
-
-import useEmiliaConfig from "../hooks/use-emilia-config"
-import HeaderBackground from "./header-background"
-import SocialMediaList from "./social-media-list"
-import Svg from "./svg"
-import avatarUrl from "../../content/assets/avatar.png"
+import useEmiliaConfig from '../hooks/use-emilia-config'
+import HeaderBackground from './header-background'
+import SocialMediaList from './social-media-list'
+import Svg from './svg'
+import avatarUrl from '../../content/assets/avatar.png'
 
 const Header = () => {
   const { name, location, assetsPath } = useEmiliaConfig()
@@ -15,13 +14,18 @@ const Header = () => {
         <div className="animate-in fade-in duration-700">
           <div className="overflow-hidden rounded-full h-[100px] w-[100px] md:h-[140px] md:w-[140px] inline-block shadow-lg">
             {avatarUrl ? (
-              <img src={avatarUrl} alt="Avatar" className="h-full w-full object-cover" />
+              <img
+                src={avatarUrl}
+                alt="Avatar"
+                className="h-full w-full object-cover"
+              />
             ) : (
               <div
                 className="text-xs absolute inset-0 p-3 bg-red-200"
                 data-placeholder="true"
               >
-                Place an image with the name "avatar" inside the directory "{assetsPath}"
+                Place an image with the name "avatar" inside the directory "
+                {assetsPath}"
               </div>
             )}
           </div>
@@ -42,8 +46,11 @@ const Header = () => {
             {location}
           </div>
         </div>
-        <div data-testid="social-header" className="mt-8 mb-12 flex justify-center gap-4 animate-in fade-in duration-700 delay-600">
-            <SocialMediaList />
+        <div
+          data-testid="social-header"
+          className="mt-8 mb-12 flex justify-center gap-4 animate-in fade-in duration-700 delay-600"
+        >
+          <SocialMediaList />
         </div>
       </div>
     </header>

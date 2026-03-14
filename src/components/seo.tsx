@@ -1,5 +1,5 @@
-import * as React from "react"
-import useSiteMetadata from "../hooks/use-site-metadata"
+import * as React from 'react'
+import useSiteMetadata from '../hooks/use-site-metadata'
 
 type SEOProps = {
   title?: string
@@ -9,7 +9,13 @@ type SEOProps = {
   children?: React.ReactNode
 }
 
-const Seo = ({ title = ``, description = ``, pathname = ``, image = ``, children = null }: SEOProps) => {
+const Seo = ({
+  title = ``,
+  description = ``,
+  pathname = ``,
+  image = ``,
+  children = null,
+}: SEOProps) => {
   const site = useSiteMetadata()
 
   const {
@@ -34,11 +40,7 @@ const Seo = ({ title = ``, description = ``, pathname = ``, image = ``, children
     document.documentElement.lang = siteLanguage
   }, [seo.title, siteLanguage])
 
-  return (
-    <>
-      {children}
-    </>
-  )
+  return <>{children}</>
 }
 
 export default Seo

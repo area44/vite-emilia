@@ -1,8 +1,7 @@
-
-import useEmiliaConfig from "../hooks/use-emilia-config"
-import SocialMediaList from "./social-media-list"
-import ColorModeToggle from "./colormode-toggle"
-import AboutMeMDX from "../texts/about-me.mdx"
+import useEmiliaConfig from '../hooks/use-emilia-config'
+import SocialMediaList from './social-media-list'
+import ColorModeToggle from './colormode-toggle'
+import AboutMeMDX from '../texts/about-me.mdx'
 
 const Footer = () => {
   const { showThemeAuthor } = useEmiliaConfig()
@@ -21,7 +20,8 @@ const Footer = () => {
                 <SocialMediaList />
               </div>
               <div className="text-text-muted">
-                Copyright &copy; {new Date().getFullYear()}. All rights reserved.
+                Copyright &copy; {new Date().getFullYear()}. All rights
+                reserved.
               </div>
             </div>
           </div>

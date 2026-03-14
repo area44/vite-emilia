@@ -1,9 +1,8 @@
-
-import { Link } from "react-router-dom"
-import HeaderBackground from "./header-background"
-import useEmiliaConfig from "../hooks/use-emilia-config"
-import Svg from "./svg"
-import avatarUrl from "../../content/assets/avatar.png"
+import { Link } from 'react-router-dom'
+import HeaderBackground from './header-background'
+import useEmiliaConfig from '../hooks/use-emilia-config'
+import Svg from './svg'
+import avatarUrl from '../../content/assets/avatar.png'
 
 type HeaderProjectProps = {
   title: string
@@ -12,7 +11,12 @@ type HeaderProjectProps = {
   date: string
 }
 
-const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectProps) => {
+const HeaderProject = ({
+  title,
+  areas,
+  description = ``,
+  date,
+}: HeaderProjectProps) => {
   const { name } = useEmiliaConfig()
 
   return (
@@ -26,14 +30,18 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
             className="group inline-flex items-center text-text no-underline"
           >
             <Svg
-                id="leftArrow"
-                width="20"
-                height="18"
-                className="transition-transform duration-250 group-hover:-translate-x-1.5 group-focus:-translate-x-1.5"
+              id="leftArrow"
+              width="20"
+              height="18"
+              className="transition-transform duration-250 group-hover:-translate-x-1.5 group-focus:-translate-x-1.5"
             />
             <div className="overflow-hidden rounded-full w-10 h-10 inline-block shadow-md mx-2">
               {avatarUrl && (
-                <img src={avatarUrl} alt="Avatar" className="w-10 h-10 object-cover" />
+                <img
+                  src={avatarUrl}
+                  alt="Avatar"
+                  className="w-10 h-10 object-cover"
+                />
               )}
             </div>
             <span className="font-medium">{name}</span>

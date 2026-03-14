@@ -1,9 +1,8 @@
-
-import React from "react"
-import Layout from "./layout"
-import HeaderProject from "./header-project"
-import ProjectPagination from "./project-pagination"
-import Seo from "./seo"
+import React from 'react'
+import Layout from './layout'
+import HeaderProject from './header-project'
+import ProjectPagination from './project-pagination'
+import Seo from './seo'
 
 export type EmiliaProjectProps = {
   project: {
@@ -45,7 +44,12 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
         pathname={project.slug}
         image={project.cover}
       />
-      <HeaderProject title={project.title} description={children} areas={project.areas} date={project.date} />
+      <HeaderProject
+        title={project.title}
+        description={children}
+        areas={project.areas}
+        date={project.date}
+      />
       <div className="container -mt-24 md:-mt-32 relative z-10">
         <div className="animate-in fade-in duration-700 delay-800">
           {images.map((image) => (

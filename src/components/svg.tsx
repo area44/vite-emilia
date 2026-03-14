@@ -1,5 +1,4 @@
-
-type IconType = "bgPattern" | "leftArrow" | "location"
+type IconType = 'bgPattern' | 'leftArrow' | 'location'
 
 type SVGProps = {
   id: IconType

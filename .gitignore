@@ -62,7 +62,11 @@ typings/
 
 .cache
 **/.cache
-public
+dist/
+test-results/
+playwright-report/
+blob-report/
+verification/
 
 .idea
 .vscode

@@ -1,5 +1,5 @@
 services:
-  - type: web
+  - type: static
     name: gatsby-starter-emilia
     runtime: node
     buildCommand: pnpm install && pnpm run build

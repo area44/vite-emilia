@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: gatsby-starter-emilia
+    runtime: node
+    buildCommand: pnpm install && pnpm run build
+    publishPath: dist

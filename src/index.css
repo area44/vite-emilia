@@ -1,24 +1,46 @@
 @import 'tailwindcss';
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-  --color-primary: #3182ce;
-  --color-secondary: #2c5282;
-  --color-text: #2d3748;
-  --color-background: #f7fafc;
-  --color-background-pattern: #f1f4f7;
-  --color-icon-primary: #2d3748;
-  --color-icon-secondary: #718096;
-  --color-text-muted: #4a5568;
-  --color-heading: #000000;
-  --color-toggle-icon: #000000;
-  --color-muted: #e2e8f0;
+:root {
+  --primary: #3182ce;
+  --secondary: #2c5282;
+  --text: #2d3748;
+  --background: #f7fafc;
+  --background-pattern: #f1f4f7;
+  --icon-primary: #2d3748;
+  --icon-secondary: #718096;
+  --text-muted: #4a5568;
+  --heading: #000000;
+  --toggle-icon: #000000;
+  --muted: #e2e8f0;
+}
 
-  --color-primary-dark: #63b3ed;
-  --color-secondary-dark: #4299e1;
-  --color-text-dark: #e2e8f0;
-  --color-background-dark: #1a202c;
-  --color-background-pattern-dark: #2d3748;
+:root.dark {
+  --primary: #63b3ed;
+  --secondary: #4299e1;
+  --text: #e2e8f0;
+  --background: #1a202c;
+  --background-pattern: #2d3748;
+  --icon-primary: #e2e8f0;
+  --icon-secondary: #a0aec0;
+  --text-muted: #a0aec0;
+  --heading: #ffffff;
+  --toggle-icon: #ffffff;
+  --muted: #2d3748;
+}
+
+@theme {
+  --color-primary: var(--primary);
+  --color-secondary: var(--secondary);
+  --color-text: var(--text);
+  --color-background: var(--background);
+  --color-background-pattern: var(--background-pattern);
+  --color-icon-primary: var(--icon-primary);
+  --color-icon-secondary: var(--icon-secondary);
+  --color-text-muted: var(--text-muted);
+  --color-heading: var(--heading);
+  --color-toggle-icon: var(--toggle-icon);
+  --color-muted: var(--muted);
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -29,7 +51,7 @@
 
 @layer base {
   body {
-    @apply bg-background text-text font-sans antialiased dark:bg-background-dark dark:text-text-dark transition-colors duration-300;
+    @apply bg-background text-text font-sans antialiased transition-colors duration-300;
     text-rendering: optimizeLegibility;
   }
   a {

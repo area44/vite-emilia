@@ -4,6 +4,7 @@ export interface ProjectFrontmatter {
   areas: string[]
   cover: string
   background?: string
+  slug?: string
 }
 
 export interface ProjectData extends ProjectFrontmatter {
@@ -21,14 +22,15 @@ interface ImageModule {
   default: string
 }
 
+// All images from src/content/projects
 const allImages = import.meta.glob<ImageModule>(
-  '../../content/projects/**/*.(jpg|jpeg|png|webp)',
+  '../content/projects/**/*.(jpg|jpeg|png|webp)',
   { eager: true },
 )
 
 export const getProjects = async (): Promise<ProjectData[]> => {
   const modules = import.meta.glob<MdxModule>(
-    '../../content/projects/*/index.mdx',
+    '../content/projects/*/index.mdx',
     {
       eager: true,
     },
@@ -36,23 +38,23 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 
   const projects = Object.entries(modules).map(([path, module]) => {
     const projectDir = path.replace('index.mdx', '')
-    const slug = path.split('/').slice(-2, -1)[0]
+    const folderName = path.split('/').slice(-2, -1)[0]
     const { frontmatter } = module
 
-    // Resolve cover image path using the globbed images
+    // Resolve cover image path
     const coverFileName = frontmatter.cover.replace('./', '')
     const fullCoverPath = `${projectDir}${coverFileName}`
     const coverUrl = allImages[fullCoverPath]?.default || fullCoverPath
 
     return {
-      slug: frontmatter.slug || `/${slug}`,
+      slug: frontmatter.slug || `/${folderName}`,
       title: frontmatter.title,
       date: frontmatter.date,
       areas: frontmatter.areas,
       cover: coverUrl,
       background: frontmatter.background,
       content: module.default,
-      excerpt: frontmatter.title, // Simple excerpt for now
+      excerpt: frontmatter.title,
     }
   })
 
@@ -64,17 +66,8 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 export const getProjectImages = async (
   slug: string,
 ): Promise<{ name: string; url: string }[]> => {
-  // Find the directory for this slug
-  const allProjects = await getProjects()
-  const currentProject = allProjects.find((p) => p.slug === slug)
-  if (!currentProject) return []
-
-  // We need to find the project directory in allImages.
-  // We'll use a heuristic: find an image that is in a directory ending with the slug (or part of it)
-  // or better, just re-scan modules to find the directory mapping.
-
   const modules = import.meta.glob<MdxModule>(
-    '../../content/projects/*/index.mdx',
+    '../content/projects/*/index.mdx',
     {
       eager: true,
     },
@@ -82,10 +75,8 @@ export const getProjectImages = async (
 
   let projectDir = ''
   for (const [path, module] of Object.entries(modules)) {
-    if (
-      module.frontmatter.slug === slug ||
-      path.includes(`/${slug.replace('/', '')}/`)
-    ) {
+    const folderName = path.split('/').slice(-2, -1)[0]
+    if (module.frontmatter.slug === slug || `/${folderName}` === slug) {
       projectDir = path.replace('index.mdx', '')
       break
     }

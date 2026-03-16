@@ -2,7 +2,7 @@ import useEmiliaConfig from '../hooks/use-emilia-config'
 import HeaderBackground from './header-background'
 import SocialMediaList from './social-media-list'
 import Svg from './svg'
-import avatarUrl from '../../content/assets/avatar.png'
+import avatarUrl from '../content/assets/avatar.png'
 
 const Header = () => {
   const { name, location, assetsPath } = useEmiliaConfig()

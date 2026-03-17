@@ -18,14 +18,10 @@ interface MdxModule {
   default: any
 }
 
-interface ImageModule {
-  default: string
-}
-
 // All images from src/content/projects
-const allImages = import.meta.glob<ImageModule>(
-  '../content/projects/**/*.(jpg|jpeg|png|webp)',
-  { eager: true },
+const allImages = import.meta.glob<string>(
+  '../content/projects/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  { eager: true, query: '?url', import: 'default' },
 )
 
 export const getProjects = async (): Promise<ProjectData[]> => {
@@ -37,14 +33,16 @@ export const getProjects = async (): Promise<ProjectData[]> => {
   )
 
   const projects = Object.entries(modules).map(([path, module]) => {
-    const projectDir = path.replace('index.mdx', '')
+    // path: "../content/projects/minimal-blog/index.mdx"
+    const projectDir = path.substring(0, path.lastIndexOf('/') + 1)
     const folderName = path.split('/').slice(-2, -1)[0]
     const { frontmatter } = module
 
-    // Resolve cover image path
-    const coverFileName = frontmatter.cover.replace('./', '')
+    const coverFileName = frontmatter.cover.replace(/^\.\//, '')
     const fullCoverPath = `${projectDir}${coverFileName}`
-    const coverUrl = allImages[fullCoverPath]?.default || fullCoverPath
+
+    // Find the image in our globbed map
+    const coverUrl = allImages[fullCoverPath] || frontmatter.cover
 
     return {
       slug: frontmatter.slug || `/${folderName}`,
@@ -76,8 +74,9 @@ export const getProjectImages = async (
   let projectDir = ''
   for (const [path, module] of Object.entries(modules)) {
     const folderName = path.split('/').slice(-2, -1)[0]
-    if (module.frontmatter.slug === slug || `/${folderName}` === slug) {
-      projectDir = path.replace('index.mdx', '')
+    const currentSlug = module.frontmatter.slug || `/${folderName}`
+    if (currentSlug === slug) {
+      projectDir = path.substring(0, path.lastIndexOf('/') + 1)
       break
     }
   }
@@ -85,9 +84,9 @@ export const getProjectImages = async (
   if (!projectDir) return []
 
   return Object.entries(allImages)
-    .filter(([path]) => path.startsWith(projectDir) && !path.includes('avatar'))
-    .map(([path, module]) => ({
+    .filter(([path]) => path.startsWith(projectDir))
+    .map(([path, url]) => ({
       name: path.split('/').pop() || '',
-      url: module.default,
+      url: url,
     }))
 }

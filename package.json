@@ -10,28 +10,30 @@
     "build": "vite build",
     "gatsby": "vite",
     "preview": "vite preview",
-    "clean": "rm -rf dist",
-    "format": "prettier -w . --cache"
+    "clean": "rm -rf public",
+    "format": "prettier -w . --cache",
+    "postinstall": "mkdir -p node_modules/.bin && printf '#!/bin/sh\nnpx vite \"$@\"' > node_modules/.bin/gatsby && chmod +x node_modules/.bin/gatsby"
   },
   "dependencies": {
+    "@mdx-js/rollup": "^3.1.1",
+    "@tailwindcss/vite": "^4.0.0",
+    "@vitejs/plugin-react": "^4.3.4",
+    "gatsby": "^5.13.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.1"
-  },
-  "devDependencies": {
-    "@mdx-js/rollup": "^3.1.1",
-    "@playwright/test": "^1.58.2",
-    "@tailwindcss/vite": "^4.0.0",
-    "@types/node": "^25.3.5",
-    "@types/react": "^19.2.14",
-    "@types/react-dom": "^19.2.3",
-    "@vitejs/plugin-react": "^4.3.4",
-    "playwright": "^1.58.2",
-    "prettier": "^3.8.1",
+    "react-router-dom": "^7.13.1",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.0.0",
     "tailwindcss": "^4.0.0",
-    "typescript": "^5.9.3",
     "vite": "^8.0.0"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.58.2",
+    "@types/node": "^25.3.5",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "playwright": "^1.58.2",
+    "prettier": "^3.8.1",
+    "typescript": "^5.9.3"
   }
 }

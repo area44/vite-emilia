@@ -24,6 +24,7 @@ const Seo = ({
     siteUrl,
     siteDescription: defaultDescription,
     siteImage: defaultImage,
+    author,
     siteLanguage,
   } = site
 

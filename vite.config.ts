@@ -13,8 +13,9 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  publicDir: 'static',
   build: {
-    outDir: 'dist',
+    outDir: 'public',
     emptyOutDir: true,
   },
 });

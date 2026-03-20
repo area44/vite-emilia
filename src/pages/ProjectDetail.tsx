@@ -13,7 +13,9 @@ const ProjectDetail = () => {
   useEffect(() => {
     const loadData = async () => {
       const allProjects = await getProjects()
-      const index = allProjects.findIndex((p) => p.slug === `/${slug}` || p.slug === slug)
+      const index = allProjects.findIndex(
+        (p) => p.slug === `/${slug}` || p.slug === slug,
+      )
 
       if (index !== -1) {
         setProject(allProjects[index])

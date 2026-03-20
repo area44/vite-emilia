@@ -43,10 +43,13 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 
     // Find the image in our globbed map
     // Try to find the image with or without leading dots/slashes
-    const coverUrl = allImages[fullCoverPath] ||
-                     allImages[fullCoverPath.replace('../', './../')] ||
-                     Object.entries(allImages).find(([k]) => k.endsWith(coverFileName) && k.includes(folderName))?.[1] ||
-                     frontmatter.cover
+    const coverUrl =
+      allImages[fullCoverPath] ||
+      allImages[fullCoverPath.replace('../', './../')] ||
+      Object.entries(allImages).find(
+        ([k]) => k.endsWith(coverFileName) && k.includes(folderName),
+      )?.[1] ||
+      frontmatter.cover
 
     return {
       slug: frontmatter.slug || `/${folderName}`,

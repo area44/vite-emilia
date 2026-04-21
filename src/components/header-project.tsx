@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import HeaderBackground from './header-background'
 import useEmiliaConfig from '../hooks/use-emilia-config'
 import Svg from './svg'
-import avatarUrl from '../content/assets/avatar.png'
+import avatarUrl from '../content/assets/avatar.svg'
 
 type HeaderProjectProps = {
   title: string

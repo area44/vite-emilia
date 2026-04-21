@@ -1,6 +1,6 @@
-# Vite Starter Emilia
+# Vite Emilia
 
-Vite Starter Emilia is a minimalistic portfolio/photography site that features a masonry grid and large images. It is a migration of the original Gatsby Starter Emilia to Vite 8 and Tailwind CSS 4.
+Vite Emilia is a minimalistic portfolio/photography site that features a masonry grid and large images. It is a migration of the original Vite Emilia to Vite 8 and Tailwind CSS 4.
 
 ## Installation
 

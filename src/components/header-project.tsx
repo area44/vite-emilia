@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom'
 import HeaderBackground from './header-background'
 import useEmiliaConfig from '../hooks/use-emilia-config'
 import Svg from './svg'
-import viteLogo from '../content/assets/vite.svg'
+import avatarUrl from '../content/assets/avatar.svg'
 
 type HeaderProjectProps = {
   title: string
@@ -36,10 +36,10 @@ const HeaderProject = ({
               className="transition-transform duration-250 group-hover:-translate-x-1.5 group-focus:-translate-x-1.5"
             />
             <div className="overflow-hidden rounded-full w-10 h-10 inline-block shadow-md mx-2">
-              {viteLogo && (
+              {avatarUrl && (
                 <img
-                  src={viteLogo}
-                  alt="Vite Logo"
+                  src={avatarUrl}
+                  alt="Avatar"
                   className="w-10 h-10 object-cover"
                 />
               )}

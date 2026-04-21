@@ -18,41 +18,11 @@ const Projects = ({ projects }: Props) => {
     return (
       <Layout>
         <Header />
-        <div className="container">
-          <p className="mb-4">
-            Hi!{` `}
-            <span role="img" aria-label="Wave emoji">
-              👋
-            </span>
-            {` `}
-            <br />
-            Welcome to your new portfolio. You currently don't have any content
-            in your{` `}
-            <i>projects</i> folder - that's why this page displays a placeholder
-            text. Head over to the{` `}
-            <a
-              href="https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-emilia"
-              className="text-primary hover:underline"
-            >
-              README
-            </a>
-            {` `}
-            to learn how to setup them.
-          </p>
-          <p>
-            <b>TL;DR:</b> <br />
-            The starter automatically created the folder{' '}
-            <code>content/projects</code>. Go into this folder, create a new
-            folder called <code>example</code> and create an{' '}
-            <code>index.mdx</code> file there and place an image. Edit the
-            frontmatter like described in the{` `}
-            <a
-              href="https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-emilia"
-              className="text-primary hover:underline"
-            >
-              README
-            </a>
-            .
+        <div className="container py-20 text-center">
+          <h2 className="text-3xl font-bold mb-4">No projects found</h2>
+          <p className="text-text-muted">
+            It looks like you haven't added any projects yet. Check the README
+            for instructions on how to get started!
           </p>
         </div>
       </Layout>

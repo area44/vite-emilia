@@ -1,7 +1,7 @@
 const useEmiliaConfig = () => {
   return {
     name: 'Emilia',
-    location: 'Germany',
+    location: 'VietNam',
     assetsPath: 'content/assets',
     socialMedia: [],
   }

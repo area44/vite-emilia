@@ -2,7 +2,7 @@ import useEmiliaConfig from '../hooks/use-emilia-config'
 import HeaderBackground from './header-background'
 import SocialMediaList from './social-media-list'
 import Svg from './svg'
-import viteLogo from '../content/assets/vite.svg'
+import avatarUrl from '../content/assets/avatar.svg'
 
 const Header = () => {
   const { name, location, assetsPath } = useEmiliaConfig()
@@ -13,10 +13,10 @@ const Header = () => {
       <div className="text-center z-10">
         <div className="animate-in fade-in duration-700">
           <div className="overflow-hidden rounded-full h-[100px] w-[100px] md:h-[140px] md:w-[140px] inline-block shadow-lg">
-            {viteLogo ? (
+            {avatarUrl ? (
               <img
-                src={viteLogo}
-                alt="Vite Logo"
+                src={avatarUrl}
+                alt="Avatar"
                 className="h-full w-full object-cover"
               />
             ) : (

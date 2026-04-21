@@ -1,5 +1,5 @@
 {
-  "name": "@area44/gatsby-starter-emilia",
+  "name": "@area44/vite-starter-emilia",
   "version": "25.12.10",
   "private": true,
   "description": "Minimalistic portfolio/photography site that features a masonry grid, page transitions, and large images",

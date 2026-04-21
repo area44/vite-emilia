@@ -71,3 +71,7 @@ verification/
 .idea
 .vscode
 .DS_Store
+# Jules
+verification/
+dev_output.log
+lint_report.json

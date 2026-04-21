@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import useSiteMetadata from "../hooks/use-site-metadata";
 
 type SEOProps = {

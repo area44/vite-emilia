@@ -1,9 +1,10 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+
+import Header from "./components/header";
+import Layout from "./components/layout";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
-import Layout from "./components/layout";
-import Header from "./components/header";
 
 const NotFound = () => (
   <Layout>

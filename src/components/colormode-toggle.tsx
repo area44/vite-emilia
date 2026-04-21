@@ -8,7 +8,7 @@ const ColorModeToggle = () => {
       <div className="mr-2 text-text-muted">Toggle Mode (Simplified)</div>
       <button
         type="button"
-        className="opacity-65 hover:opacity-100 transition-opacity cursor-pointer p-2"
+        className="cursor-pointer p-2 opacity-65 transition-opacity hover:opacity-100"
         onClick={() => {
           document.documentElement.classList.toggle("dark");
         }}

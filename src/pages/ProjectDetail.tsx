@@ -24,7 +24,12 @@ const ProjectDetail = () => {
 
         const currentSlug = allProjects[index].slug
         const projectImages = await getProjectImages(currentSlug)
-        setImages(projectImages.map((img) => ({ name: allProjects[index].title, url: img.url })))
+        setImages(
+          projectImages.map((img) => ({
+            name: allProjects[index].title,
+            url: img.url,
+          })),
+        )
       }
     }
 

@@ -6,7 +6,7 @@ import { getProjects, getProjectImages, ProjectData } from '../utils/data'
 const ProjectDetail = () => {
   const { slug } = useParams()
   const [project, setProject] = useState<ProjectData | null>(null)
-  const [images, setImages] = useState<string[]>([])
+  const [images, setImages] = useState<{ name: string; url: string }[]>([])
   const [prev, setPrev] = useState<ProjectData | null>(null)
   const [next, setNext] = useState<ProjectData | null>(null)
 
@@ -24,7 +24,12 @@ const ProjectDetail = () => {
 
         const currentSlug = allProjects[index].slug
         const projectImages = await getProjectImages(currentSlug)
-        setImages(projectImages.map((img) => img.url))
+        setImages(
+          projectImages.map((img) => ({
+            name: allProjects[index].title,
+            url: img.url,
+          })),
+        )
       }
     }
 

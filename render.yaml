@@ -1,6 +1,6 @@
 services:
   - type: static
-    name: vite-emilia
+    name: vite-starter-emilia
     runtime: node
     buildCommand: pnpm install && pnpm run build
     publishPath: dist

@@ -31,7 +31,7 @@ const Projects = ({ projects }: Props) => {
             <i>projects</i> folder - that's why this page displays a placeholder
             text. Head over to the{` `}
             <a
-              href="https://github.com/LekoArts/vite-themes/tree/main/themes/vite-theme-emilia"
+              href="https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-emilia"
               className="text-primary hover:underline"
             >
               README
@@ -47,7 +47,7 @@ const Projects = ({ projects }: Props) => {
             <code>index.mdx</code> file there and place an image. Edit the
             frontmatter like described in the{` `}
             <a
-              href="https://github.com/LekoArts/vite-themes/tree/main/themes/vite-theme-emilia"
+              href="https://github.com/LekoArts/gatsby-themes/tree/main/themes/gatsby-theme-emilia"
               className="text-primary hover:underline"
             >
               README

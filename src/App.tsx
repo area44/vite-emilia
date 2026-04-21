@@ -1,9 +1,9 @@
-import React from 'react'
-import { Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
-import ProjectDetail from './pages/ProjectDetail'
-import Layout from './components/layout'
-import Header from './components/header'
+import React from "react";
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import ProjectDetail from "./pages/ProjectDetail";
+import Layout from "./components/layout";
+import Header from "./components/header";
 
 const NotFound = () => (
   <Layout>
@@ -16,7 +16,7 @@ const NotFound = () => (
       </p>
     </div>
   </Layout>
-)
+);
 
 const App = () => {
   return (
@@ -25,7 +25,7 @@ const App = () => {
       <Route path="/:slug" element={<ProjectDetail />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
-  )
-}
+  );
+};
 
-export default App
+export default App;

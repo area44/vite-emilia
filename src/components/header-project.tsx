@@ -1,23 +1,18 @@
-import { Link } from 'react-router-dom'
-import HeaderBackground from './header-background'
-import useEmiliaConfig from '../hooks/use-emilia-config'
-import Svg from './svg'
-import avatarUrl from '../content/assets/avatar.svg'
+import { Link } from "react-router-dom";
+import HeaderBackground from "./header-background";
+import useEmiliaConfig from "../hooks/use-emilia-config";
+import Svg from "./svg";
+import avatarUrl from "../content/assets/avatar.svg";
 
 type HeaderProjectProps = {
-  title: string
-  areas: string[]
-  description?: React.ReactNode
-  date: string
-}
+  title: string;
+  areas: string[];
+  description?: React.ReactNode;
+  date: string;
+};
 
-const HeaderProject = ({
-  title,
-  areas,
-  description = ``,
-  date,
-}: HeaderProjectProps) => {
-  const { name } = useEmiliaConfig()
+const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectProps) => {
+  const { name } = useEmiliaConfig();
 
   return (
     <header className="relative overflow-hidden flex justify-center">
@@ -36,22 +31,14 @@ const HeaderProject = ({
               className="transition-transform duration-250 group-hover:-translate-x-1.5 group-focus:-translate-x-1.5"
             />
             <div className="overflow-hidden rounded-full w-10 h-10 inline-block shadow-md mx-2">
-              {avatarUrl && (
-                <img
-                  src={avatarUrl}
-                  alt="Avatar"
-                  className="w-10 h-10 object-cover"
-                />
-              )}
+              {avatarUrl && <img src={avatarUrl} alt="Avatar" className="w-10 h-10 object-cover" />}
             </div>
             <span className="font-medium">{name}</span>
           </Link>
         </div>
         <div className="mt-8 mb-24 md:mb-32">
           <div className="animate-in slide-in-from-top-8 duration-700">
-            <h1 className="text-4xl md:text-5xl font-bold mt-4 text-heading">
-              {title}
-            </h1>
+            <h1 className="text-4xl md:text-5xl font-bold mt-4 text-heading">{title}</h1>
           </div>
           <div className="animate-in fade-in duration-700 delay-500">
             <p className="mb-0 mt-8 text-lg">{date}</p>
@@ -72,7 +59,7 @@ const HeaderProject = ({
         </div>
       </div>
     </header>
-  )
-}
+  );
+};
 
-export default HeaderProject
+export default HeaderProject;

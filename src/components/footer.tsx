@@ -1,5 +1,5 @@
-import SocialMediaList from './social-media-list'
-import ColorModeToggle from './colormode-toggle'
+import SocialMediaList from "./social-media-list";
+import ColorModeToggle from "./colormode-toggle";
 
 const Footer = () => {
   return (
@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

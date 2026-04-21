@@ -1,33 +1,33 @@
-import React from 'react'
-import Layout from './layout'
-import HeaderProject from './header-project'
-import ProjectPagination from './project-pagination'
-import Seo from './seo'
+import React from "react";
+import Layout from "./layout";
+import HeaderProject from "./header-project";
+import ProjectPagination from "./project-pagination";
+import Seo from "./seo";
 
 export type EmiliaProjectProps = {
   project: {
-    excerpt: string
-    date: string
-    slug: string
-    title: string
-    areas: string[]
-    cover: string
-  }
+    excerpt: string;
+    date: string;
+    slug: string;
+    title: string;
+    areas: string[];
+    cover: string;
+  };
   images: {
-    name: string
-    url: string
-  }[]
+    name: string;
+    url: string;
+  }[];
   prev: {
-    slug: string
-    title: string
-    cover: string
-  } | null
+    slug: string;
+    title: string;
+    cover: string;
+  } | null;
   next: {
-    slug: string
-    title: string
-    cover: string
-  } | null
-}
+    slug: string;
+    title: string;
+    cover: string;
+  } | null;
+};
 
 const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
   project,
@@ -64,7 +64,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
         <ProjectPagination prev={prev} next={next} />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;

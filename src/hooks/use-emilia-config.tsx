@@ -1,10 +1,10 @@
 const useEmiliaConfig = () => {
   return {
-    name: 'Emilia',
-    location: 'VietNam',
-    assetsPath: 'content/assets',
+    name: "Emilia",
+    location: "VietNam",
+    assetsPath: "content/assets",
     socialMedia: [],
-  }
-}
+  };
+};
 
-export default useEmiliaConfig
+export default useEmiliaConfig;

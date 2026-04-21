@@ -1,4 +1,4 @@
-import Svg from './svg'
+import Svg from "./svg";
 
 const HeaderBackground = () => {
   return (
@@ -8,7 +8,7 @@ const HeaderBackground = () => {
       </div>
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/15 dark:to-black/35" />
     </>
-  )
-}
+  );
+};
 
-export default HeaderBackground
+export default HeaderBackground;

@@ -1,17 +1,17 @@
-import Card from './card'
+import Card from "./card";
 
 type ProjectPaginationProps = {
   prev: {
-    slug: string
-    title: string
-    cover: string
-  } | null
+    slug: string;
+    title: string;
+    cover: string;
+  } | null;
   next: {
-    slug: string
-    title: string
-    cover: string
-  } | null
-}
+    slug: string;
+    title: string;
+    cover: string;
+  } | null;
+};
 
 const ProjectPagination = ({ prev, next }: ProjectPaginationProps) => (
   <div className="mt-12 mb-8">
@@ -26,6 +26,6 @@ const ProjectPagination = ({ prev, next }: ProjectPaginationProps) => (
       {next && <Card item={next} />}
     </div>
   </div>
-)
+);
 
-export default ProjectPagination
+export default ProjectPagination;

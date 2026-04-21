@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from "react";
 
 const ColorModeToggle = () => {
   // Simplified for now as we are focusing on Tailwind migration
@@ -10,13 +10,13 @@ const ColorModeToggle = () => {
         type="button"
         className="opacity-65 hover:opacity-100 transition-opacity cursor-pointer p-2"
         onClick={() => {
-          document.documentElement.classList.toggle('dark')
+          document.documentElement.classList.toggle("dark");
         }}
       >
         🌓
       </button>
     </div>
-  )
-}
+  );
+};
 
-export default ColorModeToggle
+export default ColorModeToggle;

@@ -1,16 +1,16 @@
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 type CardProps = {
   item: {
-    slug: string
-    cover: string
-    title: string
-    contentFilePath?: string
-  }
-  overlay?: string
-  shadow?: string[]
-  eager?: boolean
-}
+    slug: string;
+    cover: string;
+    title: string;
+    contentFilePath?: string;
+  };
+  overlay?: string;
+  shadow?: string[];
+  eager?: boolean;
+};
 
 const Card = ({ item, overlay = `#000`, eager }: CardProps) => {
   return (
@@ -28,14 +28,9 @@ const Card = ({ item, overlay = `#000`, eager }: CardProps) => {
           {item.title}
         </h2>
       </div>
-      <img
-        loading={eager ? `eager` : `lazy`}
-        src={item.cover}
-        alt=""
-        className="w-full block"
-      />
+      <img loading={eager ? `eager` : `lazy`} src={item.cover} alt="" className="w-full block" />
     </Link>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

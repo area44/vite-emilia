@@ -1,48 +1,45 @@
 export interface ProjectFrontmatter {
-  title: string
-  date: string
-  areas: string[]
-  cover: string
-  background?: string
-  slug?: string
+  title: string;
+  date: string;
+  areas: string[];
+  cover: string;
+  background?: string;
+  slug?: string;
 }
 
 export interface ProjectData extends ProjectFrontmatter {
-  slug: string
-  content: any
-  excerpt: string
+  slug: string;
+  content: any;
+  excerpt: string;
 }
 
 interface MdxModule {
-  frontmatter: ProjectFrontmatter
-  default: any
+  frontmatter: ProjectFrontmatter;
+  default: any;
 }
 
 // All images from src/content/projects
 const allImages = import.meta.glob<string>(
-  '../content/projects/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
-  { eager: true, query: '?url', import: 'default' },
-)
+  "../content/projects/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+  { eager: true, query: "?url", import: "default" },
+);
 
 export const getProjects = async (): Promise<ProjectData[]> => {
-  const modules = import.meta.glob<MdxModule>(
-    '../content/projects/*/index.mdx',
-    {
-      eager: true,
-    },
-  )
+  const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
+    eager: true,
+  });
 
   const projects = Object.entries(modules).map(([path, module]) => {
     // path: "../content/projects/minimal-blog/index.mdx"
-    const projectDir = path.substring(0, path.lastIndexOf('/') + 1)
-    const folderName = path.split('/').slice(-2, -1)[0]
-    const { frontmatter } = module
+    const projectDir = path.substring(0, path.lastIndexOf("/") + 1);
+    const folderName = path.split("/").slice(-2, -1)[0];
+    const { frontmatter } = module;
 
-    const coverFileName = frontmatter.cover.replace(/^\.\//, '')
-    const fullCoverPath = `${projectDir}${coverFileName}`
+    const coverFileName = frontmatter.cover.replace(/^\.\//, "");
+    const fullCoverPath = `${projectDir}${coverFileName}`;
 
     // Find the image in our globbed map
-    const coverUrl = allImages[fullCoverPath] || frontmatter.cover
+    const coverUrl = allImages[fullCoverPath] || frontmatter.cover;
 
     return {
       slug: frontmatter.slug || `/${folderName}`,
@@ -53,40 +50,33 @@ export const getProjects = async (): Promise<ProjectData[]> => {
       background: frontmatter.background,
       content: module.default,
       excerpt: frontmatter.title,
-    }
-  })
+    };
+  });
 
-  return projects.sort(
-    (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
-  )
-}
+  return projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+};
 
-export const getProjectImages = async (
-  slug: string,
-): Promise<{ name: string; url: string }[]> => {
-  const modules = import.meta.glob<MdxModule>(
-    '../content/projects/*/index.mdx',
-    {
-      eager: true,
-    },
-  )
+export const getProjectImages = async (slug: string): Promise<{ name: string; url: string }[]> => {
+  const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
+    eager: true,
+  });
 
-  let projectDir = ''
+  let projectDir = "";
   for (const [path, module] of Object.entries(modules)) {
-    const folderName = path.split('/').slice(-2, -1)[0]
-    const currentSlug = module.frontmatter.slug || `/${folderName}`
+    const folderName = path.split("/").slice(-2, -1)[0];
+    const currentSlug = module.frontmatter.slug || `/${folderName}`;
     if (currentSlug === slug) {
-      projectDir = path.substring(0, path.lastIndexOf('/') + 1)
-      break
+      projectDir = path.substring(0, path.lastIndexOf("/") + 1);
+      break;
     }
   }
 
-  if (!projectDir) return []
+  if (!projectDir) return [];
 
   return Object.entries(allImages)
     .filter(([path]) => path.startsWith(projectDir))
     .map(([path, url]) => ({
-      name: path.split('/').pop() || '',
+      name: path.split("/").pop() || "",
       url: url,
-    }))
-}
+    }));
+};

@@ -20,20 +20,19 @@ interface MdxModule {
 
 // All images from src/content/projects
 const allImages = import.meta.glob<string>(
-  '../content/projects/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  '/src/content/projects/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
   { eager: true, query: '?url', import: 'default' },
 )
 
-export const getProjects = async (): Promise<ProjectData[]> => {
-  const modules = import.meta.glob<MdxModule>(
-    '../content/projects/*/index.mdx',
-    {
-      eager: true,
-    },
-  )
+// All project modules
+const projectModules = import.meta.glob<MdxModule>(
+  '/src/content/projects/*/index.mdx',
+  { eager: true },
+)
 
-  const projects = Object.entries(modules).map(([path, module]) => {
-    // path: "../content/projects/minimal-blog/index.mdx"
+export const getProjects = async (): Promise<ProjectData[]> => {
+  const projects = Object.entries(projectModules).map(([path, module]) => {
+    // path: "/src/content/projects/minimal-blog/index.mdx"
     const projectDir = path.substring(0, path.lastIndexOf('/') + 1)
     const folderName = path.split('/').slice(-2, -1)[0]
     const { frontmatter } = module
@@ -42,14 +41,7 @@ export const getProjects = async (): Promise<ProjectData[]> => {
     const fullCoverPath = `${projectDir}${coverFileName}`
 
     // Find the image in our globbed map
-    // Try to find the image with or without leading dots/slashes
-    const coverUrl =
-      allImages[fullCoverPath] ||
-      allImages[fullCoverPath.replace('../', './../')] ||
-      Object.entries(allImages).find(
-        ([k]) => k.endsWith(coverFileName) && k.includes(folderName),
-      )?.[1] ||
-      frontmatter.cover
+    const coverUrl = allImages[fullCoverPath] || frontmatter.cover
 
     return {
       slug: frontmatter.slug || `/${folderName}`,
@@ -71,15 +63,8 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 export const getProjectImages = async (
   slug: string,
 ): Promise<{ name: string; url: string }[]> => {
-  const modules = import.meta.glob<MdxModule>(
-    '../content/projects/*/index.mdx',
-    {
-      eager: true,
-    },
-  )
-
   let projectDir = ''
-  for (const [path, module] of Object.entries(modules)) {
+  for (const [path, module] of Object.entries(projectModules)) {
     const folderName = path.split('/').slice(-2, -1)[0]
     const currentSlug = module.frontmatter.slug || `/${folderName}`
     if (currentSlug === slug) {

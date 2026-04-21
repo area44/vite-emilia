@@ -6,16 +6,14 @@ import { getProjects, getProjectImages, ProjectData } from '../utils/data'
 const ProjectDetail = () => {
   const { slug } = useParams()
   const [project, setProject] = useState<ProjectData | null>(null)
-  const [images, setImages] = useState<{ name: string; url: string }[]>([])
+  const [images, setImages] = useState<string[]>([])
   const [prev, setPrev] = useState<ProjectData | null>(null)
   const [next, setNext] = useState<ProjectData | null>(null)
 
   useEffect(() => {
     const loadData = async () => {
       const allProjects = await getProjects()
-      const index = allProjects.findIndex(
-        (p) => p.slug === `/${slug}` || p.slug === slug,
-      )
+      const index = allProjects.findIndex((p) => p.slug === `/${slug}` || p.slug === slug)
 
       if (index !== -1) {
         setProject(allProjects[index])
@@ -24,7 +22,7 @@ const ProjectDetail = () => {
 
         const currentSlug = allProjects[index].slug
         const projectImages = await getProjectImages(currentSlug)
-        setImages(projectImages)
+        setImages(projectImages.map(img => img.url))
       }
     }
 

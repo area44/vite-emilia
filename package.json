@@ -8,17 +8,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "gatsby": "vite",
     "preview": "vite preview",
-    "clean": "rm -rf public",
-    "format": "prettier -w . --cache",
-    "postinstall": "mkdir -p node_modules/.bin && printf '#!/bin/sh\nnpx vite \"$@\"' > node_modules/.bin/gatsby && chmod +x node_modules/.bin/gatsby"
+    "clean": "rm -rf dist",
+    "format": "prettier -w . --cache"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.0.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "gatsby": "^5.13.0",
     "react": "^19.2.4",
     "react-dom": "^19.2.4",
     "react-router-dom": "^7.13.1",

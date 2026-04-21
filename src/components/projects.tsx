@@ -26,8 +26,8 @@ const Projects = ({ projects }: Props) => {
             </span>
             {` `}
             <br />
-            Welcome to your new portfolio. You currently
-            don't have any content in your{` `}
+            Welcome to your new portfolio. You currently don't have any content
+            in your{` `}
             <i>projects</i> folder - that's why this page displays a placeholder
             text. Head over to the{` `}
             <a

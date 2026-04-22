@@ -22,7 +22,7 @@ interface MdxModule {
 
 // All images from src/content/projects
 const allImages = import.meta.glob<string>(
-  "../content/projects/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
+  "../content/projects/**/*.{jpg,jpeg,png,webp}",
   { eager: true, query: "?url", import: "default" },
 );
 

@@ -1,33 +1,34 @@
-import React from 'react'
-import Layout from './layout'
-import HeaderProject from './header-project'
-import ProjectPagination from './project-pagination'
-import Seo from './seo'
+import React from "react";
+
+import HeaderProject from "./header-project";
+import Layout from "./layout";
+import ProjectPagination from "./project-pagination";
+import Seo from "./seo";
 
 export type EmiliaProjectProps = {
   project: {
-    excerpt: string
-    date: string
-    slug: string
-    title: string
-    areas: string[]
-    cover: string
-  }
+    excerpt: string;
+    date: string;
+    slug: string;
+    title: string;
+    areas: string[];
+    cover: string;
+  };
   images: {
-    name: string
-    url: string
-  }[]
+    name: string;
+    url: string;
+  }[];
   prev: {
-    slug: string
-    title: string
-    cover: string
-  } | null
+    slug: string;
+    title: string;
+    cover: string;
+  } | null;
   next: {
-    slug: string
-    title: string
-    cover: string
-  } | null
-}
+    slug: string;
+    title: string;
+    cover: string;
+  } | null;
+};
 
 const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
   project,
@@ -50,21 +51,21 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
         areas={project.areas}
         date={project.date}
       />
-      <div className="container -mt-24 md:-mt-32 relative z-10">
-        <div className="animate-in fade-in duration-700 delay-800">
+      <div className="relative z-10 container -mt-24 md:-mt-32">
+        <div className="animate-in fade-in delay-800 duration-700">
           {images.map((image) => (
             <img
               key={image.name}
               src={image.url}
               alt={image.name}
-              className="mb-8 md:mb-12 shadow-2xl w-full block"
+              className="mb-8 block w-full shadow-2xl md:mb-12"
             />
           ))}
         </div>
         <ProjectPagination prev={prev} next={next} />
       </div>
     </Layout>
-  )
-}
+  );
+};
 
-export default Project
+export default Project;

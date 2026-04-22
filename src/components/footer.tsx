@@ -1,14 +1,14 @@
-import SocialMediaList from './social-media-list'
-import ColorModeToggle from './colormode-toggle'
+import ColorModeToggle from "./colormode-toggle";
+import SocialMediaList from "./social-media-list";
 
 const Footer = () => {
   return (
-    <footer className="pt-24 pb-16 bg-gradient-to-b from-transparent to-black/5 dark:to-black/30 mt-auto">
+    <footer className="mt-auto bg-gradient-to-b from-transparent to-black/5 pt-24 pb-16 dark:to-black/30">
       <div className="container">
-        <div className="flex flex-col items-center justify-center text-center gap-8">
+        <div className="flex flex-col items-center justify-center gap-8 text-center">
           <ColorModeToggle />
           <div>
-            <div className="flex justify-center gap-4 mb-4">
+            <div className="mb-4 flex justify-center gap-4">
               <SocialMediaList />
             </div>
             <div className="text-text-muted">
@@ -18,7 +18,7 @@ const Footer = () => {
         </div>
       </div>
     </footer>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

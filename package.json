@@ -4,13 +4,13 @@
   "private": true,
   "description": "Minimalistic portfolio/photography site that features a masonry grid, page transitions, and large images",
   "author": "AREA44",
-  "packageManager": "pnpm@10.30.3",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
     "clean": "rm -rf dist",
-    "format": "prettier -w . --cache"
+    "format": "oxfmt",
+    "lint": "oxlint"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
@@ -25,12 +25,12 @@
     "vite": "^8.0.5"
   },
   "devDependencies": {
-    "@playwright/test": "^1.58.2",
     "@types/node": "^25.3.5",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "playwright": "^1.58.2",
-    "prettier": "^3.8.1",
+    "oxfmt": "^0.46.0",
+    "oxlint": "^1.61.0",
     "typescript": "^5.9.3"
-  }
+  },
+  "packageManager": "pnpm@10.30.3"
 }

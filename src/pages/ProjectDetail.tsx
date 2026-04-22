@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Project from "../components/project";
-import { getProjects, getProjectImages, type ProjectData } from "../utils/data";
+import { getProjects, getProjectImages, type ProjectData, type ProjectImage } from "../utils/data";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
   const [project, setProject] = useState<ProjectData | null>(null);
-  const [images, setImages] = useState<{ name: string; url: string }[]>([]);
+  const [images, setImages] = useState<ProjectImage[]>([]);
   const [prev, setPrev] = useState<ProjectData | null>(null);
   const [next, setNext] = useState<ProjectData | null>(null);
 
@@ -26,12 +26,7 @@ const ProjectDetail = () => {
 
           const currentSlug = currentProject.slug;
           const projectImages = await getProjectImages(currentSlug);
-          setImages(
-            projectImages.map((img) => ({
-              name: currentProject.title,
-              url: img.url,
-            })),
-          );
+          setImages(projectImages);
         }
       }
     };

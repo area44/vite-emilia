@@ -1,6 +1,7 @@
 import React from "react";
 
 import HeaderProject from "./header-project";
+import Image from "./image";
 import Layout from "./layout";
 import ProjectPagination from "./project-pagination";
 import Seo from "./seo";
@@ -17,6 +18,9 @@ export type EmiliaProjectProps = {
   images: {
     name: string;
     url: string;
+    hash?: string;
+    width?: number;
+    height?: number;
   }[];
   prev: {
     slug: string;
@@ -54,10 +58,13 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
       <div className="relative z-10 container -mt-24 md:-mt-32">
         <div className="animate-in fade-in delay-800 duration-700">
           {images.map((image) => (
-            <img
-              key={image.name}
+            <Image
+              key={image.url}
               src={image.url}
               alt={image.name}
+              hash={image.hash}
+              width={image.width}
+              height={image.height}
               className="mb-8 block w-full shadow-2xl md:mb-12"
             />
           ))}

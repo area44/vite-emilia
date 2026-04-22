@@ -19,17 +19,17 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
       <HeaderBackground />
       <div className="z-10 container my-8 text-center">
         <div className="animate-in fade-in duration-700">
-          <Link
-            to="/"
-            aria-label={`${name} - Back to homepage`}
-            className="inline-flex items-center justify-center"
-          >
-            <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md">
+          <div className="flex justify-center">
+            <Link
+              to="/"
+              aria-label={`${name} - Back to homepage`}
+              className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md transition-transform hover:scale-110"
+            >
               {avatarUrl && (
                 <img src={avatarUrl} alt="Avatar" className="h-full w-full object-contain p-1.5" />
               )}
-            </div>
-          </Link>
+            </Link>
+          </div>
         </div>
         <div className="mt-8 mb-24 md:mb-32">
           <div className="animate-in slide-in-from-top-8 duration-700">

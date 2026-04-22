@@ -1,8 +1,6 @@
 import avatarUrl from "../content/assets/avatar.svg";
 import useEmiliaConfig from "../hooks/use-emilia-config";
 import HeaderBackground from "./header-background";
-import SocialMediaList from "./social-media-list";
-import Svg from "./svg";
 
 const Header = () => {
   const { name, location, assetsPath } = useEmiliaConfig();
@@ -26,16 +24,7 @@ const Header = () => {
           <h1 className="mt-4 text-4xl font-bold text-heading md:text-5xl">{name}</h1>
         </div>
         <div className="animate-in slide-in-from-bottom-8 delay-250 duration-700">
-          <div className="mt-2 flex items-center justify-center text-text">
-            <Svg id="location" width="20px" height="20px" className="mr-2 text-icon-primary" />
-            {location}
-          </div>
-        </div>
-        <div
-          data-testid="social-header"
-          className="animate-in fade-in mt-8 mb-12 flex justify-center gap-4 delay-600 duration-700"
-        >
-          <SocialMediaList />
+          <div className="mt-2 flex items-center justify-center text-text">{location}</div>
         </div>
       </div>
     </header>

@@ -1,5 +1,6 @@
+import React from "react";
+
 import ColorModeToggle from "./colormode-toggle";
-import SocialMediaList from "./social-media-list";
 
 const Footer = () => {
   return (
@@ -8,9 +9,6 @@ const Footer = () => {
         <div className="flex flex-col items-center justify-center gap-8 text-center">
           <ColorModeToggle />
           <div>
-            <div className="mb-4 flex justify-center gap-4">
-              <SocialMediaList />
-            </div>
             <div className="text-text-muted">
               Copyright &copy; {new Date().getFullYear()}. All rights reserved.
             </div>

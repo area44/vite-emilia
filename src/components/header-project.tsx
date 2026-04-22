@@ -1,9 +1,9 @@
+import React from "react";
 import { Link } from "react-router-dom";
 
 import avatarUrl from "../content/assets/avatar.svg";
 import useEmiliaConfig from "../hooks/use-emilia-config";
 import HeaderBackground from "./header-background";
-import Svg from "./svg";
 
 type HeaderProjectProps = {
   title: string;
@@ -12,7 +12,7 @@ type HeaderProjectProps = {
   date: string;
 };
 
-const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectProps) => {
+const HeaderProject = ({ title, areas, description = "", date }: HeaderProjectProps) => {
   const { name } = useEmiliaConfig();
 
   return (
@@ -25,12 +25,6 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
             aria-label={`${name} - Back to homepage`}
             className="group inline-flex items-center text-text no-underline"
           >
-            <Svg
-              id="leftArrow"
-              width="20"
-              height="18"
-              className="transition-transform duration-250 group-hover:-translate-x-1.5 group-focus:-translate-x-1.5"
-            />
             <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full shadow-md">
               {avatarUrl && <img src={avatarUrl} alt="Avatar" className="h-10 w-10 object-cover" />}
             </div>
@@ -46,7 +40,7 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
             <div className="text-text-muted">
               {areas.map((area, index) => (
                 <span key={area}>
-                  {index > 0 && `, `}
+                  {index > 0 && ", "}
                   {area}
                 </span>
               ))}

@@ -1,4 +1,5 @@
 import mdx from "@mdx-js/rollup";
+import { TanStackRouterVite } from "@tanstack/router-vite-plugin";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
 import remarkFrontmatter from "remark-frontmatter";
@@ -7,8 +8,9 @@ import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
-  base: "./",
+  base: "/",
   plugins: [
+    TanStackRouterVite(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     }),

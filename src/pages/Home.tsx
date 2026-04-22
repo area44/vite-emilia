@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
+import { useLoaderData } from "@tanstack/react-router";
 
 import Projects from "../components/projects";
 import { getProjects, type ProjectData } from "../utils/data";
 
 const Home = () => {
-  const [projects, setProjects] = useState<ProjectData[]>([]);
+  const { projects: initialProjects } = useLoaderData({ from: '/' });
+  const [projects, setProjects] = useState<ProjectData[]>(initialProjects || []);
 
   useEffect(() => {
-    getProjects().then(setProjects);
-  }, []);
+    if (projects.length === 0) {
+      getProjects().then(setProjects);
+    }
+  }, [projects.length]);
 
   return <Projects projects={projects} />;
 };

@@ -1,28 +1,43 @@
+# Dependency directories
+node_modules/
+jspm_packages/
+
+# Build artifacts
+dist/
+build/
+target/
+
 # Logs
-logs
-*.log
-*.logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
+dev_output.log
 
-# Dependencies
-node_modules
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
 
-# Build output
-dist
-dist-ssr
-*.local
-
-# Editor directories and files
+# OS files
 .DS_Store
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-*.sw?
+Thumbs.db
 
-# Playwright results
-test-results
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Project specific
+scripts/generate-image-metadata.mjs.map
+src/content/image-metadata.json
+
+# TanStack Router generated file
+src/routeTree.gen.ts
+
+# Verification artifacts
+verification/

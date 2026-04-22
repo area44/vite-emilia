@@ -6,7 +6,7 @@
   "author": "AREA44",
   "scripts": {
     "dev": "pnpm run generate:metadata && vite",
-    "build": "pnpm run generate:metadata && vite build",
+    "build": "pnpm run generate:metadata && node scripts/ssg.mjs",
     "preview": "vite preview",
     "format": "oxfmt",
     "lint": "oxlint",
@@ -15,17 +15,19 @@
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.0.0",
+    "@tanstack/react-router": "^1.168.23",
     "@vitejs/plugin-react": "^4.3.4",
     "react": "^19.2.4",
     "react-blurhash": "^0.3.0",
     "react-dom": "^19.2.4",
-    "react-router-dom": "^7.13.1",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.0.0",
     "tailwindcss": "^4.0.0",
     "vite": "^8.0.5"
   },
   "devDependencies": {
+    "@tanstack/router-devtools": "^1.166.13",
+    "@tanstack/router-vite-plugin": "^1.166.37",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

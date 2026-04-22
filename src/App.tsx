@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom";
 
 import Header from "./components/header";
 import Layout from "./components/layout";
+import ScrollToTop from "./components/scroll-to-top";
 import Home from "./pages/Home";
 import ProjectDetail from "./pages/ProjectDetail";
 
@@ -21,11 +22,14 @@ const NotFound = () => (
 
 const App = () => {
   return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/:slug" element={<ProjectDetail />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/:slug" element={<ProjectDetail />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </>
   );
 };
 

@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import avatarUrl from "../content/assets/avatar.svg";
 import useEmiliaConfig from "../hooks/use-emilia-config";
 import HeaderBackground from "./header-background";
-import Svg from "./svg";
 
 type HeaderProjectProps = {
   title: string;
@@ -19,19 +18,13 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
     <header className="relative flex justify-center overflow-hidden">
       <HeaderBackground />
       <div className="z-10 container my-8 text-center">
-        <div className="animate-in slide-in-from-left-8 duration-700">
+        <div className="animate-in fade-in duration-700">
           <Link
             to="/"
             aria-label={`${name} - Back to homepage`}
-            className="group inline-flex items-center text-text no-underline"
+            className="inline-flex items-center justify-center"
           >
-            <Svg
-              id="leftArrow"
-              width="20"
-              height="18"
-              className="transition-transform duration-250 group-hover:-translate-x-1.5 group-focus:-translate-x-1.5"
-            />
-            <div className="mx-2 inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md">
+            <div className="flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md">
               {avatarUrl && (
                 <img src={avatarUrl} alt="Avatar" className="h-full w-full object-contain p-1.5" />
               )}

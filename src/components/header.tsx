@@ -27,9 +27,6 @@ const Header = () => {
         </div>
         <div className="animate-in slide-in-from-bottom-8 delay-250 duration-700">
           <div className="mt-2 flex items-center justify-center gap-2 text-text">
-            <span role="img" aria-label="Vietnam Flag">
-              🇻🇳
-            </span>
             <Svg id="location" width="20px" height="20px" className="text-icon-primary" />
             {location}
           </div>

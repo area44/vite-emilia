@@ -31,9 +31,9 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
               height="18"
               className="transition-transform duration-250 group-hover:-translate-x-1.5 group-focus:-translate-x-1.5"
             />
-            <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full bg-white shadow-md">
+            <div className="mx-2 inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md">
               {avatarUrl && (
-                <img src={avatarUrl} alt="Avatar" className="h-10 w-10 object-contain p-1.5" />
+                <img src={avatarUrl} alt="Avatar" className="h-full w-full object-contain p-1.5" />
               )}
             </div>
           </Link>

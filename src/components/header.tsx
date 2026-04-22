@@ -2,6 +2,7 @@ import avatarUrl from "../content/assets/avatar.svg";
 import useEmiliaConfig from "../hooks/use-emilia-config";
 import HeaderBackground from "./header-background";
 import SocialMediaList from "./social-media-list";
+import Svg from "./svg";
 
 const Header = () => {
   const { name, location, assetsPath } = useEmiliaConfig();
@@ -29,6 +30,7 @@ const Header = () => {
             <span role="img" aria-label="Vietnam Flag">
               🇻🇳
             </span>
+            <Svg id="location" width="20px" height="20px" className="text-icon-primary" />
             {location}
           </div>
         </div>

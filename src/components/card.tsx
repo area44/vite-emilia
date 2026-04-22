@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import OptimizedImage from "./optimized-image";
+import Image from "./image";
 
 type CardProps = {
   item: {
@@ -33,7 +33,7 @@ const Card = ({ item, overlay = "#000", eager }: CardProps) => {
           {item.title}
         </h2>
       </div>
-      <OptimizedImage
+      <Image
         loading={eager ? "eager" : "lazy"}
         src={item.cover}
         alt=""

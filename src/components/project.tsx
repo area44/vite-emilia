@@ -1,8 +1,8 @@
 import React from "react";
 
 import HeaderProject from "./header-project";
+import Image from "./image";
 import Layout from "./layout";
-import OptimizedImage from "./optimized-image";
 import ProjectPagination from "./project-pagination";
 import Seo from "./seo";
 
@@ -58,7 +58,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
       <div className="relative z-10 container -mt-24 md:-mt-32">
         <div className="animate-in fade-in delay-800 duration-700">
           {images.map((image) => (
-            <OptimizedImage
+            <Image
               key={image.url}
               src={image.url}
               alt={image.name}

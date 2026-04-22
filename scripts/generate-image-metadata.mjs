@@ -58,7 +58,8 @@ async function main() {
     }
   }
 
-  await fs.promises.writeFile(OUTPUT_FILE, JSON.stringify(results, null, 2));
+  // Add a newline at the end of the file to satisfy the formatter
+  await fs.promises.writeFile(OUTPUT_FILE, `${JSON.stringify(results, null, 2)}\n`);
   console.log(`Metadata saved to ${OUTPUT_FILE}`);
 }
 

@@ -1,9 +1,10 @@
+import type { SVGProps as ReactSVGProps } from "react";
+
 type IconType = "bgPattern" | "leftArrow" | "location";
 
-type SVGProps = {
+interface SVGProps extends ReactSVGProps<SVGSVGElement> {
   id: IconType;
-  [x: string]: any;
-};
+}
 
 const Svg = ({ id, ...props }: SVGProps) => (
   <svg {...props}>

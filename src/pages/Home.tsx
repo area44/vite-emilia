@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 
 import Projects from "../components/projects";
-import { getProjects, ProjectData } from "../utils/data";
+import { getProjects, type ProjectData } from "../utils/data";
 
 const Home = () => {
   const [projects, setProjects] = useState<ProjectData[]>([]);

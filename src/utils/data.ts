@@ -1,3 +1,5 @@
+import type { ComponentType } from "react";
+
 export interface ProjectFrontmatter {
   title: string;
   date: string;
@@ -9,20 +11,21 @@ export interface ProjectFrontmatter {
 
 export interface ProjectData extends ProjectFrontmatter {
   slug: string;
-  content: any;
+  content: ComponentType;
   excerpt: string;
 }
 
 interface MdxModule {
   frontmatter: ProjectFrontmatter;
-  default: any;
+  default: ComponentType;
 }
 
 // All images from src/content/projects
-const allImages = import.meta.glob<string>(
-  "../content/projects/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}",
-  { eager: true, query: "?url", import: "default" },
-);
+const allImages = import.meta.glob<string>("../content/projects/**/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
 
 export const getProjects = async (): Promise<ProjectData[]> => {
   const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
@@ -32,25 +35,30 @@ export const getProjects = async (): Promise<ProjectData[]> => {
   const projects = Object.entries(modules).map(([path, module]) => {
     // path: "../content/projects/minimal-blog/index.mdx"
     const projectDir = path.substring(0, path.lastIndexOf("/") + 1);
-    const folderName = path.split("/").slice(-2, -1)[0];
+    const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
     const { frontmatter } = module;
 
     const coverFileName = frontmatter.cover.replace(/^\.\//, "");
     const fullCoverPath = `${projectDir}${coverFileName}`;
 
     // Find the image in our globbed map
-    const coverUrl = allImages[fullCoverPath] || frontmatter.cover;
+    const coverUrl = allImages[fullCoverPath] ?? frontmatter.cover;
 
-    return {
-      slug: frontmatter.slug || `/${folderName}`,
+    const project: ProjectData = {
+      slug: frontmatter.slug ?? `/${folderName}`,
       title: frontmatter.title,
       date: frontmatter.date,
       areas: frontmatter.areas,
       cover: coverUrl,
-      background: frontmatter.background,
       content: module.default,
       excerpt: frontmatter.title,
     };
+
+    if (frontmatter.background !== undefined) {
+      project.background = frontmatter.background;
+    }
+
+    return project;
   });
 
   return projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
@@ -63,8 +71,8 @@ export const getProjectImages = async (slug: string): Promise<{ name: string; ur
 
   let projectDir = "";
   for (const [path, module] of Object.entries(modules)) {
-    const folderName = path.split("/").slice(-2, -1)[0];
-    const currentSlug = module.frontmatter.slug || `/${folderName}`;
+    const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
+    const currentSlug = module.frontmatter.slug ?? `/${folderName}`;
     if (currentSlug === slug) {
       projectDir = path.substring(0, path.lastIndexOf("/") + 1);
       break;
@@ -76,7 +84,7 @@ export const getProjectImages = async (slug: string): Promise<{ name: string; ur
   return Object.entries(allImages)
     .filter(([path]) => path.startsWith(projectDir))
     .map(([path, url]) => ({
-      name: path.split("/").pop() || "",
+      name: path.split("/").pop() ?? "",
       url: url,
     }));
 };

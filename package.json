@@ -1,6 +1,6 @@
 {
   "name": "@area44/vite-emilia",
-  "version": "25.12.10",
+  "version": "26.04.22",
   "private": true,
   "description": "Minimalistic portfolio/photography site that features a masonry grid, page transitions, and large images",
   "author": "AREA44",
@@ -8,7 +8,6 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "clean": "rm -rf dist",
     "format": "oxfmt",
     "lint": "oxlint"
   },
@@ -25,12 +24,12 @@
     "vite": "^8.0.5"
   },
   "devDependencies": {
-    "@types/node": "^25.3.5",
+    "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "oxfmt": "^0.46.0",
     "oxlint": "^1.61.0",
-    "typescript": "^5.9.3"
+    "typescript": "^6.0.3"
   },
   "packageManager": "pnpm@10.30.3"
 }

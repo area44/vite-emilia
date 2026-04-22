@@ -1,18 +1,23 @@
 import { Link } from "react-router-dom";
 
+import OptimizedImage from "./optimized-image";
+
 type CardProps = {
   item: {
     slug: string;
     cover: string;
     title: string;
     contentFilePath?: string;
+    coverHash?: string;
+    coverWidth?: number;
+    coverHeight?: number;
   };
   overlay?: string;
   shadow?: string[];
   eager?: boolean;
 };
 
-const Card = ({ item, overlay = `#000`, eager }: CardProps) => {
+const Card = ({ item, overlay = "#000", eager }: CardProps) => {
   return (
     <Link
       aria-label={`Visit ${item.title} project page`}
@@ -28,7 +33,15 @@ const Card = ({ item, overlay = `#000`, eager }: CardProps) => {
           {item.title}
         </h2>
       </div>
-      <img loading={eager ? `eager` : `lazy`} src={item.cover} alt="" className="block w-full" />
+      <OptimizedImage
+        loading={eager ? "eager" : "lazy"}
+        src={item.cover}
+        alt=""
+        hash={item.coverHash}
+        width={item.coverWidth}
+        height={item.coverHeight}
+        className="block w-full"
+      />
     </Link>
   );
 };

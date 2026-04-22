@@ -1,5 +1,12 @@
 import type { ComponentType } from "react";
 
+import imageMetadataRaw from "../content/image-metadata.json";
+
+const imageMetadata = imageMetadataRaw as Record<
+  string,
+  { hash: string; width: number; height: number }
+>;
+
 export interface ProjectFrontmatter {
   title: string;
   date: string;
@@ -13,6 +20,17 @@ export interface ProjectData extends ProjectFrontmatter {
   slug: string;
   content: ComponentType;
   excerpt: string;
+  coverHash?: string;
+  coverWidth?: number;
+  coverHeight?: number;
+}
+
+export interface ProjectImage {
+  name: string;
+  url: string;
+  hash?: string;
+  width?: number;
+  height?: number;
 }
 
 interface MdxModule {
@@ -26,6 +44,11 @@ const allImages = import.meta.glob<string>("../content/projects/**/*.{jpg,jpeg,p
   query: "?url",
   import: "default",
 });
+
+const getMetadataKey = (path: string) => {
+  // Convert "../content/projects/..." to "src/content/projects/..."
+  return path.replace(/^\.\.\/content\//, "src/content/");
+};
 
 export const getProjects = async (): Promise<ProjectData[]> => {
   const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
@@ -43,6 +66,8 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 
     // Find the image in our globbed map
     const coverUrl = allImages[fullCoverPath] ?? frontmatter.cover;
+    const metadataKey = getMetadataKey(fullCoverPath);
+    const metadata = imageMetadata[metadataKey];
 
     const project: ProjectData = {
       slug: frontmatter.slug ?? `/${folderName}`,
@@ -52,6 +77,9 @@ export const getProjects = async (): Promise<ProjectData[]> => {
       cover: coverUrl,
       content: module.default,
       excerpt: frontmatter.title,
+      coverHash: metadata?.hash,
+      coverWidth: metadata?.width,
+      coverHeight: metadata?.height,
     };
 
     if (frontmatter.background !== undefined) {
@@ -64,7 +92,7 @@ export const getProjects = async (): Promise<ProjectData[]> => {
   return projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
-export const getProjectImages = async (slug: string): Promise<{ name: string; url: string }[]> => {
+export const getProjectImages = async (slug: string): Promise<ProjectImage[]> => {
   const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
     eager: true,
   });
@@ -83,8 +111,15 @@ export const getProjectImages = async (slug: string): Promise<{ name: string; ur
 
   return Object.entries(allImages)
     .filter(([path]) => path.startsWith(projectDir))
-    .map(([path, url]) => ({
-      name: path.split("/").pop() ?? "",
-      url: url,
-    }));
+    .map(([path, url]) => {
+      const metadataKey = getMetadataKey(path);
+      const metadata = imageMetadata[metadataKey];
+      return {
+        name: path.split("/").pop() ?? "",
+        url: url,
+        hash: metadata?.hash,
+        width: metadata?.width,
+        height: metadata?.height,
+      };
+    });
 };

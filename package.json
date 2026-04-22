@@ -5,11 +5,12 @@
   "description": "Minimalistic portfolio/photography site that features a masonry grid, page transitions, and large images",
   "author": "AREA44",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "pnpm run generate:metadata && vite",
+    "build": "pnpm run generate:metadata && vite build",
     "preview": "vite preview",
     "format": "oxfmt",
-    "lint": "oxlint"
+    "lint": "oxlint",
+    "generate:metadata": "node scripts/generate-image-metadata.mjs"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
@@ -27,9 +28,13 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
+    "blurhash": "^2.0.5",
     "oxfmt": "^0.46.0",
     "oxlint": "^1.61.0",
-    "typescript": "^6.0.3"
+    "react-blurhash": "^0.3.0",
+    "sharp": "^0.34.5",
+    "typescript": "^6.0.3",
+    "vite-imagetools": "^10.0.0"
   },
   "packageManager": "pnpm@10.30.3"
 }

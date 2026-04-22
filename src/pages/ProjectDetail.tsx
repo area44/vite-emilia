@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import Project from "../components/project";
-import { getProjects, getProjectImages, ProjectData } from "../utils/data";
+import { getProjects, getProjectImages, type ProjectData } from "../utils/data";
 
 const ProjectDetail = () => {
   const { slug } = useParams();
@@ -13,22 +13,26 @@ const ProjectDetail = () => {
 
   useEffect(() => {
     const loadData = async () => {
+      if (!slug) return;
       const allProjects = await getProjects();
       const index = allProjects.findIndex((p) => p.slug === `/${slug}` || p.slug === slug);
 
       if (index !== -1) {
-        setProject(allProjects[index]);
-        setPrev(index > 0 ? allProjects[index - 1] : null);
-        setNext(index < allProjects.length - 1 ? allProjects[index + 1] : null);
+        const currentProject = allProjects[index];
+        if (currentProject) {
+          setProject(currentProject);
+          setPrev(index > 0 ? (allProjects[index - 1] ?? null) : null);
+          setNext(index < allProjects.length - 1 ? (allProjects[index + 1] ?? null) : null);
 
-        const currentSlug = allProjects[index].slug;
-        const projectImages = await getProjectImages(currentSlug);
-        setImages(
-          projectImages.map((img) => ({
-            name: allProjects[index].title,
-            url: img.url,
-          })),
-        );
+          const currentSlug = currentProject.slug;
+          const projectImages = await getProjectImages(currentSlug);
+          setImages(
+            projectImages.map((img) => ({
+              name: currentProject.title,
+              url: img.url,
+            })),
+          );
+        }
       }
     };
 

@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 const ColorModeToggle = () => {
   // Simplified for now as we are focusing on Tailwind migration

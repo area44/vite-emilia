@@ -21,10 +21,11 @@ interface MdxModule {
 }
 
 // All images from src/content/projects
-const allImages = import.meta.glob<string>(
-  "../content/projects/**/*.{jpg,jpeg,png,webp}",
-  { eager: true, query: "?url", import: "default" },
-);
+const allImages = import.meta.glob<string>("../content/projects/**/*.{jpg,jpeg,png,webp}", {
+  eager: true,
+  query: "?url",
+  import: "default",
+});
 
 export const getProjects = async (): Promise<ProjectData[]> => {
   const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {

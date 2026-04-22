@@ -1,9 +1,0 @@
-I have implemented the following changes:
-1. Replaced the avatar with the Vite logo (`src/content/assets/avatar.svg`).
-2. Updated `Image` and `Card` components to support an optional `aspectRatio` prop.
-3. Applied consistent aspect ratios to:
-   - Homepage project cards (4 / 5).
-   - "More Projects" pagination cards (16 / 9).
-4. Improved the avatar rendering in headers by adding a white background and padding, ensuring it's always clear regardless of the logo's color.
-
-Please review the implementation for any potential issues or improvements.

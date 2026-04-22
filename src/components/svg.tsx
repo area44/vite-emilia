@@ -1,6 +1,6 @@
 import type { SVGProps as ReactSVGProps } from "react";
 
-type IconType = "bgPattern" | "leftArrow" | "location";
+type IconType = "bgPattern" | "location";
 
 interface SVGProps extends ReactSVGProps<SVGSVGElement> {
   id: IconType;

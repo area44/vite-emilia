@@ -15,9 +15,10 @@ type CardProps = {
   overlay?: string;
   shadow?: string[];
   eager?: boolean;
+  aspectRatio?: string;
 };
 
-const Card = ({ item, overlay = "#000", eager }: CardProps) => {
+const Card = ({ item, overlay = "#000", eager, aspectRatio }: CardProps) => {
   return (
     <Link
       aria-label={`Visit ${item.title} project page`}
@@ -40,6 +41,7 @@ const Card = ({ item, overlay = "#000", eager }: CardProps) => {
         hash={item.coverHash}
         width={item.coverWidth}
         height={item.coverHeight}
+        aspectRatio={aspectRatio}
         className="block w-full"
       />
     </Link>

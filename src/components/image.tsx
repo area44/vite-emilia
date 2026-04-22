@@ -7,6 +7,7 @@ interface ImageProps {
   hash?: string;
   width?: number;
   height?: number;
+  aspectRatio?: string;
   className?: string;
   loading?: "lazy" | "eager";
 }
@@ -17,16 +18,19 @@ const Image: React.FC<ImageProps> = ({
   hash,
   width,
   height,
+  aspectRatio,
   className = "",
   loading = "lazy",
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
 
+  const finalAspectRatio = aspectRatio || (width && height ? `${width} / ${height}` : undefined);
+
   return (
     <div
       className={`relative overflow-hidden ${className}`}
       style={{
-        aspectRatio: width && height ? `${width} / ${height}` : undefined,
+        aspectRatio: finalAspectRatio,
       }}
     >
       {hash && !isLoaded && (
@@ -46,7 +50,7 @@ const Image: React.FC<ImageProps> = ({
         alt={alt}
         loading={loading}
         onLoad={() => setIsLoaded(true)}
-        className={`block w-full transition-opacity duration-500 ${
+        className={`block h-full w-full object-cover transition-opacity duration-500 ${
           isLoaded ? "opacity-100" : "opacity-0"
         }`}
       />

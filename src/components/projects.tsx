@@ -10,6 +10,9 @@ type Props = {
     title: string;
     cover: string;
     background?: string;
+    coverHash?: string;
+    coverWidth?: number;
+    coverHeight?: number;
   }[];
 };
 
@@ -38,7 +41,15 @@ const Projects = ({ projects }: Props) => {
           <div className="container -mt-32 grid grid-cols-1 items-start gap-8 md:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
             {projects.map((project, index) => {
               const val = project.background || "#000";
-              return <Card key={project.slug} eager={index === 0} item={project} overlay={val} />;
+              return (
+                <Card
+                  key={project.slug}
+                  eager={index === 0}
+                  item={project}
+                  overlay={val}
+                  aspectRatio="4 / 5"
+                />
+              );
             })}
           </div>
         </div>

@@ -12,9 +12,9 @@ const Header = () => {
       <HeaderBackground />
       <div className="z-10 text-center">
         <div className="animate-in fade-in duration-700">
-          <div className="inline-block h-[100px] w-[100px] overflow-hidden rounded-full shadow-lg md:h-[140px] md:w-[140px]">
+          <div className="inline-block h-[100px] w-[100px] overflow-hidden rounded-full bg-white shadow-lg md:h-[140px] md:w-[140px]">
             {avatarUrl ? (
-              <img src={avatarUrl} alt="Avatar" className="h-full w-full object-cover" />
+              <img src={avatarUrl} alt="Avatar" className="h-full w-full object-cover p-4" />
             ) : (
               <div className="absolute inset-0 bg-red-200 p-3 text-xs" data-placeholder="true">
                 Place an image with the name "avatar" inside the directory "{assetsPath}"

@@ -5,11 +5,17 @@ type ProjectPaginationProps = {
     slug: string;
     title: string;
     cover: string;
+    coverHash?: string;
+    coverWidth?: number;
+    coverHeight?: number;
   } | null;
   next: {
     slug: string;
     title: string;
     cover: string;
+    coverHash?: string;
+    coverWidth?: number;
+    coverHeight?: number;
   } | null;
 };
 
@@ -22,8 +28,8 @@ const ProjectPagination = ({ prev, next }: ProjectPaginationProps) => (
       <div className="h-0.5 w-full bg-muted" />
     </div>
     <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
-      {prev && <Card item={prev} />}
-      {next && <Card item={next} />}
+      {prev && <Card item={prev} aspectRatio="16 / 9" />}
+      {next && <Card item={next} aspectRatio="16 / 9" />}
     </div>
   </div>
 );

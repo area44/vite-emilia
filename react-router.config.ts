@@ -4,7 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 
 export default {
-  ssr: false,
+  ssr: true,
   appDirectory: "src",
   async prerender() {
     const projectsDir = path.join(process.cwd(), "src/content/projects");

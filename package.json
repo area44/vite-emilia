@@ -8,8 +8,8 @@
   "scripts": {
     "dev": "pnpm run generate:metadata && react-router dev",
     "build": "pnpm run generate:metadata && react-router build && rm -rf dist && mv build/client dist",
-    "start": "react-router-serve dist",
-    "preview": "react-router-serve dist",
+    "start": "serve dist",
+    "preview": "serve dist",
     "format": "oxfmt",
     "lint": "oxlint",
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
@@ -18,13 +18,11 @@
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@react-router/node": "^7.14.2",
-    "@react-router/serve": "^7.14.2",
     "@tailwindcss/vite": "^4.0.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "isbot": "^5.1.39",
-    "react": "19",
+    "react": "^19.0.0",
     "react-blurhash": "^0.3.0",
-    "react-dom": "19",
+    "react-dom": "^19.0.0",
     "react-router": "^7.14.2",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.0.0",
@@ -42,8 +40,7 @@
     "serve": "^14.2.6",
     "sharp": "^0.34.5",
     "typescript": "^6.0.3",
-    "vite-imagetools": "^10.0.0",
-    "vite-tsconfig-paths": "^6.1.1"
+    "vite-imagetools": "^10.0.0"
   },
   "packageManager": "pnpm@10.30.3"
 }

@@ -15,7 +15,4 @@ export default defineConfig({
     tailwindcss(),
     imagetools(),
   ],
-  resolve: {
-    tsconfigPaths: true,
-  },
 });

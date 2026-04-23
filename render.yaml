@@ -3,4 +3,4 @@ services:
     name: vite-emilia
     env: static
     buildCommand: pnpm build
-    staticPublishPath: .output/public
+    staticPublishPath: dist

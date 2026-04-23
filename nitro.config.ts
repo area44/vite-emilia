@@ -6,4 +6,7 @@ export default defineNitroConfig({
   prerender: {
     routes: getProjectSlugs(),
   },
+  output: {
+    publicDir: "dist",
+  },
 });

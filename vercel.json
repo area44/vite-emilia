@@ -1,7 +1,7 @@
 {
   "installCommand": "pnpm install",
   "buildCommand": "pnpm build",
-  "outputDirectory": ".output/public",
+  "outputDirectory": "dist",
   "github": {
     "silent": true
   }

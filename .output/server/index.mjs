@@ -67,131 +67,131 @@ var headers = ((m) => function headersRouteRule(event) {
 //#endregion
 //#region #nitro/virtual/public-assets-data
 var public_assets_data_default = {
-	"/icons.svg": {
-		"type": "image/svg+xml",
-		"etag": "\"bfce-78WoiusEJquqm89tMw+EcR0cYC0\"",
-		"mtime": "2026-04-23T03:01:13.436Z",
-		"size": 49102,
-		"path": "../public/icons.svg"
-	},
 	"/index.html": {
 		"type": "text/html; charset=utf-8",
 		"etag": "\"2b5-MPF16B//No80bLbLiJ8l1Gz97Dg\"",
-		"mtime": "2026-04-23T03:01:13.824Z",
+		"mtime": "2026-04-23T03:19:53.712Z",
 		"size": 693,
-		"path": "../public/index.html"
+		"path": "../../dist/index.html"
+	},
+	"/icons.svg": {
+		"type": "image/svg+xml",
+		"etag": "\"bfce-78WoiusEJquqm89tMw+EcR0cYC0\"",
+		"mtime": "2026-04-23T03:19:53.352Z",
+		"size": 49102,
+		"path": "../../dist/icons.svg"
 	},
 	"/ars-aurea-goldene-kunst/index.html": {
 		"type": "text/html; charset=utf-8",
 		"etag": "\"2b5-MPF16B//No80bLbLiJ8l1Gz97Dg\"",
-		"mtime": "2026-04-23T03:01:13.828Z",
+		"mtime": "2026-04-23T03:19:53.720Z",
 		"size": 693,
-		"path": "../public/ars-aurea-goldene-kunst/index.html"
+		"path": "../../dist/ars-aurea-goldene-kunst/index.html"
 	},
 	"/assets/Reflections-CQ8j5rMw.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"7e473-idFq09sRbJYab4Kea1f2uOU6J8E\"",
-		"mtime": "2026-04-23T03:01:13.396Z",
+		"mtime": "2026-04-23T03:19:53.284Z",
 		"size": 517235,
-		"path": "../public/assets/Reflections-CQ8j5rMw.jpeg"
+		"path": "../../dist/assets/Reflections-CQ8j5rMw.jpeg"
 	},
 	"/assets/Space-Tourism-CzzBGq9y.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"69867-OVhHBROpsV03xBBFg+pi2lfEO5Y\"",
-		"mtime": "2026-04-23T03:01:13.396Z",
+		"mtime": "2026-04-23T03:19:53.292Z",
 		"size": 432231,
-		"path": "../public/assets/Space-Tourism-CzzBGq9y.jpeg"
+		"path": "../../dist/assets/Space-Tourism-CzzBGq9y.jpeg"
 	},
 	"/assets/avatar-Bs_r76O8.svg": {
 		"type": "image/svg+xml",
 		"etag": "\"2533-3jG/7ugM0sD8gpXXszLpuw7zqbw\"",
-		"mtime": "2026-04-23T03:01:13.404Z",
+		"mtime": "2026-04-23T03:19:53.300Z",
 		"size": 9523,
-		"path": "../public/assets/avatar-Bs_r76O8.svg"
+		"path": "../../dist/assets/avatar-Bs_r76O8.svg"
 	},
 	"/assets/di_an_h-9jsV5uKbAEM-unsplash-CwVdKMK7.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"58b63-mYI//sZG98SjnwfKaYG54F99KmU\"",
-		"mtime": "2026-04-23T03:01:13.404Z",
+		"mtime": "2026-04-23T03:19:53.300Z",
 		"size": 363363,
-		"path": "../public/assets/di_an_h-9jsV5uKbAEM-unsplash-CwVdKMK7.jpeg"
-	},
-	"/assets/index-CFrVfSSH.js": {
-		"type": "text/javascript; charset=utf-8",
-		"etag": "\"3d1ce-/5756C9n1QAQYKBgnmiRcxyZnko\"",
-		"mtime": "2026-04-23T03:01:13.396Z",
-		"size": 250318,
-		"path": "../public/assets/index-CFrVfSSH.js"
+		"path": "../../dist/assets/di_an_h-9jsV5uKbAEM-unsplash-CwVdKMK7.jpeg"
 	},
 	"/assets/index-BpHJqN8s.css": {
 		"type": "text/css; charset=utf-8",
 		"etag": "\"55be-Qc4E9ITRlopgZGGmvDVo2O3Kgmk\"",
-		"mtime": "2026-04-23T03:01:13.404Z",
+		"mtime": "2026-04-23T03:19:53.308Z",
 		"size": 21950,
-		"path": "../public/assets/index-BpHJqN8s.css"
+		"path": "../../dist/assets/index-BpHJqN8s.css"
+	},
+	"/assets/index-CFrVfSSH.js": {
+		"type": "text/javascript; charset=utf-8",
+		"etag": "\"3d1ce-/5756C9n1QAQYKBgnmiRcxyZnko\"",
+		"mtime": "2026-04-23T03:19:53.280Z",
+		"size": 250318,
+		"path": "../../dist/assets/index-CFrVfSSH.js"
 	},
 	"/jodie/index.html": {
 		"type": "text/html; charset=utf-8",
 		"etag": "\"2b5-MPF16B//No80bLbLiJ8l1Gz97Dg\"",
-		"mtime": "2026-04-23T03:01:13.836Z",
+		"mtime": "2026-04-23T03:19:53.732Z",
 		"size": 693,
-		"path": "../public/jodie/index.html"
-	},
-	"/neon-lights/index.html": {
-		"type": "text/html; charset=utf-8",
-		"etag": "\"2b5-MPF16B//No80bLbLiJ8l1Gz97Dg\"",
-		"mtime": "2026-04-23T03:01:13.840Z",
-		"size": 693,
-		"path": "../public/neon-lights/index.html"
+		"path": "../../dist/jodie/index.html"
 	},
 	"/minimal-blog/index.html": {
 		"type": "text/html; charset=utf-8",
 		"etag": "\"2b5-MPF16B//No80bLbLiJ8l1Gz97Dg\"",
-		"mtime": "2026-04-23T03:01:13.836Z",
+		"mtime": "2026-04-23T03:19:53.732Z",
 		"size": 693,
-		"path": "../public/minimal-blog/index.html"
+		"path": "../../dist/minimal-blog/index.html"
+	},
+	"/neon-lights/index.html": {
+		"type": "text/html; charset=utf-8",
+		"etag": "\"2b5-MPF16B//No80bLbLiJ8l1Gz97Dg\"",
+		"mtime": "2026-04-23T03:19:53.736Z",
+		"size": 693,
+		"path": "../../dist/neon-lights/index.html"
 	},
 	"/assets/angelo-pantazis-h0AnGGgseio-unsplash-BWI3X4iA.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"9d98b-E7hgfV7hj8HJAwof8Nx+zOCBYL0\"",
-		"mtime": "2026-04-23T03:01:13.400Z",
+		"mtime": "2026-04-23T03:19:53.292Z",
 		"size": 645515,
-		"path": "../public/assets/angelo-pantazis-h0AnGGgseio-unsplash-BWI3X4iA.jpeg"
+		"path": "../../dist/assets/angelo-pantazis-h0AnGGgseio-unsplash-BWI3X4iA.jpeg"
 	},
 	"/assets/jordan-whitfield-3cNc1U7nJcs-unsplash-DwHhbYq_.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"8e473-JLXQ/dn40johh4/QCIoSMZBXITI\"",
-		"mtime": "2026-04-23T03:01:13.408Z",
+		"mtime": "2026-04-23T03:19:53.308Z",
 		"size": 582771,
-		"path": "../public/assets/jordan-whitfield-3cNc1U7nJcs-unsplash-DwHhbYq_.jpeg"
+		"path": "../../dist/assets/jordan-whitfield-3cNc1U7nJcs-unsplash-DwHhbYq_.jpeg"
 	},
 	"/assets/heather-ford-vAfCO8xrz0I-unsplash-CwJSFlQY.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"c9d50-J0Spdn1gDS5dt/VygFgMFVLWwYM\"",
-		"mtime": "2026-04-23T03:01:13.404Z",
+		"mtime": "2026-04-23T03:19:53.300Z",
 		"size": 826704,
-		"path": "../public/assets/heather-ford-vAfCO8xrz0I-unsplash-CwJSFlQY.jpeg"
-	},
-	"/assets/sean-foley-0JD7kvxAq0Y-unsplash-B9X-rT5T.jpeg": {
-		"type": "image/jpeg",
-		"etag": "\"fb4f1-yWDpPsCKpa1gP8H8Vs9i8uw8MFI\"",
-		"mtime": "2026-04-23T03:01:13.408Z",
-		"size": 1029361,
-		"path": "../public/assets/sean-foley-0JD7kvxAq0Y-unsplash-B9X-rT5T.jpeg"
+		"path": "../../dist/assets/heather-ford-vAfCO8xrz0I-unsplash-CwJSFlQY.jpeg"
 	},
 	"/assets/sean-foley-z4gWzj0p93c-unsplash-DPPZnxsb.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"a9a5e-qsBOY6n+GJboXoY3P128qqoP6CU\"",
-		"mtime": "2026-04-23T03:01:13.408Z",
+		"mtime": "2026-04-23T03:19:53.320Z",
 		"size": 694878,
-		"path": "../public/assets/sean-foley-z4gWzj0p93c-unsplash-DPPZnxsb.jpeg"
+		"path": "../../dist/assets/sean-foley-z4gWzj0p93c-unsplash-DPPZnxsb.jpeg"
+	},
+	"/assets/sean-foley-0JD7kvxAq0Y-unsplash-B9X-rT5T.jpeg": {
+		"type": "image/jpeg",
+		"etag": "\"fb4f1-yWDpPsCKpa1gP8H8Vs9i8uw8MFI\"",
+		"mtime": "2026-04-23T03:19:53.312Z",
+		"size": 1029361,
+		"path": "../../dist/assets/sean-foley-0JD7kvxAq0Y-unsplash-B9X-rT5T.jpeg"
 	},
 	"/assets/Astronaut-KFt_Olcx.jpeg": {
 		"type": "image/jpeg",
 		"etag": "\"1036ab-xu5nOkgc1h1CDCxxVoFJ77M2SNE\"",
-		"mtime": "2026-04-23T03:01:13.396Z",
+		"mtime": "2026-04-23T03:19:53.280Z",
 		"size": 1062571,
-		"path": "../public/assets/Astronaut-KFt_Olcx.jpeg"
+		"path": "../../dist/assets/Astronaut-KFt_Olcx.jpeg"
 	}
 };
 //#endregion

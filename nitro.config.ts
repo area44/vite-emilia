@@ -14,6 +14,9 @@ const getRoutes = () => {
 
 export default defineConfig({
   compatibilityDate: "2026-04-23",
+  output: {
+    publicDir: "dist",
+  },
   prerender: {
     crawlLinks: true,
     routes: getRoutes(),

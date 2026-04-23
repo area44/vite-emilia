@@ -1,14 +1,15 @@
 import mdx from "@mdx-js/rollup";
 import tailwindcss from "@tailwindcss/vite";
 import react from "@vitejs/plugin-react";
+import { nitro } from "nitro/vite";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
-  base: "./",
   plugins: [
+    nitro(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     }),
@@ -16,8 +17,4 @@ export default defineConfig({
     tailwindcss(),
     imagetools(),
   ],
-  build: {
-    outDir: "dist",
-    emptyOutDir: true,
-  },
 });

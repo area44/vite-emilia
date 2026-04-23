@@ -1,21 +1,26 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
 
 import Project from "../components/project";
 import { getProjects, getProjectImages, type ProjectData, type ProjectImage } from "../utils/data";
 
 const ProjectDetail = () => {
-  const { slug } = useParams();
   const [project, setProject] = useState<ProjectData | null>(null);
   const [images, setImages] = useState<ProjectImage[]>([]);
   const [prev, setPrev] = useState<ProjectData | null>(null);
   const [next, setNext] = useState<ProjectData | null>(null);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const loadData = async () => {
-      if (!slug) return;
+      setLoading(true);
+      const slug = window.location.pathname;
+      if (!slug || slug === "/") {
+        setLoading(false);
+        return;
+      }
+
       const allProjects = await getProjects();
-      const index = allProjects.findIndex((p) => p.slug === `/${slug}` || p.slug === slug);
+      const index = allProjects.findIndex((p) => p.slug === slug || p.slug === `/${slug}`);
 
       if (index !== -1) {
         const currentProject = allProjects[index];
@@ -29,12 +34,19 @@ const ProjectDetail = () => {
           setImages(projectImages);
         }
       }
+      setLoading(false);
     };
 
     loadData();
-  }, [slug]);
+  }, []);
 
-  if (!project) return null;
+  if (loading) return null;
+  if (!project)
+    return (
+      <div className="container py-20 text-center">
+        <p className="text-xl">Project not found.</p>
+      </div>
+    );
 
   const Content = project.content;
 

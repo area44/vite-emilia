@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import React from "react";
 
 import avatarUrl from "../content/assets/avatar.svg";
 import useEmiliaConfig from "../hooks/use-emilia-config";
@@ -20,15 +20,15 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
       <div className="z-10 container my-8 text-center">
         <div className="animate-in fade-in duration-700">
           <div className="flex justify-center">
-            <Link
-              to="/"
+            <a
+              href="/"
               aria-label={`${name} - Back to homepage`}
               className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md transition-transform hover:scale-110"
             >
               {avatarUrl && (
                 <img src={avatarUrl} alt="Avatar" className="h-full w-full object-contain p-1.5" />
               )}
-            </Link>
+            </a>
           </div>
         </div>
         <div className="mt-8 mb-24 md:mb-32">

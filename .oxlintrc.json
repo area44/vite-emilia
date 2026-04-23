@@ -21,6 +21,8 @@
     "**/.github",
     "**/.next",
     "**/.astro",
-    "**/.netlify"
+    "**/.netlify",
+    "**/.output",
+    "**/.nitro"
   ]
 }

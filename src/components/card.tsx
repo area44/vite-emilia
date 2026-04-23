@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import Image from "./image";
 
 type CardProps = {
@@ -20,10 +18,10 @@ type CardProps = {
 
 const Card = ({ item, overlay = "#000", eager, aspectRatio }: CardProps) => {
   return (
-    <Link
+    <a
       aria-label={`Visit ${item.title} project page`}
       className="group relative block shadow-xl transition-shadow outline-none hover:z-20 focus:ring-8 focus:ring-primary/50"
-      to={item.slug}
+      href={item.slug}
     >
       <div
         className="absolute inset-0 z-20 flex items-center justify-center p-4 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 group-focus:opacity-100"
@@ -44,7 +42,7 @@ const Card = ({ item, overlay = "#000", eager, aspectRatio }: CardProps) => {
         aspectRatio={aspectRatio}
         className="block w-full"
       />
-    </Link>
+    </a>
   );
 };
 

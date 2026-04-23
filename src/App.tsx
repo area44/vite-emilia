@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { Routes, Route, useLocation } from "react-router-dom";
 
 import Header from "./components/header";
 import Layout from "./components/layout";
@@ -9,8 +8,8 @@ import ProjectDetail from "./pages/ProjectDetail";
 const NotFound = () => (
   <Layout>
     <Header />
-    <div className="container">
-      <p>
+    <div className="container py-20 text-center">
+      <p className="text-xl">
         Oh, no!
         <br />
         You found a page that doesn't exist.
@@ -20,19 +19,22 @@ const NotFound = () => (
 );
 
 const App = () => {
-  const { pathname } = useLocation();
-
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]);
+  }, []);
 
-  return (
-    <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="/:slug" element={<ProjectDetail />} />
-      <Route path="*" element={<NotFound />} />
-    </Routes>
-  );
+  const path = window.location.pathname;
+
+  // Render component based on initial path
+  if (path === "/" || path === "/index.html") {
+    return <Home />;
+  }
+
+  if (path.startsWith("/") && path.length > 1) {
+    return <ProjectDetail />;
+  }
+
+  return <NotFound />;
 };
 
 export default App;

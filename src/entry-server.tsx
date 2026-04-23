@@ -1,6 +1,7 @@
 import React from "react";
 import { renderToString } from "react-dom/server";
 import { StaticRouter } from "react-router-dom/server";
+
 import App from "./App";
 import clientAssets from "./entry-client?assets=client";
 import serverAssets from "./entry-server?assets=ssr";
@@ -15,7 +16,7 @@ export default {
         <StaticRouter location={url.pathname}>
           <App />
         </StaticRouter>
-      </React.StrictMode>
+      </React.StrictMode>,
     );
 
     return new Response(
@@ -35,15 +36,29 @@ export default {
         } catch (e) {}
       })();
     </script>
-    ${assets.css.map((attr: any) => `<link rel="stylesheet" ${Object.entries(attr).map(([k, v]) => `${k}="${v}"`).join(' ')}>`).join('\n')}
-    ${assets.js.map((attr: any) => `<link rel="modulepreload" ${Object.entries(attr).map(([k, v]) => `${k}="${v}"`).join(' ')}>`).join('\n')}
+    ${assets.css
+      .map(
+        (attr: any) =>
+          `<link rel="stylesheet" ${Object.entries(attr)
+            .map(([k, v]) => `${k}="${v}"`)
+            .join(" ")}>`,
+      )
+      .join("\n")}
+    ${assets.js
+      .map(
+        (attr: any) =>
+          `<link rel="modulepreload" ${Object.entries(attr)
+            .map(([k, v]) => `${k}="${v}"`)
+            .join(" ")}>`,
+      )
+      .join("\n")}
     <script type="module" src="${assets.entry}"></script>
   </head>
   <body>
     <div id="root">${html}</div>
   </body>
 </html>`,
-      { headers: { "Content-Type": "text/html;charset=utf-8" } }
+      { headers: { "Content-Type": "text/html;charset=utf-8" } },
     );
   },
 };

@@ -29,9 +29,9 @@ export default defineConfig({
     ssr: {
       build: {
         rollupOptions: {
-          external: ['react-router-dom/server'],
-        }
-      }
-    }
+          external: ["react-router-dom/server"],
+        },
+      },
+    },
   },
 });

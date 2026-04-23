@@ -8,30 +8,13 @@ import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
-  base: "/",
   plugins: [
+    nitro(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     }),
     react(),
     tailwindcss(),
     imagetools(),
-    nitro(),
   ],
-  environments: {
-    client: {
-      build: {
-        rollupOptions: {
-          input: "./src/entry-client.tsx",
-        },
-      },
-    },
-    ssr: {
-      build: {
-        rollupOptions: {
-          external: ["react-router-dom/server"],
-        },
-      },
-    },
-  },
 });

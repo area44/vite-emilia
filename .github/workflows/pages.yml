@@ -19,8 +19,6 @@ jobs:
 
       - name: Run build
         uses: area44/workflows/vite@v4.2.1
-        with:
-          path: build/client
 
   deploy:
     needs: build

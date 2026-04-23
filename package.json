@@ -7,9 +7,9 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run generate:metadata && react-router dev",
-    "build": "pnpm run generate:metadata && react-router build",
-    "start": "react-router-serve build/client",
-    "preview": "react-router-serve build/client",
+    "build": "pnpm run generate:metadata && react-router build && rm -rf dist && mv build/client dist",
+    "start": "react-router-serve dist",
+    "preview": "react-router-serve dist",
     "format": "oxfmt",
     "lint": "oxlint",
     "generate:metadata": "node scripts/generate-image-metadata.mjs",

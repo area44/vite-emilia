@@ -18,8 +18,11 @@
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
-    "verbatimModuleSyntax": true
+    "verbatimModuleSyntax": true,
+    "paths": {
+      "~/*": ["./src/*"]
+    }
   },
-  "include": ["./src/**/*"],
+  "include": ["./src/**/*", ".react-router/types/**/*"],
   "exclude": ["node_modules"]
 }

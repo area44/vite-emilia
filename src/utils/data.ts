@@ -18,7 +18,6 @@ export interface ProjectFrontmatter {
 
 export interface ProjectData extends ProjectFrontmatter {
   slug: string;
-  content: ComponentType;
   excerpt: string;
   coverHash?: string;
   coverWidth?: number;
@@ -75,7 +74,6 @@ export const getProjects = async (): Promise<ProjectData[]> => {
       date: frontmatter.date,
       areas: frontmatter.areas,
       cover: coverUrl,
-      content: module.default,
       excerpt: frontmatter.title,
       coverHash: metadata?.hash,
       coverWidth: metadata?.width,

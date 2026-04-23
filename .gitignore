@@ -26,3 +26,6 @@ dist-ssr
 
 # Playwright results
 test-results
+
+# Nitro output
+.output

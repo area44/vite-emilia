@@ -10,7 +10,8 @@
     "**/.github",
     "**/.next",
     "**/.astro",
-    "**/.netlify"
+    "**/.netlify",
+    "**/.output"
   ],
   "sortImports": {
     "groups": [

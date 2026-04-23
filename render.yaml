@@ -3,4 +3,4 @@ services:
     name: vite-emilia
     runtime: node
     buildCommand: pnpm install && pnpm run build
-    publishPath: .output/public
+    publishPath: dist

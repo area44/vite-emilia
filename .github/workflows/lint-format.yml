@@ -1,24 +1,19 @@
-name: Lint and Format
+name: autofix.ci # needed to securely identify the workflow
 
 on:
   push:
-    branches: [main]
+    branches: ["main"]
   pull_request:
-    branches: [main]
+
+permissions:
+  contents: write
 
 jobs:
   lint-format:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 10
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-          cache: 'pnpm'
-      - run: pnpm install
-      - run: pnpm run generate:metadata
-      - run: pnpm run lint
-      - run: pnpm run format
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Run lint/format scripts
+        uses: area44/workflows/lint-format@v4.2.1

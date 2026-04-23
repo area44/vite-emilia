@@ -1,5 +1,6 @@
-import * as React from 'react'
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute } from "@tanstack/react-router";
+import * as React from "react";
+
 import Header from "../components/header";
 import Layout from "../components/layout";
 
@@ -16,6 +17,6 @@ const NotFound = () => (
   </Layout>
 );
 
-export const Route = createFileRoute('/not-found')({
+export const Route = createFileRoute("/not-found")({
   component: NotFound,
-})
+});

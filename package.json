@@ -26,8 +26,7 @@
     "vite": "^8.0.5"
   },
   "devDependencies": {
-    "@tanstack/router-devtools": "^1.166.13",
-    "@tanstack/router-vite-plugin": "^1.166.37",
+    "@tanstack/router-vite-plugin": "^1.168.23",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
@@ -37,6 +36,5 @@
     "sharp": "^0.34.5",
     "typescript": "^6.0.3",
     "vite-imagetools": "^10.0.0"
-  },
-  "packageManager": "pnpm@10.30.3"
+  }
 }

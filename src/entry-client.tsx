@@ -1,20 +1,21 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import { RouterProvider, createRouter } from '@tanstack/react-router'
-import { routeTree } from './routeTree.gen'
-import "./index.css"
+import { RouterProvider, createRouter } from "@tanstack/react-router";
+import React from "react";
+import ReactDOM from "react-dom/client";
 
-const router = createRouter({ routeTree })
+import { routeTree } from "./routeTree.gen";
+import "./index.css";
 
-declare module '@tanstack/react-router' {
+const router = createRouter({ routeTree });
+
+declare module "@tanstack/react-router" {
   interface Register {
-    router: typeof router
+    router: typeof router;
   }
 }
 
 ReactDOM.hydrateRoot(
-  document.getElementById('root')!,
+  document.getElementById("root")!,
   <React.StrictMode>
     <RouterProvider router={router} />
-  </React.StrictMode>
-)
+  </React.StrictMode>,
+);

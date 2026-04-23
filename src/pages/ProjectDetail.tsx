@@ -1,10 +1,10 @@
-import React from "react";
 import { useLoaderData } from "@tanstack/react-router";
+import React from "react";
 
 import Project from "../components/project";
 
 const ProjectDetail = () => {
-  const { project, images, prev, next } = useLoaderData({ from: '/$slug' });
+  const { project, images, prev, next } = useLoaderData({ from: "/$slug" });
 
   if (!project) return null;
 

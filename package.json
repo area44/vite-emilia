@@ -7,8 +7,8 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run generate:metadata && vite",
-    "build": "pnpm run generate:metadata && vite build",
-    "preview": "vite preview",
+    "build": "pnpm run generate:metadata && vite build && nitro build",
+    "preview": "nitro preview",
     "format": "oxfmt",
     "lint": "oxlint",
     "generate:metadata": "node scripts/generate-image-metadata.mjs"

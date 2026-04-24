@@ -3,7 +3,7 @@ import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
 
-const PROJECTS_DIR = "src/content/projects";
+const CONTENT_DIR = "src/content";
 const OUTPUT_FILE = "src/content/image-metadata.json";
 
 async function getImageMetadata(filePath) {
@@ -44,7 +44,7 @@ async function walk(dir, fileList = []) {
 
 async function main() {
   console.log("Generating image metadata...");
-  const imageFiles = await walk(PROJECTS_DIR);
+  const imageFiles = await walk(CONTENT_DIR);
   const results = {};
 
   for (const file of imageFiles) {

@@ -1,4 +1,4 @@
-import avatarUrl from "../content/assets/avatar.svg";
+import avatarUrl from "../assets/avatar.svg";
 import useEmiliaConfig from "../hooks/use-emilia-config";
 import HeaderBackground from "./header-background";
 import SocialMediaList from "./social-media-list";

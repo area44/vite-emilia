@@ -7,7 +7,7 @@ Vite Emilia is a minimalistic portfolio/photography site featuring a masonry gri
 ## Features
 
 - **SSG Ready**: Pre-renders all routes into static HTML for maximum performance and SEO.
-- **Modern Stack**: React 19, Vite 6+, TanStack Router, Tailwind CSS 4.
+- **Modern Stack**: React 19, Vite 8+, TanStack Router, Tailwind CSS 4.
 - **Image Optimization**: Automatic BlurHash generation and responsive image handling.
 - **Minimal Design**: Clean typography and masonry layout focusing on photography.
 - **MDX Support**: Author projects using MDX with frontmatter.
@@ -31,15 +31,15 @@ To build the static site:
 pnpm run build
 ```
 
-The generated static files will be in the `dist/` directory, ready to be hosted on GitHub Pages, Netlify, or Vercel.
+The generated static files will be in the `dist/` directory.
 
 ## Quick Start
 
 ### Adding a New Project
 
-Projects are automatically loaded from `src/content/projects`.
+Projects are automatically loaded from `src/content`.
 
-1. Create a new folder inside `src/content/projects`.
+1. Create a new folder inside `src/content`.
 2. Create an `index.mdx` file and add the frontmatter.
 3. Add images to the folder created in step 1.
 4. Reference your desired image as your `cover` in the frontmatter.

@@ -62,7 +62,7 @@ export const Route = createFileRoute("/$slug")({
 function ProjectDetailComponent() {
   const { project, images, prev, next } = Route.useLoaderData();
 
-  const mdxModules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
+  const mdxModules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
 

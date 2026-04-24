@@ -5,7 +5,7 @@ This repository is a modern React portfolio site optimized for Static Site Gener
 ## Tech Stack
 
 - React 19
-- Vite 6+
+- Vite 8+
 - TanStack Router (File-based routing)
 - Tailwind CSS 4
 - MDX for content
@@ -13,8 +13,9 @@ This repository is a modern React portfolio site optimized for Static Site Gener
 
 ## Directory Structure
 
+- `src/assets`: Static assets like SVG icons and avatars.
 - `src/components`: UI components.
-- `src/content/projects`: Project data in MDX format.
+- `src/content`: Project data in MDX format and associated images.
 - `src/hooks`: Custom hooks and site configuration.
 - `src/routes`: TanStack Router route definitions.
 - `scripts/`: Build and prerender scripts.
@@ -23,7 +24,7 @@ This repository is a modern React portfolio site optimized for Static Site Gener
 
 The build process is defined in `package.json` as:
 
-1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content/projects`.
+1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
 2. `vite build`: Client-side bundle.
 3. `vite build --ssr`: Server-side bundle for prerendering.
 4. `prerender`: Executes `scripts/prerender.mjs` to generate static HTML for all routes.
@@ -34,7 +35,7 @@ The build process is defined in `package.json` as:
 - Use `oxlint` for linting.
 - Prefer functional components and hooks.
 - Use Tailwind CSS 4 utility classes for styling.
-- All projects must have an `index.mdx` file with valid frontmatter.
+- All projects must have an `index.mdx` file with valid frontmatter in `src/content`.
 
 ## Image Handling
 

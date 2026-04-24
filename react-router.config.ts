@@ -3,12 +3,12 @@ import type { Config } from "@react-router/dev/config";
 import fs from "node:fs";
 import path from "node:path";
 
-const basename = process.env.BASE || "/";
+const base = process.env.BASE || "/";
+const basename = base === "/" ? "/" : base.replace(/\/$/, "");
 
 export default {
-  // Use ssr: false for SPA mode which is more compatible with static hosting (SSG)
-  // Prerendering will still generate static HTML files for all routes.
-  ssr: false,
+  // Enable SSR for full HTML generation during prerendering (SSG)
+  ssr: true,
   appDirectory: "src",
   basename,
   async prerender() {

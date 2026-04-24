@@ -7,7 +7,9 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run generate:metadata && vite",
-    "build": "pnpm run generate:metadata && vite build && vite build --ssr src/entry.server.tsx --outDir dist/server && node scripts/prerender.mjs",
+    "build": "pnpm run generate:metadata && vite build && pnpm run ssr:build && pnpm run prerender",
+    "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
+    "prerender": "node scripts/prerender.mjs",
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "format": "oxfmt",
     "lint": "oxlint"

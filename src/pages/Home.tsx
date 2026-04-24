@@ -16,10 +16,12 @@ export const meta: MetaFunction = () => {
     { name: "description", content: site.siteDescription },
     { property: "og:title", content: site.siteTitleAlt },
     { property: "og:description", content: site.siteDescription },
+    { property: "og:image", content: site.siteImage },
     { property: "og:type", content: "website" },
     { name: "twitter:card", content: "summary_large_image" },
     { name: "twitter:title", content: site.siteTitleAlt },
     { name: "twitter:description", content: site.siteDescription },
+    { name: "twitter:image", content: site.siteImage },
   ];
 };
 

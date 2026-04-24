@@ -7,6 +7,7 @@ import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
 export default defineConfig({
+  base: process.env.BASE || "/",
   plugins: [
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],

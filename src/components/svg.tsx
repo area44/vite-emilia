@@ -8,7 +8,7 @@ interface SVGProps extends ReactSVGProps<SVGSVGElement> {
 
 const Svg = ({ id, ...props }: SVGProps) => (
   <svg {...props}>
-    <use href={`/icons.svg#${id}`} />
+    <use href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/icons.svg#${id}`} />
   </svg>
 );
 

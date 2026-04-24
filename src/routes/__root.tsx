@@ -1,15 +1,18 @@
-import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
+import { createRootRoute, Outlet, ScrollRestoration, HeadContent, Scripts } from "@tanstack/react-router";
+import { TanStackRouterDevtools } from "@tanstack/router-devtools";
+import "../index.css";
 
-import "./index.css";
+export const Route = createRootRoute({
+  component: RootComponent,
+});
 
-export function Layout({ children }: { children: React.ReactNode }) {
+function RootComponent() {
   return (
     <html lang="en">
       <head>
         <meta charSet="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <Meta />
-        <Links />
+        <HeadContent />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -26,18 +29,11 @@ export function Layout({ children }: { children: React.ReactNode }) {
         />
       </head>
       <body>
-        {children}
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
+        <TanStackRouterDevtools />
       </body>
     </html>
   );
-}
-
-export default function App() {
-  return <Outlet />;
-}
-
-export function HydrateFallback() {
-  return <p>Loading...</p>;
 }

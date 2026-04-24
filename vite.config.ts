@@ -1,5 +1,6 @@
 import mdx from "@mdx-js/rollup";
-import { reactRouter } from "@react-router/dev/vite";
+import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
+import react from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
@@ -9,11 +10,22 @@ import { imagetools } from "vite-imagetools";
 export default defineConfig({
   base: process.env.BASE || "/",
   plugins: [
+    TanStackRouterVite({
+      routesDirectory: "./src/routes",
+      generatedRouteTree: "./src/routeTree.gen.ts",
+    }),
+    react(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     }),
-    reactRouter(),
     tailwindcss(),
     imagetools(),
   ],
+  build: {
+    rollupOptions: {
+      input: {
+        main: './index.html',
+      },
+    },
+  },
 });

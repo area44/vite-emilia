@@ -52,12 +52,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
 }) => {
   return (
     <Layout>
-      <Seo
-        title={project.title}
-        description={project.excerpt}
-        pathname={project.slug}
-        image={project.cover}
-      />
+      <Seo />
       <HeaderProject
         title={project.title}
         description={children}

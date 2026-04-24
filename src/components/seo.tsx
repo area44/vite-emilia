@@ -2,45 +2,17 @@ import React from "react";
 
 import useSiteMetadata from "../hooks/use-site-metadata";
 
-type SEOProps = {
-  title?: string;
-  description?: string;
-  pathname?: string;
-  image?: string;
-  children?: React.ReactNode;
-};
-
-const Seo = ({
-  title = ``,
-  description = ``,
-  pathname = ``,
-  image = ``,
-  children = null,
-}: SEOProps) => {
+// This component is now mostly a side-effect manager for things Meta can't easily do
+// like lang attribute or other head elements that need effect-based updates.
+// React Router's Meta export handles the main SEO tags.
+const Seo = () => {
   const site = useSiteMetadata();
 
-  const {
-    siteTitle,
-    siteTitleAlt: defaultTitle,
-    siteUrl,
-    siteDescription: defaultDescription,
-    siteImage: defaultImage,
-    siteLanguage,
-  } = site;
-
-  const seo = {
-    title: title ? `${title} | ${siteTitle}` : defaultTitle,
-    description: description || defaultDescription,
-    url: `${siteUrl}${pathname || ``}`,
-    image: `${siteUrl}${image || defaultImage}`,
-  };
-
   React.useEffect(() => {
-    document.title = seo.title;
-    document.documentElement.lang = siteLanguage;
-  }, [seo.title, siteLanguage]);
+    document.documentElement.lang = site.siteLanguage;
+  }, [site.siteLanguage]);
 
-  return <>{children}</>;
+  return null;
 };
 
 export default Seo;

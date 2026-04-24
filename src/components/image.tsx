@@ -1,5 +1,5 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Blurhash } from "react-blurhash";
+import { decode } from "blurhash";
+import React, { useState, useEffect, useRef } from "react";
 
 interface ImageProps {
   src: string;
@@ -10,6 +10,7 @@ interface ImageProps {
   aspectRatio?: string;
   className?: string;
   loading?: "lazy" | "eager";
+  crossOrigin?: "anonymous" | "use-credentials";
 }
 
 const Image: React.FC<ImageProps> = ({
@@ -21,53 +22,90 @@ const Image: React.FC<ImageProps> = ({
   aspectRatio,
   className = "",
   loading = "lazy",
+  crossOrigin = "anonymous",
 }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
+  // To avoid hidden images in static HTML, we must default to visible.
+  // We only hide it on the client if we have a hash and it's not loaded yet.
+  const [isLoaded, setIsLoaded] = useState(true);
   const imgRef = useRef<HTMLImageElement>(null);
+  const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
-    if (imgRef.current?.complete) {
-      setIsLoaded(true);
+    // On mount (client-side), check if we need to hide it for Blurhash
+    const img = imgRef.current;
+    if (img && hash && !img.complete) {
+      setIsLoaded(false);
     }
-  }, [src]);
+  }, [hash]);
+
+  useEffect(() => {
+    if (!hash || !canvasRef.current) return;
+    try {
+      const pixels = decode(hash, 32, 32);
+      const ctx = canvasRef.current.getContext("2d");
+      if (ctx) {
+        const imageData = ctx.createImageData(32, 32);
+        imageData.data.set(pixels);
+        ctx.putImageData(imageData, 0, 0);
+      }
+    } catch (err) {
+      console.error("Blurhash error:", err);
+    }
+  }, [hash]);
 
   const finalAspectRatio = aspectRatio || (width && height ? `${width} / ${height}` : undefined);
 
   return (
     <div
       className={`relative overflow-hidden bg-gray-100 dark:bg-gray-800 ${className}`}
-      style={{
-        aspectRatio: finalAspectRatio,
-      }}
+      style={{ aspectRatio: finalAspectRatio }}
     >
       <img
         ref={imgRef}
         src={src}
         alt={alt}
         loading={loading}
+        crossOrigin={crossOrigin}
         onLoad={() => setIsLoaded(true)}
         onError={() => setIsLoaded(true)}
-        className={`block h-full w-full object-cover transition-opacity duration-500 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
+        className="block h-full w-full object-cover transition-opacity duration-500 ease-in-out"
+        style={{
+          opacity: isLoaded || !hash ? 1 : 0,
+          position: "relative",
+          zIndex: 2,
+        }}
       />
       {hash && (
         <div
-          className={`absolute inset-0 transition-opacity duration-500 ${
-            isLoaded ? "opacity-0" : "opacity-100"
-          }`}
-          style={{ pointerEvents: "none" }}
+          aria-hidden="true"
+          className="absolute inset-0 transition-opacity duration-500 ease-in-out"
+          style={{
+            opacity: isLoaded ? 0 : 1,
+            zIndex: 1,
+            pointerEvents: "none",
+          }}
         >
-          <Blurhash
-            hash={hash}
-            width="100%"
-            height="100%"
-            resolutionX={32}
-            resolutionY={32}
-            punch={1}
+          <canvas
+            ref={canvasRef}
+            width={32}
+            height={32}
+            style={{
+              width: "100%",
+              height: "100%",
+              imageRendering: "pixelated",
+              display: "block",
+            }}
           />
         </div>
       )}
+      <noscript>
+        <img
+          src={src}
+          alt={alt}
+          className="absolute inset-0 block h-full w-full object-cover"
+          style={{ zIndex: 10, opacity: 1 }}
+        />
+      </noscript>
     </div>
   );
 };

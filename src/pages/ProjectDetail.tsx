@@ -1,8 +1,9 @@
 import type { ComponentType } from "react";
 
-import { useLoaderData, type LoaderFunctionArgs } from "react-router";
+import { useLoaderData, type LoaderFunctionArgs, type MetaFunction } from "react-router";
 
 import Project from "../components/project";
+import useSiteMetadata from "../hooks/use-site-metadata";
 import { getProjects, getProjectImages } from "../utils/data";
 
 interface MdxModule {
@@ -19,7 +20,6 @@ export async function loader({ params }: LoaderFunctionArgs) {
 
   const allProjects = await getProjects();
 
-  // Check both with and without leading slash
   const index = allProjects.findIndex((p) => {
     const pSlug = p.slug.startsWith("/") ? p.slug.substring(1) : p.slug;
     return pSlug === slug;
@@ -37,10 +37,29 @@ export async function loader({ params }: LoaderFunctionArgs) {
   return { project, images, prev, next };
 }
 
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) return [];
+  const { project } = data;
+  const site = useSiteMetadata();
+  const title = `${project.title} | ${site.siteTitle}`;
+
+  return [
+    { title },
+    { name: "description", content: project.excerpt },
+    { property: "og:title", content: title },
+    { property: "og:description", content: project.excerpt },
+    { property: "og:image", content: project.cover },
+    { property: "og:type", content: "article" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: project.excerpt },
+    { name: "twitter:image", content: project.cover },
+  ];
+};
+
 const ProjectDetail = () => {
   const { project, images, prev, next } = useLoaderData<typeof loader>();
 
-  // Find the MDX content dynamically
   const mdxModules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
     eager: true,
   });

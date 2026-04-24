@@ -2,6 +2,8 @@
 
 Vite Emilia is a minimalistic portfolio/photography site that features a masonry grid and large images.
 
+[Demo](https://area44.github.io/vite-emilia/)
+
 ## Installation
 
 To install and run the starter, follow these steps:

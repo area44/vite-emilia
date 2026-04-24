@@ -7,13 +7,10 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run generate:metadata && vite",
-    "build": "pnpm run generate:metadata && vite build && pnpm run ssr:build && pnpm run prerender",
-    "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
-    "prerender": "node scripts/prerender.mjs",
-    "format": "oxfmt",
-    "lint": "oxlint",
+    "build": "pnpm run generate:metadata && vite build && vite build --ssr src/entry.server.tsx --outDir dist/server && node scripts/prerender.mjs",
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
-    "typecheck": "tsc"
+    "format": "oxfmt",
+    "lint": "oxlint"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
@@ -23,7 +20,6 @@
     "@vitejs/plugin-react": "^6.0.1",
     "blurhash": "^2.0.5",
     "react": "^19.2.5",
-    "react-blurhash": "^0.3.0",
     "react-dom": "^19.2.5",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",

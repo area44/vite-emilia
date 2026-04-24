@@ -1,42 +1,76 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import type { ComponentType } from "react";
+
+import { useLoaderData, type LoaderFunctionArgs, type MetaFunction } from "react-router";
 
 import Project from "../components/project";
-import { getProjects, getProjectImages, type ProjectData, type ProjectImage } from "../utils/data";
+import useSiteMetadata from "../hooks/use-site-metadata";
+import { getProjects, getProjectImages } from "../utils/data";
+
+interface MdxModule {
+  frontmatter: {
+    slug?: string;
+    title: string;
+  };
+  default: ComponentType;
+}
+
+export async function loader({ params }: LoaderFunctionArgs) {
+  const { slug } = params;
+  if (!slug) throw new Error("No slug provided");
+
+  const allProjects = await getProjects();
+
+  const index = allProjects.findIndex((p) => {
+    const pSlug = p.slug.startsWith("/") ? p.slug.substring(1) : p.slug;
+    return pSlug === slug;
+  });
+
+  if (index === -1) {
+    throw new Response("Not Found", { status: 404 });
+  }
+
+  const project = allProjects[index]!;
+  const prev = index > 0 ? (allProjects[index - 1] ?? null) : null;
+  const next = index < allProjects.length - 1 ? (allProjects[index + 1] ?? null) : null;
+  const images = await getProjectImages(project.slug);
+
+  return { project, images, prev, next };
+}
+
+export const meta: MetaFunction<typeof loader> = ({ data }) => {
+  if (!data) return [];
+  const { project } = data;
+  const site = useSiteMetadata();
+  const title = `${project.title} | ${site.siteTitle}`;
+
+  return [
+    { title },
+    { name: "description", content: project.excerpt },
+    { property: "og:title", content: title },
+    { property: "og:description", content: project.excerpt },
+    { property: "og:image", content: project.cover },
+    { property: "og:type", content: "article" },
+    { name: "twitter:card", content: "summary_large_image" },
+    { name: "twitter:title", content: title },
+    { name: "twitter:description", content: project.excerpt },
+    { name: "twitter:image", content: project.cover },
+  ];
+};
 
 const ProjectDetail = () => {
-  const { slug } = useParams();
-  const [project, setProject] = useState<ProjectData | null>(null);
-  const [images, setImages] = useState<ProjectImage[]>([]);
-  const [prev, setPrev] = useState<ProjectData | null>(null);
-  const [next, setNext] = useState<ProjectData | null>(null);
+  const { project, images, prev, next } = useLoaderData<typeof loader>();
 
-  useEffect(() => {
-    const loadData = async () => {
-      if (!slug) return;
-      const allProjects = await getProjects();
-      const index = allProjects.findIndex((p) => p.slug === `/${slug}` || p.slug === slug);
+  const mdxModules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
+    eager: true,
+  });
 
-      if (index !== -1) {
-        const currentProject = allProjects[index];
-        if (currentProject) {
-          setProject(currentProject);
-          setPrev(index > 0 ? (allProjects[index - 1] ?? null) : null);
-          setNext(index < allProjects.length - 1 ? (allProjects[index + 1] ?? null) : null);
+  const mdxModule = Object.values(mdxModules).find((module) => {
+    const mSlug =
+      module.frontmatter.slug ?? `/${module.frontmatter.title.toLowerCase().replace(/\s+/g, "-")}`;
+    return mSlug === project.slug;
+  });
 
-          const currentSlug = currentProject.slug;
-          const projectImages = await getProjectImages(currentSlug);
-          setImages(projectImages);
-        }
-      }
-    };
-
-    loadData();
-  }, [slug]);
-
-  if (!project) return null;
-
-  const Content = project.content;
+  const Content = mdxModule?.default || (() => null);
 
   return (
     <Project project={project} images={images} prev={prev} next={next}>

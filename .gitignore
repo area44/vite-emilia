@@ -26,3 +26,7 @@ dist-ssr
 
 # Playwright results
 test-results
+
+# React Router
+.react-router
+build

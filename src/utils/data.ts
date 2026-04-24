@@ -18,7 +18,6 @@ export interface ProjectFrontmatter {
 
 export interface ProjectData extends ProjectFrontmatter {
   slug: string;
-  content: ComponentType;
   excerpt: string;
   coverHash?: string;
   coverWidth?: number;
@@ -56,7 +55,6 @@ export const getProjects = async (): Promise<ProjectData[]> => {
   });
 
   const projects = Object.entries(modules).map(([path, module]) => {
-    // path: "../content/projects/minimal-blog/index.mdx"
     const projectDir = path.substring(0, path.lastIndexOf("/") + 1);
     const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
     const { frontmatter } = module;
@@ -64,18 +62,21 @@ export const getProjects = async (): Promise<ProjectData[]> => {
     const coverFileName = frontmatter.cover.replace(/^\.\//, "");
     const fullCoverPath = `${projectDir}${coverFileName}`;
 
-    // Find the image in our globbed map
     const coverUrl = allImages[fullCoverPath] ?? frontmatter.cover;
     const metadataKey = getMetadataKey(fullCoverPath);
     const metadata = imageMetadata[metadataKey];
 
+    let slug = frontmatter.slug ?? `/${folderName}`;
+    if (!slug.startsWith("/")) {
+      slug = `/${slug}`;
+    }
+
     const project: ProjectData = {
-      slug: frontmatter.slug ?? `/${folderName}`,
+      slug,
       title: frontmatter.title,
       date: frontmatter.date,
       areas: frontmatter.areas,
       cover: coverUrl,
-      content: module.default,
       excerpt: frontmatter.title,
       coverHash: metadata?.hash,
       coverWidth: metadata?.width,
@@ -98,10 +99,16 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
   });
 
   let projectDir = "";
+  const normalizedSlug = slug.startsWith("/") ? slug : `/${slug}`;
+
   for (const [path, module] of Object.entries(modules)) {
     const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
-    const currentSlug = module.frontmatter.slug ?? `/${folderName}`;
-    if (currentSlug === slug) {
+    let currentSlug = module.frontmatter.slug ?? `/${folderName}`;
+    if (!currentSlug.startsWith("/")) {
+      currentSlug = `/${currentSlug}`;
+    }
+
+    if (currentSlug === normalizedSlug) {
       projectDir = path.substring(0, path.lastIndexOf("/") + 1);
       break;
     }

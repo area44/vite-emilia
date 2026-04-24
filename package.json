@@ -7,7 +7,7 @@
   "type": "module",
   "scripts": {
     "dev": "pnpm run generate:metadata && react-router dev",
-    "build": "pnpm run generate:metadata && react-router build && rm -rf dist && mkdir -p dist && cp -r build/client/* dist/ && BASENAME=$(echo ${BASE:-/} | sed 's|^/||;s|/$||'); if [ -n \"$BASENAME\" ] && [ -d \"dist/$BASENAME\" ]; then cp -r dist/$BASENAME/* dist/ && rm -rf dist/$BASENAME; fi",
+    "build": "pnpm run generate:metadata && react-router build && rm -rf dist && mkdir -p dist && cp -a build/client/. dist/ && BASENAME=$(echo ${BASE:-/} | sed 's|^/||;s|/$||'); if [ -n \"$BASENAME\" ] && [ -d \"dist/$BASENAME\" ]; then cp -a dist/$BASENAME/. dist/ && rm -rf dist/$BASENAME; fi",
     "start": "react-router-serve ./build/server/index.js",
     "preview": "react-router-serve ./build/server/index.js",
     "format": "oxfmt",

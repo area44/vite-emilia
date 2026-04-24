@@ -55,7 +55,6 @@ export const getProjects = async (): Promise<ProjectData[]> => {
   });
 
   const projects = Object.entries(modules).map(([path, module]) => {
-    // path: "../content/projects/minimal-blog/index.mdx"
     const projectDir = path.substring(0, path.lastIndexOf("/") + 1);
     const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
     const { frontmatter } = module;
@@ -63,12 +62,10 @@ export const getProjects = async (): Promise<ProjectData[]> => {
     const coverFileName = frontmatter.cover.replace(/^\.\//, "");
     const fullCoverPath = `${projectDir}${coverFileName}`;
 
-    // Find the image in our globbed map
     const coverUrl = allImages[fullCoverPath] ?? frontmatter.cover;
     const metadataKey = getMetadataKey(fullCoverPath);
     const metadata = imageMetadata[metadataKey];
 
-    // Normalize slug: start with slash, use frontmatter or folder name
     let slug = frontmatter.slug ?? `/${folderName}`;
     if (!slug.startsWith("/")) {
       slug = `/${slug}`;

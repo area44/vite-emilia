@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { Blurhash } from "react-blurhash";
 
 interface ImageProps {
@@ -23,18 +23,37 @@ const Image: React.FC<ImageProps> = ({
   loading = "lazy",
 }) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    if (imgRef.current?.complete) {
+      setIsLoaded(true);
+    }
+  }, [src]);
 
   const finalAspectRatio = aspectRatio || (width && height ? `${width} / ${height}` : undefined);
 
   return (
     <div
-      className={`relative overflow-hidden ${className}`}
+      className={`relative overflow-hidden bg-gray-100 dark:bg-gray-800 ${className}`}
       style={{
         aspectRatio: finalAspectRatio,
       }}
     >
-      {hash && !isLoaded && (
-        <div className="absolute inset-0 z-0">
+      <img
+        ref={imgRef}
+        src={src}
+        alt={alt}
+        loading={loading}
+        onLoad={() => setIsLoaded(true)}
+        onError={() => setIsLoaded(true)}
+        className="block h-full w-full object-cover transition-opacity duration-500"
+      />
+      {hash && (
+        <div
+          className={`absolute inset-0 z-10 transition-opacity duration-500 ${isLoaded ? "opacity-0" : "opacity-100"}`}
+          style={{ pointerEvents: "none" }}
+        >
           <Blurhash
             hash={hash}
             width="100%"
@@ -45,15 +64,6 @@ const Image: React.FC<ImageProps> = ({
           />
         </div>
       )}
-      <img
-        src={src}
-        alt={alt}
-        loading={loading}
-        onLoad={() => setIsLoaded(true)}
-        className={`block h-full w-full object-cover transition-opacity duration-500 ${
-          isLoaded ? "opacity-100" : "opacity-0"
-        }`}
-      />
     </div>
   );
 };

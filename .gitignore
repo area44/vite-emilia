@@ -27,6 +27,10 @@ dist-ssr
 # Playwright results
 test-results
 
-# React Router
+# React Router (obsolete)
 .react-router
 build
+
+# TanStack Router
+src/routeTree.gen.ts
+.tanstack

@@ -23,6 +23,6 @@
       "~/*": ["./src/*"]
     }
   },
-  "include": ["./src/**/*", ".react-router/types/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }

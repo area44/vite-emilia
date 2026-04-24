@@ -1,8 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
-import Project from "../components/project";
-import { getProjects, getProjectImages } from "../utils/data";
-import useSiteMetadata from "../hooks/use-site-metadata";
 import type { ComponentType } from "react";
+
+import { createFileRoute } from "@tanstack/react-router";
+
+import Project from "../components/project";
+import useSiteMetadata from "../hooks/use-site-metadata";
+import { getProjects, getProjectImages } from "../utils/data";
 
 interface MdxModule {
   frontmatter: {
@@ -52,7 +54,7 @@ export const Route = createFileRoute("/$slug")({
         { name: "twitter:description", content: project.excerpt },
         { name: "twitter:image", content: project.cover },
       ],
-    }
+    };
   },
   component: ProjectDetailComponent,
 });

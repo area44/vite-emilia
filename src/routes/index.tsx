@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+
 import Projects from "../components/projects";
-import { getProjects } from "../utils/data";
 import useSiteMetadata from "../hooks/use-site-metadata";
+import { getProjects } from "../utils/data";
 
 export const Route = createFileRoute("/")({
   loader: async () => {
@@ -23,7 +24,7 @@ export const Route = createFileRoute("/")({
         { name: "twitter:description", content: site.siteDescription },
         { name: "twitter:image", content: site.siteImage },
       ],
-    }
+    };
   },
   component: HomeComponent,
 });

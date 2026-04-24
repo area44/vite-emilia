@@ -1,7 +1,7 @@
 import mdx from "@mdx-js/rollup";
+import tailwindcss from "@tailwindcss/vite";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
-import tailwindcss from "@tailwindcss/vite";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig } from "vite";
@@ -24,7 +24,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       input: {
-        main: './index.html',
+        main: "./index.html",
       },
     },
   },

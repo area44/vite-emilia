@@ -47,11 +47,15 @@ const Image: React.FC<ImageProps> = ({
         loading={loading}
         onLoad={() => setIsLoaded(true)}
         onError={() => setIsLoaded(true)}
-        className="block h-full w-full object-cover transition-opacity duration-500"
+        className={`block h-full w-full object-cover transition-opacity duration-500 ${
+          isLoaded ? "opacity-100" : "opacity-0"
+        }`}
       />
       {hash && (
         <div
-          className={`absolute inset-0 z-10 transition-opacity duration-500 ${isLoaded ? "opacity-0" : "opacity-100"}`}
+          className={`absolute inset-0 transition-opacity duration-500 ${
+            isLoaded ? "opacity-0" : "opacity-100"
+          }`}
           style={{ pointerEvents: "none" }}
         >
           <Blurhash

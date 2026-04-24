@@ -6,7 +6,7 @@ export function createRouter() {
   const router = createTanStackRouter({
     routeTree,
     defaultPreload: "intent",
-    basepath: import.meta.env.BASE || "/",
+    basepath: process.env.BASE || "/",
   });
 
   return router;

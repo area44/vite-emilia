@@ -44,8 +44,11 @@ async function prerender() {
 
   const template = fs.readFileSync(toAbsolute("dist/index.html"), "utf-8");
 
+  const base = (process.env.BASE || "/").replace(/\/$/, "");
+
   for (const url of routes) {
-    const request = new Request(`http://localhost${url}`);
+    const requestUrl = `http://localhost${base}${url}`;
+    const request = new Request(requestUrl);
     const responseHeaders = new Headers();
 
     const response = await handleRequest(request, 200, responseHeaders);
@@ -61,7 +64,7 @@ async function prerender() {
     const finalHtml = template.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`);
 
     fs.writeFileSync(filePath, finalHtml);
-    console.log("Prerendered:", url);
+    console.log("Prerendered:", url, "using URL:", requestUrl);
   }
 }
 

@@ -3,7 +3,7 @@ import type { Config } from "@react-router/dev/config";
 import fs from "node:fs";
 import path from "node:path";
 
-const basename = process.env.BASE_URL || "/";
+const basename = process.env.BASE || "/";
 
 export default {
   // Use ssr: false for SPA mode which is more compatible with static hosting (SSG)

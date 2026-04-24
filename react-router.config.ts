@@ -4,7 +4,9 @@ import fs from "node:fs";
 import path from "node:path";
 
 export default {
-  ssr: true,
+  // Use ssr: false for SPA mode which is more compatible with static hosting (SSG)
+  // Prerendering will still generate static HTML files for all routes.
+  ssr: false,
   appDirectory: "src",
   async prerender() {
     const projectsDir = path.join(process.cwd(), "src/content/projects");
@@ -18,7 +20,8 @@ export default {
         const content = fs.readFileSync(mdxPath, "utf-8");
         const match = content.match(/slug:\s*["']?([^"'\n]+)["']?/);
         if (match && match[1]) {
-          return match[1];
+          const s = match[1];
+          return s.startsWith("/") ? s : `/${s}`;
         }
       } catch {
         // Fallback to folder name

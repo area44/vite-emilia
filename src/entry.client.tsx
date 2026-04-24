@@ -6,9 +6,12 @@ import { createRouter } from "./router";
 
 const router = createRouter();
 
-hydrateRoot(
-  document,
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-);
+const root = document.getElementById("root");
+if (root) {
+  hydrateRoot(
+    root,
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>,
+  );
+}

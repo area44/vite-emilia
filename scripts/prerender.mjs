@@ -51,25 +51,14 @@ async function prerender() {
     const response = await handleRequest(request, 200, responseHeaders);
     const bodyHtml = await streamToString(response.body);
 
-    // Extract head and body from the rendered HTML
-    const headMatch = bodyHtml.match(/<head>([\s\S]*?)<\/head>/);
-    const headContent = headMatch ? headMatch[1] : "";
-
-    const bodyMatch = bodyHtml.match(/<body>([\s\S]*?)<\/body>/);
-    const bodyContent = bodyMatch ? bodyMatch[1] : "";
-
-    // Replace placeholders in template
-    let finalHtml = template
-      .replace(/<title>.*?<\/title>/, "") // Remove default title
-      .replace("</head>", `${headContent}</head>`)
-      .replace('<div id="root"></div>', `<div id="root">${bodyContent}</div>`);
-
     const filePath = path.join(dist, url === "/" ? "index.html" : `${url}/index.html`);
     const dirPath = path.dirname(filePath);
 
     if (!fs.existsSync(dirPath)) {
       fs.mkdirSync(dirPath, { recursive: true });
     }
+
+    const finalHtml = template.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`);
 
     fs.writeFileSync(filePath, finalHtml);
     console.log("Prerendered:", url);

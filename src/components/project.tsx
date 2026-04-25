@@ -61,15 +61,17 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
       />
       <div className="relative z-10 container -mt-24 md:-mt-32">
         <div className="mx-auto max-w-6xl">
-          <div className="animate-in fade-in columns-1 gap-2 delay-800 duration-700 md:columns-2 md:gap-4">
+          <div className="animate-in fade-in flex flex-wrap gap-2 delay-800 duration-700 md:gap-4">
             {images.map((image) => {
-              const isLandscape = image.width && image.height && image.width > image.height * 1.1;
+              const ratio = image.width && image.height ? image.width / image.height : 1;
               return (
                 <div
                   key={image.url}
-                  className={`mb-2 break-inside-avoid md:mb-4 ${
-                    isLandscape ? "w-full [column-span:all]" : ""
-                  }`}
+                  className="relative h-48 grow md:h-64 lg:h-80"
+                  style={{
+                    flexBasis: `${ratio * 12}rem`,
+                    flexGrow: ratio,
+                  }}
                 >
                   <Image
                     src={image.url}
@@ -77,11 +79,13 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
                     hash={image.hash}
                     width={image.width}
                     height={image.height}
-                    className="block w-full shadow-lg"
+                    className="block h-full w-full object-cover shadow-lg"
                   />
                 </div>
               );
             })}
+            {/* Prevent last row stretching */}
+            <div className="grow-[100]" style={{ flexBasis: "24rem" }} />
           </div>
         </div>
         <ProjectPagination prev={prev} next={next} />

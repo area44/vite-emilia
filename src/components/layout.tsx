@@ -7,7 +7,7 @@ const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {
     <div className="flex min-h-screen flex-col bg-background text-text">
       <a
         href="#main-content"
-        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:m-4 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        className="sr-only focus:not-sr-only focus:absolute focus:z-[100] focus:m-4 focus:rounded-md focus:bg-primary focus:px-4 focus:py-2 focus:text-white focus:ring-2 focus:ring-primary focus:ring-offset-2 focus:outline-none"
       >
         Skip to content
       </a>

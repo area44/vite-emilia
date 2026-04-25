@@ -1,3 +1,4 @@
+/// <reference types="vitest" />
 import mdx from "@mdx-js/rollup";
 import tailwindcss from "@tailwindcss/vite";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
@@ -32,5 +33,11 @@ export default defineConfig({
         main: "./index.html",
       },
     },
+  },
+  test: {
+    globals: true,
+    environment: "jsdom",
+    setupFiles: "./src/test/setup.ts",
+    include: ["src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
   },
 });

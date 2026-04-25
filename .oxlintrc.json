@@ -21,6 +21,7 @@
     "**/.github",
     "**/.next",
     "**/.astro",
-    "**/.netlify"
+    "**/.netlify",
+    "src/routeTree.gen.ts"
   ]
 }

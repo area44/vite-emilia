@@ -1,3 +1,5 @@
+import React from "react";
+
 import Svg from "./svg";
 
 const HeaderBackground = () => {
@@ -11,4 +13,4 @@ const HeaderBackground = () => {
   );
 };
 
-export default HeaderBackground;
+export default React.memo(HeaderBackground);

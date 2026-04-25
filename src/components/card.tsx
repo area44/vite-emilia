@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import React from "react";
 
 import Image from "./image";
 
@@ -18,7 +19,7 @@ type CardProps = {
   aspectRatio?: string;
 };
 
-const Card = ({ item, overlay = "#000", eager, aspectRatio }: CardProps) => {
+const Card = React.memo(({ item, overlay = "#000", eager, aspectRatio }: CardProps) => {
   return (
     <Link
       aria-label={`Visit ${item.title} project page`}
@@ -46,6 +47,8 @@ const Card = ({ item, overlay = "#000", eager, aspectRatio }: CardProps) => {
       />
     </Link>
   );
-};
+});
+
+Card.displayName = "Card";
 
 export default Card;

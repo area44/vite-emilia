@@ -24,10 +24,10 @@ This repository is a modern React portfolio site optimized for Static Site Gener
 
 The build process is defined in `package.json` as:
 
-1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
+1. `scripts/generate-image-metadata.mjs`: Pre-calculates BlurHash and dimensions for images in `src/content`.
 2. `vite build`: Client-side bundle.
 3. `vite build --ssr`: Server-side bundle for prerendering.
-4. `prerender`: Executes `scripts/prerender.mjs` to generate static HTML for all routes.
+4. `scripts/prerender.mjs`: Generate static HTML for all routes.
 
 ## Coding Conventions
 

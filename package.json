@@ -6,8 +6,8 @@
   "author": "AREA44",
   "type": "module",
   "scripts": {
-    "dev": "pnpm run generate:metadata && vite",
-    "build": "pnpm run generate:metadata && vite build && pnpm run ssr:build && pnpm run prerender",
+    "dev": "npm run generate:metadata && vite",
+    "build": "npm run generate:metadata && vite build && npm run ssr:build && npm run prerender",
     "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
     "prerender": "node scripts/prerender.mjs",
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
@@ -37,6 +37,5 @@
     "sharp": "^0.34.5",
     "typescript": "^6.0.3",
     "vite-imagetools": "^10.0.0"
-  },
-  "packageManager": "pnpm@10.33.2"
+  }
 }

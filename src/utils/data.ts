@@ -49,7 +49,13 @@ const getMetadataKey = (path: string) => {
   return path.replace(/^\.\.\/content\//, "src/content/");
 };
 
+// Memoization caches
+let projectsCache: ProjectData[] | null = null;
+const projectImagesCache = new Map<string, ProjectImage[]>();
+
 export const getProjects = async (): Promise<ProjectData[]> => {
+  if (projectsCache) return projectsCache;
+
   const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
@@ -90,16 +96,21 @@ export const getProjects = async (): Promise<ProjectData[]> => {
     return project;
   });
 
-  return projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  projectsCache = projects.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return projectsCache;
 };
 
 export const getProjectImages = async (slug: string): Promise<ProjectImage[]> => {
+  const normalizedSlug = slug.startsWith("/") ? slug : `/${slug}`;
+  if (projectImagesCache.has(normalizedSlug)) {
+    return projectImagesCache.get(normalizedSlug)!;
+  }
+
   const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
 
   let projectDir = "";
-  const normalizedSlug = slug.startsWith("/") ? slug : `/${slug}`;
 
   for (const [path, module] of Object.entries(modules)) {
     const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
@@ -116,7 +127,7 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
 
   if (!projectDir) return [];
 
-  return Object.entries(allImages)
+  const images = Object.entries(allImages)
     .filter(([path]) => path.startsWith(projectDir))
     .map(([path, url]) => {
       const metadataKey = getMetadataKey(path);
@@ -129,4 +140,7 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
         height: metadata?.height,
       };
     });
+
+  projectImagesCache.set(normalizedSlug, images);
+  return images;
 };

@@ -1,0 +1,6 @@
+services:
+  - type: static
+    name: vite-emilia
+    env: static
+    buildCommand: pnpm run build
+    publishPath: ./dist

@@ -61,7 +61,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
       />
       <div className="relative z-10 container -mt-24 md:-mt-32">
         <div className="mx-auto max-w-6xl">
-          <div className="animate-in fade-in grid grid-cols-1 gap-8 delay-800 duration-700 md:grid-cols-2 lg:gap-12">
+          <div className="animate-in fade-in grid grid-cols-1 gap-4 delay-800 duration-700 md:grid-cols-2 md:gap-6 lg:gap-8">
             {images.map((image) => {
               const isLandscape = image.width && image.height && image.width > image.height * 1.1;
               return (

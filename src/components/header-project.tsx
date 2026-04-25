@@ -17,7 +17,7 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
   return (
     <header className="relative flex justify-center overflow-hidden">
       <HeaderBackground />
-      <div className="z-10 container my-8 text-center">
+      <div className="z-10 container mt-8 mb-32 text-center md:mb-40">
         <div className="animate-in fade-in duration-700">
           <div className="flex justify-center">
             <Link
@@ -31,7 +31,7 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
             </Link>
           </div>
         </div>
-        <div className="mt-8 mb-24 md:mb-32">
+        <div className="mt-8">
           <div className="animate-in slide-in-from-top-8 duration-700">
             <h1 className="mt-4 text-4xl font-bold text-heading md:text-5xl">{title}</h1>
           </div>

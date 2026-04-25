@@ -60,18 +60,24 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
         date={project.date}
       />
       <div className="relative z-10 container -mt-24 md:-mt-32">
-        <div className="animate-in fade-in grid grid-cols-1 gap-8 delay-800 duration-700 lg:grid-cols-2 lg:gap-12">
-          {images.map((image) => (
-            <Image
-              key={image.url}
-              src={image.url}
-              alt={image.name}
-              hash={image.hash}
-              width={image.width}
-              height={image.height}
-              className="block w-full shadow-2xl"
-            />
-          ))}
+        <div className="mx-auto max-w-6xl">
+          <div className="animate-in fade-in grid grid-cols-1 gap-8 delay-800 duration-700 md:grid-cols-2 lg:gap-12">
+            {images.map((image) => {
+              const isLandscape = image.width && image.height && image.width > image.height * 1.1;
+              return (
+                <div key={image.url} className={isLandscape ? "md:col-span-2" : "md:col-span-1"}>
+                  <Image
+                    src={image.url}
+                    alt={image.name}
+                    hash={image.hash}
+                    width={image.width}
+                    height={image.height}
+                    className="block w-full shadow-2xl"
+                  />
+                </div>
+              );
+            })}
+          </div>
         </div>
         <ProjectPagination prev={prev} next={next} />
       </div>

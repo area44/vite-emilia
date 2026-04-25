@@ -14,7 +14,7 @@ const useEmiliaConfig = (): EmiliaConfig => {
   return {
     name: "Emilia",
     location: "VietNam",
-    assetsPath: "content/assets",
+    assetsPath: "assets",
     socialMedia: [],
   };
 };

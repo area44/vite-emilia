@@ -37,20 +37,20 @@ interface MdxModule {
   default: ComponentType;
 }
 
-// All images from src/content/projects
-const allImages = import.meta.glob<string>("../content/projects/**/*.{jpg,jpeg,png,webp}", {
+// All images from src/content
+const allImages = import.meta.glob<string>("../content/**/*.{jpg,jpeg,png,webp}", {
   eager: true,
   query: "?url",
   import: "default",
 });
 
 const getMetadataKey = (path: string) => {
-  // Convert "../content/projects/..." to "src/content/projects/..."
+  // Convert "../content/..." to "src/content/..."
   return path.replace(/^\.\.\/content\//, "src/content/");
 };
 
 export const getProjects = async (): Promise<ProjectData[]> => {
-  const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
+  const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
 
@@ -94,7 +94,7 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 };
 
 export const getProjectImages = async (slug: string): Promise<ProjectImage[]> => {
-  const modules = import.meta.glob<MdxModule>("../content/projects/*/index.mdx", {
+  const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
 

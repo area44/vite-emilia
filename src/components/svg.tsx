@@ -1,5 +1,7 @@
 import type { SVGProps as ReactSVGProps } from "react";
 
+import iconsUrl from "../assets/icons.svg?url";
+
 type IconType = "bgPattern" | "location";
 
 interface SVGProps extends ReactSVGProps<SVGSVGElement> {
@@ -8,7 +10,7 @@ interface SVGProps extends ReactSVGProps<SVGSVGElement> {
 
 const Svg = ({ id, ...props }: SVGProps) => (
   <svg {...props}>
-    <use href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/icons.svg#${id}`} />
+    <use href={`${iconsUrl}#${id}`} />
   </svg>
 );
 

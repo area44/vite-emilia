@@ -1,51 +1,70 @@
 # Vite Emilia
 
-Vite Emilia is a minimalistic portfolio/photography site that features a masonry grid and large images.
+Vite Emilia is a minimalistic portfolio/photography site featuring a masonry grid, page transitions, and large images. It is built with React 19, Vite, TanStack Router, and Tailwind CSS v4, optimized for Static Site Generation (SSG).
 
 [Demo](https://area44.github.io/vite-emilia/)
 
+## Features
+
+- **SSG Ready**: Pre-renders all routes into static HTML for maximum performance and SEO.
+- **Modern Stack**: React 19, Vite 8+, TanStack Router, Tailwind CSS 4.
+- **Image Optimization**: Automatic BlurHash generation and responsive image handling.
+- **Minimal Design**: Clean typography and masonry layout focusing on photography.
+- **MDX Support**: Author projects using MDX with frontmatter.
+
 ## Installation
 
-To install and run the starter, follow these steps:
+To install and run the starter locally:
 
 ```bash
 pnpm install
 pnpm dev
 ```
 
-The site will now be running at `http://localhost:5173`!
+The site will be running at `http://localhost:5173`.
+
+## Deployment (SSG)
+
+To build the static site:
+
+```bash
+pnpm run build
+```
+
+The generated static files will be in the `dist/` directory.
 
 ## Quick Start
 
 ### Adding a New Project
 
-New projects are displayed on the index page and can be added by creating MDX files inside the `content/projects` folder.
+Projects are automatically loaded from `src/content`.
 
-1. Create a new folder inside `content/projects`.
-2. Create a new `index.mdx` file and add the frontmatter.
+1. Create a new folder inside `src/content`.
+2. Create an `index.mdx` file and add the frontmatter.
 3. Add images to the folder created in step 1.
-4. Reference your desired images as your `cover` in the frontmatter.
-5. Write your content below the frontmatter (optional).
+4. Reference your desired image as your `cover` in the frontmatter.
 
-Example frontmatter:
+Example `index.mdx`:
 
 ```md
 ---
-cover: "./sean-foley-0JD7kvxAq0Y-unsplash.jpg"
-date: "2019-09-10"
-title: "Emilia"
+cover: "./cover-image.jpg"
+date: "2024-03-20"
+title: "My New Project"
 areas:
-  - Neon
-  - Lights
+  - Photography
+  - Design
 ---
+
+Your optional content here...
 ```
 
 ### Configuration
 
-- **Styling**: Uses Tailwind CSS. Edit `src/index.css` to change theme variables.
-- **Data**: Projects are automatically loaded from `content/projects`.
-- **Images**: Place images in project folders and reference them in MDX frontmatter or content.
+- **Site Metadata**: Edit `src/hooks/use-site-metadata.tsx` to update the site title, description, and social handles.
+- **Emilia Config**: Edit `src/hooks/use-emilia-config.tsx` to change your name, location, and social media links.
+- **Styling**: Uses Tailwind CSS v4. Edit `src/index.css` to change theme colors and variables.
 
 ## Credits
 
-This project is based on [Gatsby Starter Portfolio: Emilia](https://github.com/LekoArts/gatsby-starter-portfolio-emilia) by Lennart.
+This project is based on [Gatsby Starter Portfolio: Emilia](https://github.com/LekoArts/gatsby-starter-portfolio-emilia) by LekoArts.

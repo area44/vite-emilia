@@ -17,15 +17,17 @@ async function prerender() {
   const { default: handleRequest } = await import(serverEntry);
 
   // Get project slugs for prerendering
-  const projectsDir = toAbsolute("src/content/projects");
+  const contentDir = toAbsolute("src/content");
   const directories = fs
-    .readdirSync(projectsDir, { withFileTypes: true })
+    .readdirSync(contentDir, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory());
 
   const routes = ["/"];
 
   for (const dirent of directories) {
-    const mdxPath = path.join(projectsDir, dirent.name, "index.mdx");
+    const mdxPath = path.join(contentDir, dirent.name, "index.mdx");
+    if (!fs.existsSync(mdxPath)) continue;
+
     try {
       const content = fs.readFileSync(mdxPath, "utf-8");
       const match = content.match(/slug:\s*["']?([^"'\n]+)["']?/);

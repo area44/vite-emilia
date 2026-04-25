@@ -1,6 +1,7 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { describe, expect, it, vi } from "vitest";
 import React from "react";
+import { describe, expect, it, vi } from "vitest";
+
 import Image from "./image";
 
 // Mock blurhash decode

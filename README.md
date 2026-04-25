@@ -2,7 +2,7 @@
 
 Vite Emilia is a minimalistic portfolio/photography site featuring a masonry grid, page transitions, and large images. It is built with React 19, Vite, TanStack Router, and Tailwind CSS v4, optimized for Static Site Generation (SSG).
 
-[Demo](https://area44.github.io/vite-emilia/)
+[Preview](https://area44.github.io/vite-emilia/)
 
 ## Features
 
@@ -14,7 +14,7 @@ Vite Emilia is a minimalistic portfolio/photography site featuring a masonry gri
 
 ## Installation
 
-To install and run the starter locally:
+To install and run the starter locally, you can use:
 
 ```bash
 pnpm install
@@ -28,7 +28,7 @@ The site will be running at `http://localhost:5173`.
 To build the static site:
 
 ```bash
-pnpm run build
+pnpm build
 ```
 
 The generated static files will be in the `dist/` directory.

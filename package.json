@@ -6,11 +6,9 @@
   "author": "AREA44",
   "type": "module",
   "scripts": {
-    "dev": "pnpm run generate:metadata && vite",
-    "build": "pnpm run generate:metadata && vite build && pnpm run ssr:build && pnpm run prerender",
+    "dev": "node scripts/generate-image-metadata.mjs && vite",
+    "build": "node scripts/generate-image-metadata.mjs && vite build && vite build --ssr src/entry.server.tsx --outDir dist/server && node scripts/prerender.mjs",
     "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
-    "prerender": "node scripts/prerender.mjs",
-    "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "format": "oxfmt",
     "lint": "oxlint"
   },
@@ -25,8 +23,10 @@
     "react-dom": "^19.2.5",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
+    "sharp": "^0.34.5",
     "tailwindcss": "^4.2.4",
-    "vite": "^8.0.10"
+    "vite": "^8.0.10",
+    "vite-imagetools": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^25.6.0",
@@ -34,9 +34,6 @@
     "@types/react-dom": "^19.2.3",
     "oxfmt": "^0.46.0",
     "oxlint": "^1.61.0",
-    "sharp": "^0.34.5",
-    "typescript": "^6.0.3",
-    "vite-imagetools": "^10.0.0"
-  },
-  "packageManager": "pnpm@10.33.2"
+    "typescript": "^6.0.3"
+  }
 }

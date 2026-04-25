@@ -14,11 +14,24 @@ Vite Emilia is a minimalistic portfolio/photography site featuring a masonry gri
 
 ## Installation
 
-To install and run the starter locally:
+To install and run the starter locally, you can use any package manager (npm, pnpm, yarn, or bun):
 
 ```bash
+# Using npm
 npm install
 npm run dev
+
+# Using pnpm
+pnpm install
+pnpm dev
+
+# Using yarn
+yarn install
+yarn dev
+
+# Using bun
+bun install
+bun dev
 ```
 
 The site will be running at `http://localhost:5173`.
@@ -28,7 +41,7 @@ The site will be running at `http://localhost:5173`.
 To build the static site:
 
 ```bash
-npm run build
+npm run build # or pnpm build, yarn build, bun build
 ```
 
 The generated static files will be in the `dist/` directory.

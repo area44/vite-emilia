@@ -6,8 +6,8 @@
   "author": "AREA44",
   "type": "module",
   "scripts": {
-    "dev": "npm run generate:metadata && vite",
-    "build": "npm run generate:metadata && vite build && npm run ssr:build && npm run prerender",
+    "dev": "node scripts/generate-image-metadata.mjs && vite",
+    "build": "node scripts/generate-image-metadata.mjs && vite build && vite build --ssr src/entry.server.tsx --outDir dist/server && node scripts/prerender.mjs",
     "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
     "prerender": "node scripts/prerender.mjs",
     "generate:metadata": "node scripts/generate-image-metadata.mjs",

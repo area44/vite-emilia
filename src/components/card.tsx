@@ -25,6 +25,7 @@ const Card = React.memo(({ item, overlay = "#000", eager, aspectRatio }: CardPro
       aria-label={`Visit ${item.title} project page`}
       className="group relative block shadow-xl transition-shadow outline-none hover:z-20 focus:ring-8 focus:ring-primary/50"
       to={item.slug}
+      onClick={(e) => e.currentTarget.blur()}
     >
       <div
         className="absolute inset-0 z-20 flex items-center justify-center p-4 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 group-focus:opacity-100"

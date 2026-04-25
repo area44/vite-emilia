@@ -60,7 +60,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
         date={project.date}
       />
       <div className="relative z-10 container -mt-24 md:-mt-32">
-        <div className="animate-in fade-in delay-800 duration-700">
+        <div className="animate-in fade-in grid grid-cols-1 gap-8 delay-800 duration-700 lg:grid-cols-2 lg:gap-12">
           {images.map((image) => (
             <Image
               key={image.url}
@@ -69,7 +69,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
               hash={image.hash}
               width={image.width}
               height={image.height}
-              className="mb-8 block w-full shadow-2xl md:mb-12"
+              className="block w-full shadow-2xl"
             />
           ))}
         </div>

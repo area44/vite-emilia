@@ -46,9 +46,7 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
               ))}
             </div>
             {description && (
-              <div className="max-width-[900px] mx-auto mt-12 text-left break-words">
-                {description}
-              </div>
+              <div className="mx-auto mt-12 max-w-[900px] text-left break-words">{description}</div>
             )}
           </div>
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+
 import useEmiliaConfig from "../hooks/use-emilia-config";
 
 const SocialMediaList = () => {

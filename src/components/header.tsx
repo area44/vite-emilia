@@ -1,8 +1,8 @@
 import avatarUrl from "../assets/avatar.svg";
+import locationSvg from "../assets/location.svg?raw";
 import { siteConfig } from "../utils/site.config";
 import HeaderBackground from "./header-background";
 import SocialMediaList from "./social-media-list";
-import Svg from "./svg";
 
 const Header = () => {
   const { name, location, assetsPath } = siteConfig;
@@ -27,8 +27,10 @@ const Header = () => {
         </div>
         <div className="animate-in slide-in-from-bottom-8 delay-250 duration-700">
           <div className="mt-2 flex items-center justify-center gap-2 text-text">
-            <Svg id="location" width="20px" height="20px" className="text-icon-primary" />
-
+            <div
+              className="h-5 w-5 text-icon-primary"
+              dangerouslySetInnerHTML={{ __html: locationSvg }}
+            />
             {location}
           </div>
         </div>

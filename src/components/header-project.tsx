@@ -1,7 +1,8 @@
 import { Link } from "@tanstack/react-router";
+import React from "react";
 
 import avatarUrl from "../assets/avatar.svg";
-import useEmiliaConfig from "../hooks/use-emilia-config";
+import { siteConfig } from "../utils/site.config";
 import HeaderBackground from "./header-background";
 import Svg from "./svg";
 
@@ -12,8 +13,8 @@ type HeaderProjectProps = {
   date: string;
 };
 
-const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectProps) => {
-  const { name } = useEmiliaConfig();
+const HeaderProject = ({ title, areas, description = "", date }: HeaderProjectProps) => {
+  const { name } = siteConfig;
 
   return (
     <header className="relative flex justify-center overflow-hidden">
@@ -54,7 +55,7 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
             <div className="text-text-muted">
               {areas.map((area, index) => (
                 <span key={area}>
-                  {index > 0 && `, `}
+                  {index > 0 && ", "}
                   {area}
                 </span>
               ))}

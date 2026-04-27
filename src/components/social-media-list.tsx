@@ -1,9 +1,9 @@
 import React from "react";
 
-import useEmiliaConfig from "../hooks/use-emilia-config";
+import { siteConfig } from "../site.config";
 
 const SocialMediaList = () => {
-  const { socialMedia } = useEmiliaConfig();
+  const { socialMedia } = siteConfig;
 
   return (
     <>

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import Projects from "../components/projects";
-import useSiteMetadata from "../hooks/use-site-metadata";
+import { siteConfig } from "../site.config";
 import { getProjects } from "../utils/data";
 
 export const Route = createFileRoute("/")({
@@ -10,19 +10,18 @@ export const Route = createFileRoute("/")({
     return { projects };
   },
   head: () => {
-    const site = useSiteMetadata();
     return {
       meta: [
-        { title: site.siteTitleAlt },
-        { name: "description", content: site.siteDescription },
-        { property: "og:title", content: site.siteTitleAlt },
-        { property: "og:description", content: site.siteDescription },
-        { property: "og:image", content: site.siteImage },
+        { title: siteConfig.siteTitleAlt },
+        { name: "description", content: siteConfig.siteDescription },
+        { property: "og:title", content: siteConfig.siteTitleAlt },
+        { property: "og:description", content: siteConfig.siteDescription },
+        { property: "og:image", content: siteConfig.siteImage },
         { property: "og:type", content: "website" },
         { name: "twitter:card", content: "summary_large_image" },
-        { name: "twitter:title", content: site.siteTitleAlt },
-        { name: "twitter:description", content: site.siteDescription },
-        { name: "twitter:image", content: site.siteImage },
+        { name: "twitter:title", content: siteConfig.siteTitleAlt },
+        { name: "twitter:description", content: siteConfig.siteDescription },
+        { name: "twitter:image", content: siteConfig.siteImage },
       ],
     };
   },

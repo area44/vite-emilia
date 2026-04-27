@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import Project from "../components/project";
-import useSiteMetadata from "../hooks/use-site-metadata";
+import { siteConfig } from "../site.config";
 import { getProjects, getProjectImages } from "../utils/data";
 
 interface MdxModule {
@@ -38,8 +38,7 @@ export const Route = createFileRoute("/$slug")({
   head: ({ data }) => {
     if (!data) return {};
     const { project } = data;
-    const site = useSiteMetadata();
-    const title = `${project.title} | ${site.siteTitle}`;
+    const title = `${project.title} | ${siteConfig.siteTitle}`;
 
     return {
       meta: [

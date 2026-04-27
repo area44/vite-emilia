@@ -1,11 +1,11 @@
 import avatarUrl from "../assets/avatar.svg";
-import useEmiliaConfig from "../hooks/use-emilia-config";
+import { siteConfig } from "../site.config";
 import HeaderBackground from "./header-background";
 import SocialMediaList from "./social-media-list";
 import Svg from "./svg";
 
 const Header = () => {
-  const { name, location, assetsPath } = useEmiliaConfig();
+  const { name, location, assetsPath } = siteConfig;
 
   return (
     <header className="relative flex justify-center overflow-hidden py-20">

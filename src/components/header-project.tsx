@@ -3,6 +3,7 @@ import { Link } from "@tanstack/react-router";
 import avatarUrl from "../assets/avatar.svg";
 import useEmiliaConfig from "../hooks/use-emilia-config";
 import HeaderBackground from "./header-background";
+import Svg from "./svg";
 
 type HeaderProjectProps = {
   title: string;
@@ -23,11 +24,20 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
             <Link
               to="/"
               aria-label={`${name} - Back to homepage`}
-              className="inline-flex h-10 w-10 items-center justify-center overflow-hidden rounded-full bg-white shadow-md transition-transform hover:scale-110"
+              className="group flex items-center text-heading no-underline transition-all duration-300 hover:text-primary"
             >
-              {avatarUrl && (
-                <img src={avatarUrl} alt="Avatar" className="h-full w-full object-contain p-1.5" />
-              )}
+              <Svg
+                id="leftArrow"
+                width="20"
+                height="18"
+                className="text-icon-primary transition-transform group-hover:-translate-x-1 group-hover:text-primary"
+              />
+              <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full bg-white shadow-md transition-transform group-hover:scale-110">
+                {avatarUrl && (
+                  <img src={avatarUrl} alt="Avatar" className="h-full w-full object-contain p-1.5" />
+                )}
+              </div>
+              <span className="text-lg font-semibold">{name}</span>
             </Link>
           </div>
         </div>

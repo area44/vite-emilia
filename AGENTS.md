@@ -43,6 +43,8 @@ The build process is defined in `package.json` as:
 - Metadata (hash, width, height) is stored in `src/content/image-metadata.json`.
 - Use the `Image` component for lazy loading and BlurHash placeholders.
 
-* SVG consolidation removed: The project transitioned from using an SVG sprite and a custom `Svg` component to using individual SVG files (`bg-pattern.svg`, `left-arrow.svg`, `location.svg`).
-* SVG inlining: Components now import SVG content directly using Vite's `?raw` suffix and render it using `dangerouslySetInnerHTML` within a styled wrapper (e.g., `div className="text-icon-primary"`).
-* SVG styling: To support dynamic coloring via CSS (Tailwind), individual SVG files are configured with `fill="currentColor"`, `width="100%"`, and `height="100%"`.
+## SVG Assets
+
+- SVG consolidation removed: The project transitioned from using an SVG sprite and a custom `Svg` component to using individual SVG files (`bg-pattern.svg`, `left-arrow.svg`, `location.svg`).
+- SVG inlining: Components now import SVG content directly using Vite's `?raw` suffix and render it using `dangerouslySetInnerHTML` within a styled wrapper (e.g., `div className="text-icon-primary"`).
+- SVG styling: To support dynamic coloring via CSS (Tailwind), individual SVG files are configured with `fill="currentColor"`, `width="100%"`, and `height="100%"`.

@@ -34,7 +34,11 @@ const HeaderProject = ({ title, areas, description = ``, date }: HeaderProjectPr
               />
               <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full bg-white shadow-md transition-transform group-hover:scale-110">
                 {avatarUrl && (
-                  <img src={avatarUrl} alt="Avatar" className="h-full w-full object-contain p-1.5" />
+                  <img
+                    src={avatarUrl}
+                    alt="Avatar"
+                    className="h-full w-full object-contain p-1.5"
+                  />
                 )}
               </div>
               <span className="text-lg font-semibold">{name}</span>

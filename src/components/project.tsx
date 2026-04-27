@@ -60,18 +60,37 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
         date={project.date}
       />
       <div className="relative z-10 container -mt-24 md:-mt-32">
-        <div className="animate-in fade-in delay-800 duration-700">
-          {images.map((image) => (
-            <Image
-              key={image.url}
-              src={image.url}
-              alt={image.name}
-              hash={image.hash}
-              width={image.width}
-              height={image.height}
-              className="mb-8 block w-full shadow-2xl md:mb-12"
-            />
-          ))}
+        <div className="mx-auto max-w-6xl">
+          <div className="animate-in fade-in flex flex-col gap-4 delay-800 duration-700 md:flex-row md:flex-wrap">
+            {images.map((image) => {
+              const ratio = image.width && image.height ? image.width / image.height : 1;
+              return (
+                <div
+                  key={image.url}
+                  className="relative h-auto w-full md:h-64 md:w-auto md:grow lg:h-80"
+                  style={{
+                    // Only apply flex properties on md and above
+                    // We use a CSS variable or inline media query logic is hard,
+                    // so we'll rely on tailwind classes for the container behavior.
+                    // The style object below will be ignored by flex-col on mobile.
+                    flexBasis: `${ratio * 12}rem`,
+                    flexGrow: ratio,
+                  }}
+                >
+                  <Image
+                    src={image.url}
+                    alt={image.name}
+                    hash={image.hash}
+                    width={image.width}
+                    height={image.height}
+                    className="block h-full w-full object-cover shadow-lg"
+                  />
+                </div>
+              );
+            })}
+            {/* Prevent last row stretching - only on md+ */}
+            <div className="hidden grow-[100] md:block" style={{ flexBasis: "24rem" }} />
+          </div>
         </div>
         <ProjectPagination prev={prev} next={next} />
       </div>

@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 
 import Projects from "../components/projects";
-import { siteConfig } from "../site.config";
+import { siteConfig } from "../utils/site.config";
 import { getProjects } from "../utils/data";
 
 export const Route = createFileRoute("/")({

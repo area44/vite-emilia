@@ -1,6 +1,6 @@
 import React from "react";
 
-import { siteConfig } from "../site.config";
+import { siteConfig } from "../utils/site.config";
 
 const SocialMediaList = () => {
   const { socialMedia } = siteConfig;

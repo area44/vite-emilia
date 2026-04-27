@@ -1,5 +1,5 @@
 import avatarUrl from "../assets/avatar.svg";
-import { siteConfig } from "../site.config";
+import { siteConfig } from "../utils/site.config";
 import HeaderBackground from "./header-background";
 import SocialMediaList from "./social-media-list";
 import Svg from "./svg";

@@ -3,7 +3,7 @@ import type { ComponentType } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
 import Project from "../components/project";
-import { siteConfig } from "../site.config";
+import { siteConfig } from "../utils/site.config";
 import { getProjects, getProjectImages } from "../utils/data";
 
 interface MdxModule {

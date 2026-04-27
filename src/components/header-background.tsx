@@ -1,13 +1,14 @@
 import React from "react";
 
-import Svg from "./svg";
+import bgPatternSvg from "../assets/bg-pattern.svg?raw";
 
 const HeaderBackground = () => {
   return (
     <>
-      <div className="absolute inset-0 h-full w-full text-background-pattern">
-        <Svg id="bgPattern" height="100%" width="100%" />
-      </div>
+      <div
+        className="absolute inset-0 h-full w-full text-background-pattern"
+        dangerouslySetInnerHTML={{ __html: bgPatternSvg }}
+      />
       <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/15 dark:to-black/35" />
     </>
   );

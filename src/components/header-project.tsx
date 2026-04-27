@@ -2,9 +2,9 @@ import { Link } from "@tanstack/react-router";
 import React from "react";
 
 import avatarUrl from "../assets/avatar.svg";
+import leftArrowSvg from "../assets/left-arrow.svg?raw";
 import { siteConfig } from "../utils/site.config";
 import HeaderBackground from "./header-background";
-import Svg from "./svg";
 
 type HeaderProjectProps = {
   title: string;
@@ -27,11 +27,9 @@ const HeaderProject = ({ title, areas, description = "", date }: HeaderProjectPr
               aria-label={`${name} - Back to homepage`}
               className="group flex items-center text-heading no-underline transition-all duration-300 hover:text-primary"
             >
-              <Svg
-                id="leftArrow"
-                width="20"
-                height="18"
-                className="text-icon-primary transition-transform group-hover:-translate-x-1 group-hover:text-primary"
+              <div
+                className="h-[18px] w-5 text-icon-primary transition-transform group-hover:-translate-x-1 group-hover:text-primary"
+                dangerouslySetInnerHTML={{ __html: leftArrowSvg }}
               />
               <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full bg-white shadow-md transition-transform group-hover:scale-110">
                 {avatarUrl && (

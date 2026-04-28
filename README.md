@@ -23,7 +23,7 @@ pnpm dev
 
 The site will be running at `http://localhost:5173`.
 
-## Deployment (SSG)
+## Deployment
 
 To build the static site:
 

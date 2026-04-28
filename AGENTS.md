@@ -13,32 +13,54 @@ This repository is a modern React portfolio site optimized for Static Site Gener
 
 ## Directory Structure
 
-- `src/assets`: Static assets like SVG icons and avatars.
+- `src/assets`: Static assets like SVG icons, patterns, and avatars.
 - `src/components`: UI components.
 - `src/content`: Project data in MDX format and associated images.
-- `src/hooks`: Custom hooks and site configuration.
 - `src/routes`: TanStack Router route definitions.
+- `src/utils`: Shared utilities and site configuration.
 - `scripts/`: Build and prerender scripts.
+
+## Configuration
+
+Site configuration and metadata are centralized in `src/utils/site.config.ts`. This includes profile details, SEO settings, and social links.
 
 ## Build Pipeline (SSG)
 
-The build process is defined in `package.json` as:
+The build process is defined in `package.json` and executed sequentially:
 
-1. `scripts/generate-image-metadata.mjs`: Pre-calculates BlurHash and dimensions for images in `src/content`.
-2. `vite build`: Client-side bundle.
-3. `vite build --ssr`: Server-side bundle for prerendering.
-4. `scripts/prerender.mjs`: Generate static HTML for all routes.
+1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
+2. `vite build`: Generates the client-side bundle.
+3. `ssr:build`: Generates the server-side bundle for prerendering.
+4. `prerender`: Generates static HTML for all routes using `scripts/prerender.mjs`.
+
+## Subpath Deployment
+
+The project supports deployment to subpaths (e.g., GitHub Pages). This is handled by:
+
+- The `BASE` environment variable, which configures Vite's base and TanStack Router's basepath.
+- `siteUrl` in `src/utils/site.config.ts`, which combines `VITE_SITE_URL` and `BASE` for absolute metadata URLs.
 
 ## Coding Conventions
 
-- Use `oxfmt` for formatting.
-- Use `oxlint` for linting.
+- Use `pnpm` exclusively for all package management and script execution (install, lint, build, format).
+- Use `oxfmt` for formatting and `oxlint` for linting.
 - Prefer functional components and hooks.
 - Use Tailwind CSS 4 utility classes for styling.
 - All projects must have an `index.mdx` file with valid frontmatter in `src/content`.
+- Native Vite path resolution is used; avoid adding path aliases unless necessary.
 
-## Image Handling
+## Accessibility
 
-- Images are automatically optimized during build.
-- Metadata (hash, width, height) is stored in `src/content/image-metadata.json`.
+- Maintain the "Skip to Content" link in `src/components/layout.tsx`.
+- Ensure all interactive elements have visible `focus-visible` rings (defined in `src/index.css`).
+- Use descriptive `aria-label` attributes for icon-only buttons.
+
+## Asset Handling
+
+- Images are optimized during build. Metadata is stored in `src/content/image-metadata.json`.
 - Use the `Image` component for lazy loading and BlurHash placeholders.
+- SVG icons and patterns in `src/assets` are imported with the `?raw` suffix and inlined to allow CSS styling via `currentColor`.
+
+## Markdown Formatting
+
+- `oxfmt` requires an empty line between headings and subsequent lists or blocks in MDX files.

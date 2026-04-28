@@ -19,20 +19,20 @@ type CardProps = {
   aspectRatio?: string;
 };
 
-const Card = React.memo(({ item, overlay = "#000", eager, aspectRatio }: CardProps) => {
+const Card = React.memo(({ item, overlay = "#000000", eager, aspectRatio }: CardProps) => {
   return (
     <Link
       aria-label={`Visit ${item.title} project page`}
-      className="group relative block shadow-xl transition-shadow outline-none hover:z-20 focus:ring-8 focus:ring-primary/50"
+      className="group relative block shadow-fan transition-all duration-300 ease-in-out outline-none hover:z-20 focus:ring-[10px] focus:ring-black/50"
       to={item.slug}
       onClick={(e) => e.currentTarget.blur()}
     >
       <div
         className="absolute inset-0 z-20 flex items-center justify-center p-4 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 group-focus:opacity-100"
-        style={{ backgroundColor: `${overlay}E6` }} // 0.9 opacity in hex is E6
+        style={{ backgroundColor: `${overlay}E6` }}
         data-name="card-overlay"
       >
-        <h2 className="m-0 text-center text-2xl font-bold text-white drop-shadow-lg">
+        <h2 className="m-0 text-center text-2xl font-bold text-white shadow-text-soft md:text-3xl">
           {item.title}
         </h2>
       </div>

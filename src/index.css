@@ -41,6 +41,10 @@
   --color-heading: var(--heading);
   --color-toggle-icon: var(--toggle-icon);
   --color-muted: var(--muted);
+  --shadow-fan:
+    rgba(0, 0, 0, 0.15) 0px 64px 64px 0px, rgba(0, 0, 0, 0.15) 0px 32px 32px 0px,
+    rgba(0, 0, 0, 0.15) 0px 16px 16px 0px, rgba(0, 0, 0, 0.15) 0px 8px 8px 0px,
+    rgba(0, 0, 0, 0.15) 0px 4px 4px 0px;
 
   --breakpoint-sm: 640px;
   --breakpoint-md: 768px;
@@ -69,4 +73,8 @@
   button:focus-visible {
     @apply ring-3 ring-primary/60 ring-offset-2 ring-offset-background outline-none;
   }
+}
+
+@utility shadow-text-soft {
+  text-shadow: rgba(0, 0, 0, 0.2) 0px 2px 12px;
 }

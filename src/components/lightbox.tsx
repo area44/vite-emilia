@@ -1,4 +1,4 @@
-import React, { useEffect, useCallback } from "react";
+import React, { useEffect, useCallback, useRef } from "react";
 
 import closeIcon from "../assets/close.svg?raw";
 import leftArrowIcon from "../assets/left-arrow.svg?raw";
@@ -21,6 +21,7 @@ interface LightboxProps {
 
 const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onNext }) => {
   const currentImage = images[index];
+  const touchStartX = useRef<number | null>(null);
 
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
@@ -40,6 +41,28 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
     };
   }, [handleKeyDown]);
 
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    // Minimum swipe distance of 50px
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        onNext();
+      } else {
+        onPrev();
+      }
+    }
+
+    touchStartX.current = null;
+  };
+
   if (!currentImage) return null;
 
   return (
@@ -48,6 +71,8 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
       aria-modal="true"
       aria-label="Image Lightbox"
       className="animate-in fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 duration-300 md:p-8"
+      onTouchStart={handleTouchStart}
+      onTouchEnd={handleTouchEnd}
     >
       <button
         onClick={onClose}

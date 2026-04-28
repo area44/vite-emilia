@@ -61,8 +61,7 @@ Your optional content here...
 
 ### Configuration
 
-- **Site Metadata**: Edit `src/hooks/use-site-metadata.tsx` to update the site title, description, and social handles.
-- **Emilia Config**: Edit `src/hooks/use-emilia-config.tsx` to change your name, location, and social media links.
+- **Site Metadata**: Edit `src/lib/site.config.ts` to update the site title, description, and social handles.
 - **Styling**: Uses Tailwind CSS v4. Edit `src/index.css` to change theme colors and variables.
 
 ## Credits

@@ -28,10 +28,10 @@ Site configuration and metadata are centralized in `src/utils/site.config.ts`. T
 
 The build process is defined in `package.json` and executed sequentially:
 
-1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
+1. `generate:metadata` ($npm_execpath run generate:metadata): Pre-calculates BlurHash and dimensions for images in `src/content`.
 2. `vite build`: Generates the client-side bundle.
 3. `ssr:build`: Generates the server-side bundle for prerendering.
-4. `prerender`: Generates static HTML for all routes using `scripts/prerender.mjs`.
+4. `prerender` ($npm_execpath run prerender): Generates static HTML for all routes using `scripts/prerender.mjs`.
 
 ## Subpath Deployment
 
@@ -42,7 +42,7 @@ The project supports deployment to subpaths (e.g., GitHub Pages). This is handle
 
 ## Coding Conventions
 
-- Use `pnpm` exclusively for all package management and script execution (install, lint, build, format).
+- Use a package manager like `pnpm`, `npm`, or `bun` for all script execution (install, lint, build, format). `pnpm` is preferred for this repository.
 - Use `oxfmt` for formatting and `oxlint` for linting.
 - Prefer functional components and hooks.
 - Use Tailwind CSS 4 utility classes for styling.

@@ -6,9 +6,11 @@
   "author": "AREA44",
   "type": "module",
   "scripts": {
-    "dev": "node scripts/generate-image-metadata.mjs && vite",
-    "build": "node scripts/generate-image-metadata.mjs && vite build && vite build --ssr src/entry.server.tsx --outDir dist/server && node scripts/prerender.mjs",
+    "generate:metadata": "node scripts/generate-image-metadata.mjs",
+    "prerender": "node scripts/prerender.mjs",
+    "dev": "$npm_execpath run generate:metadata && vite",
     "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
+    "build": "$npm_execpath run generate:metadata && vite build && $npm_execpath run ssr:build && $npm_execpath run prerender",
     "format": "oxfmt",
     "lint": "oxlint"
   },

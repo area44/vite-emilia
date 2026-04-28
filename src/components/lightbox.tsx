@@ -88,7 +88,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
             e.stopPropagation();
             onPrev();
           }}
-          className="absolute left-0 z-[110] cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-left-12"
+          className="absolute left-0 z-[110] hidden cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-left-12 md:left-0 md:block"
           aria-label="Previous image"
           dangerouslySetInnerHTML={{ __html: leftArrowIcon }}
           style={{ width: "64px", height: "64px" }}
@@ -113,7 +113,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
             e.stopPropagation();
             onNext();
           }}
-          className="absolute right-0 z-[110] cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-right-12"
+          className="absolute right-0 z-[110] hidden cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-right-12 md:right-0 md:block"
           aria-label="Next image"
           dangerouslySetInnerHTML={{ __html: rightArrowIcon }}
           style={{ width: "64px", height: "64px" }}

@@ -24,14 +24,14 @@ This repository is a modern React portfolio site optimized for Static Site Gener
 
 Site configuration and metadata are centralized in `src/lib/site.config.ts`. This includes profile details, SEO settings, and social links.
 
-## Build Pipeline (SSG)
+## Build Pipeline
 
 The build process is defined in `package.json` and executed sequentially:
 
-1. `generate:metadata` (node --run generate:metadata): Pre-calculates BlurHash and dimensions for images in `src/content`.
+1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
 2. `vite build`: Generates the client-side bundle.
 3. `ssr:build`: Generates the server-side bundle for prerendering.
-4. `prerender` (node --run prerender): Generates static HTML for all routes using `scripts/prerender.mjs`.
+4. `prerender`: Generates static HTML for all routes using `scripts/prerender.mjs`.
 
 ## Coding Conventions
 

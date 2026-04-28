@@ -17,28 +17,21 @@ This repository is a modern React portfolio site optimized for Static Site Gener
 - `src/components`: UI components.
 - `src/content`: Project data in MDX format and associated images.
 - `src/routes`: TanStack Router route definitions.
-- `src/utils`: Shared utilities and site configuration.
+- `src/lib`: Shared utilities and site configuration.
 - `scripts/`: Build and prerender scripts.
 
 ## Configuration
 
-Site configuration and metadata are centralized in `src/utils/site.config.ts`. This includes profile details, SEO settings, and social links.
+Site configuration and metadata are centralized in `src/lib/site.config.ts`. This includes profile details, SEO settings, and social links.
 
 ## Build Pipeline (SSG)
 
 The build process is defined in `package.json` and executed sequentially:
 
-1. `generate:metadata` ($npm_execpath run generate:metadata): Pre-calculates BlurHash and dimensions for images in `src/content`.
+1. `generate:metadata` (node scripts/generate-image-metadata.mjs): Pre-calculates BlurHash and dimensions for images in `src/content`.
 2. `vite build`: Generates the client-side bundle.
 3. `ssr:build`: Generates the server-side bundle for prerendering.
-4. `prerender` ($npm_execpath run prerender): Generates static HTML for all routes using `scripts/prerender.mjs`.
-
-## Subpath Deployment
-
-The project supports deployment to subpaths (e.g., GitHub Pages). This is handled by:
-
-- The `BASE` environment variable, which configures Vite's base and TanStack Router's basepath.
-- `siteUrl` in `src/utils/site.config.ts`, which combines `VITE_SITE_URL` and `BASE` for absolute metadata URLs.
+4. `prerender` (node scripts/prerender.mjs): Generates static HTML for all routes using `scripts/prerender.mjs`.
 
 ## Coding Conventions
 
@@ -60,7 +53,3 @@ The project supports deployment to subpaths (e.g., GitHub Pages). This is handle
 - Images are optimized during build. Metadata is stored in `src/content/image-metadata.json`.
 - Use the `Image` component for lazy loading and BlurHash placeholders.
 - SVG icons and patterns in `src/assets` are imported with the `?raw` suffix and inlined to allow CSS styling via `currentColor`.
-
-## Markdown Formatting
-
-- `oxfmt` requires an empty line between headings and subsequent lists or blocks in MDX files.

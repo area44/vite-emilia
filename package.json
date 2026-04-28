@@ -8,9 +8,9 @@
   "scripts": {
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "prerender": "node scripts/prerender.mjs",
-    "dev": "$npm_execpath run generate:metadata && vite",
+    "dev": "node scripts/generate-image-metadata.mjs && vite",
     "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
-    "build": "$npm_execpath run generate:metadata && vite build && $npm_execpath run ssr:build && $npm_execpath run prerender",
+    "build": "node scripts/generate-image-metadata.mjs && vite build && vite build --ssr src/entry.server.tsx --outDir dist/server && node scripts/prerender.mjs",
     "format": "oxfmt",
     "lint": "oxlint"
   },

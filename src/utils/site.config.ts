@@ -1,4 +1,7 @@
-const viteSiteUrl = (import.meta.env.VITE_SITE_URL || "https://vite-emilia.onrender.com").replace(/\/$/, "");
+const viteSiteUrl = (import.meta.env.VITE_SITE_URL || "https://vite-emilia.onrender.com").replace(
+  /\/$/,
+  "",
+);
 const basePath = (process.env.BASE || "/").replace(/\/$/, "");
 const siteUrl = `${viteSiteUrl}${basePath}`;
 

@@ -8,6 +8,7 @@ type CardProps = {
     slug: string;
     cover: string;
     title: string;
+    areas?: string[];
     contentFilePath?: string;
     coverHash?: string;
     coverWidth?: number;

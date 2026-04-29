@@ -8,6 +8,7 @@ type Props = {
   projects: {
     slug: string;
     title: string;
+    areas: string[];
     cover: string;
     background?: string;
     coverHash?: string;
@@ -40,7 +41,7 @@ const Projects = ({ projects }: Props) => {
         <div className="animate-in slide-in-from-bottom-8 delay-600 duration-700">
           <div className="container -mt-32 grid grid-cols-1 items-start gap-8 md:grid-cols-[repeat(auto-fill,minmax(350px,1fr))]">
             {projects.map((project, index) => {
-              const val = project.background || "#000";
+              const val = project.background || "#000000";
               return (
                 <Card
                   key={project.slug}

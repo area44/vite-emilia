@@ -75,7 +75,10 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
       onTouchEnd={handleTouchEnd}
     >
       <button
-        onClick={onClose}
+        onClick={(e) => {
+          e.currentTarget.blur();
+          onClose();
+        }}
         className="absolute top-4 right-4 z-[110] cursor-pointer p-2 text-white/70 transition-colors hover:text-white focus:text-white"
         aria-label="Close lightbox"
         dangerouslySetInnerHTML={{ __html: closeIcon }}
@@ -86,6 +89,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
         <button
           onClick={(e) => {
             e.stopPropagation();
+            e.currentTarget.blur();
             onPrev();
           }}
           className="absolute left-0 z-[110] hidden cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-left-12 md:left-0 md:block"
@@ -111,6 +115,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
         <button
           onClick={(e) => {
             e.stopPropagation();
+            e.currentTarget.blur();
             onNext();
           }}
           className="absolute right-0 z-[110] hidden cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-right-12 md:right-0 md:block"

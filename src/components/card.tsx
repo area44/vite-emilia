@@ -29,18 +29,13 @@ const Card = React.memo(({ item, overlay = "#000000", eager, aspectRatio }: Card
       onClick={(e) => e.currentTarget.blur()}
     >
       <div
-        className="absolute inset-0 z-20 flex flex-col items-center justify-center p-4 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 group-focus:opacity-100"
+        className="absolute inset-0 z-20 flex items-center justify-center p-4 text-white opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 group-focus:opacity-100"
         style={{ backgroundColor: `${overlay}E6` }}
         data-name="card-overlay"
       >
         <h2 className="m-0 text-center text-2xl font-bold text-white shadow-text-soft md:text-3xl">
           {item.title}
         </h2>
-        {item.areas && (
-          <div className="mt-2 text-center text-sm font-medium tracking-widest text-white/80 uppercase shadow-text-soft">
-            {item.areas.join(", ")}
-          </div>
-        )}
       </div>
       <Image
         loading={eager ? "eager" : "lazy"}

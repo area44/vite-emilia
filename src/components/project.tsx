@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 
 import HeaderProject from "./header-project";
 import Image from "./image";
 import Layout from "./layout";
+import Lightbox from "./lightbox";
 import ProjectPagination from "./project-pagination";
 import Seo from "./seo";
 
@@ -50,6 +51,15 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
   next,
   children,
 }) => {
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = (index: number) => setLightboxIndex(index);
+  const closeLightbox = () => setLightboxIndex(null);
+  const nextImage = () =>
+    setLightboxIndex((prev) => (prev === null ? null : (prev + 1) % images.length));
+  const prevImage = () =>
+    setLightboxIndex((prev) => (prev === null ? null : (prev - 1 + images.length) % images.length));
+
   return (
     <Layout>
       <Seo />
@@ -62,20 +72,18 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
       <div className="relative z-10 container -mt-24 md:-mt-32">
         <div className="mx-auto max-w-6xl">
           <div className="animate-in fade-in flex flex-col gap-4 delay-800 duration-700 md:flex-row md:flex-wrap">
-            {images.map((image) => {
+            {images.map((image, index) => {
               const ratio = image.width && image.height ? image.width / image.height : 1;
               return (
-                <div
+                <button
                   key={image.url}
-                  className="relative h-auto w-full md:h-64 md:w-auto md:grow lg:h-80"
+                  onClick={() => openLightbox(index)}
+                  className="relative h-auto w-full cursor-zoom-in border-none p-0 text-left outline-none md:h-64 md:w-auto md:grow lg:h-80"
                   style={{
-                    // Only apply flex properties on md and above
-                    // We use a CSS variable or inline media query logic is hard,
-                    // so we'll rely on tailwind classes for the container behavior.
-                    // The style object below will be ignored by flex-col on mobile.
                     flexBasis: `${ratio * 12}rem`,
                     flexGrow: ratio,
                   }}
+                  aria-label={`View ${image.name} in full screen`}
                 >
                   <Image
                     src={image.url}
@@ -85,7 +93,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
                     height={image.height}
                     className="block h-full w-full object-cover shadow-lg"
                   />
-                </div>
+                </button>
               );
             })}
             {/* Prevent last row stretching - only on md+ */}
@@ -94,6 +102,16 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
         </div>
         <ProjectPagination prev={prev} next={next} />
       </div>
+
+      {lightboxIndex !== null && (
+        <Lightbox
+          images={images}
+          index={lightboxIndex}
+          onClose={closeLightbox}
+          onPrev={prevImage}
+          onNext={nextImage}
+        />
+      )}
     </Layout>
   );
 };

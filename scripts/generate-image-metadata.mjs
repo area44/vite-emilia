@@ -19,7 +19,7 @@ async function getImageMetadata(filePath) {
     .resize(32, 32, { fit: "inside" })
     .toBuffer({ resolveWithObject: true });
 
-  const hash = encode(new Uint8ClampedArray(data), info.width, info.height, 4, 4);
+  const hash = encode(new Uint8ClampedArray(data), info.width, info.height, 5, 5);
 
   return {
     hash,

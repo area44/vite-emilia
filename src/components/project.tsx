@@ -91,7 +91,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
                     hash={image.hash}
                     width={image.width}
                     height={image.height}
-                    className="block h-full w-full object-cover shadow-lg transition-transform duration-300 hover:scale-[1.02]"
+                    className="block h-full w-full object-cover shadow-lg"
                   />
                 </button>
               );

@@ -79,7 +79,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
         className="absolute top-4 right-4 z-[110] cursor-pointer p-2 text-white/70 transition-colors hover:text-white focus:text-white"
         aria-label="Close lightbox"
         dangerouslySetInnerHTML={{ __html: closeIcon }}
-        style={{ width: "32px", height: "32px" }}
+        style={{ width: "48px", height: "48px" }}
       />
 
       <div className="relative flex h-full w-full items-center justify-center">

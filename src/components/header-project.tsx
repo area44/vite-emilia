@@ -3,8 +3,8 @@ import React from "react";
 
 import avatarUrl from "../assets/avatar.svg";
 import leftArrowSvg from "../assets/left-arrow.svg?raw";
-import HeaderBackground from "./header-background";
 import { siteConfig } from "../lib/site.config";
+import HeaderBackground from "./header-background";
 
 type HeaderProjectProps = {
   title: string;

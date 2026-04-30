@@ -1,6 +1,6 @@
 # Vite Emilia
 
-Vite Emilia is a minimalistic portfolio/photography site featuring a masonry grid, page transitions, and large images. It is built with React 19, Vite, TanStack Router, and Tailwind CSS v4, optimized for Static Site Generation (SSG).
+Vite Emilia is a minimalistic portfolio/photography site featuring a masonry grid, page transitions, and large images. It is built with React 19, Vite, TanStack Router, and Tailwind CSS 4, optimized for Static Site Generation (SSG).
 
 [Preview](https://area44.github.io/vite-emilia/)
 
@@ -55,8 +55,6 @@ areas:
   - Photography
   - Design
 ---
-
-Your optional content here...
 ```
 
 ### Configuration

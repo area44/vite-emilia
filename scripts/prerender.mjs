@@ -56,13 +56,13 @@ async function prerender() {
     const fullHtml = await streamToString(response.body);
 
     const headTags = [];
-    const headEndIndex = fullHtml.indexOf('<!--himBHs->');
+    const headEndIndex = fullHtml.indexOf("<!--himBHs->");
     let contentToScan = fullHtml;
     let bodyHtml = fullHtml;
 
     if (headEndIndex !== -1) {
-       contentToScan = fullHtml.substring(0, headEndIndex);
-       bodyHtml = fullHtml.substring(headEndIndex);
+      contentToScan = fullHtml.substring(0, headEndIndex);
+      bodyHtml = fullHtml.substring(headEndIndex);
     }
 
     const tagRegex = /<(title|meta|link)[^>]*>(?:.*?<\/title>)?/gi;

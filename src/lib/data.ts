@@ -47,7 +47,9 @@ const allImages = import.meta.glob<string>("@/content/**/*.{jpg,jpeg,png,webp}",
 });
 
 const getMetadataKey = (path: string) => {
-  return path.replace(/^.*\/src\/content\//, "src/content/").replace(/^@\/content\//, "src/content/");
+  return path
+    .replace(/^.*\/src\/content\//, "src/content/")
+    .replace(/^@\/content\//, "src/content/");
 };
 
 // Memoization caches

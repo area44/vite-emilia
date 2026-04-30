@@ -1,9 +1,9 @@
-import { fileURLToPath } from "node:url";
-import { dirname, resolve } from "node:path";
 import mdx from "@mdx-js/rollup";
 import tailwindcss from "@tailwindcss/vite";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import react from "@vitejs/plugin-react";
+import { dirname, resolve } from "node:path";
+import { fileURLToPath } from "node:url";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig } from "vite";
@@ -35,7 +35,8 @@ export default defineConfig({
     imagetools(),
   ],
   build: {
-    minify: 'oxc', rolldownOptions: {
+    minify: "oxc",
+    rolldownOptions: {
       input: {
         main: "./index.html",
       },

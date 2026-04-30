@@ -60,7 +60,7 @@ areas:
 ### Configuration
 
 - **Site Metadata**: Edit `src/lib/site.config.ts` to update the site title, description, and social handles.
-- **Styling**: Uses Tailwind CSS v4. Edit `src/index.css` to change theme colors and variables.
+- **Styling**: Edit `src/index.css` to change theme colors and variables.
 
 ## Credits
 

@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-import imageMetadataRaw from "../content/image-metadata.json";
+import imageMetadataRaw from "@/content/image-metadata.json";
 
 const imageMetadata = imageMetadataRaw as Record<
   string,
@@ -14,6 +14,8 @@ export interface ProjectFrontmatter {
   cover: string;
   background?: string;
   slug?: string;
+  description?: string;
+  ogImage?: string;
 }
 
 export interface ProjectData extends ProjectFrontmatter {
@@ -38,15 +40,14 @@ interface MdxModule {
 }
 
 // All images from src/content
-const allImages = import.meta.glob<string>("../content/**/*.{jpg,jpeg,png,webp}", {
+const allImages = import.meta.glob<string>("@/content/**/*.{jpg,jpeg,png,webp}", {
   eager: true,
   query: "?url",
   import: "default",
 });
 
 const getMetadataKey = (path: string) => {
-  // Convert "../content/..." to "src/content/..."
-  return path.replace(/^\.\.\/content\//, "src/content/");
+  return path.replace(/^.*\/src\/content\//, "src/content/").replace(/^@\/content\//, "src/content/");
 };
 
 // Memoization caches
@@ -56,7 +57,7 @@ const projectImagesCache = new Map<string, ProjectImage[]>();
 export const getProjects = async (): Promise<ProjectData[]> => {
   if (projectsCache) return projectsCache;
 
-  const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
+  const modules = import.meta.glob<MdxModule>("@/content/*/index.mdx", {
     eager: true,
   });
 
@@ -83,7 +84,9 @@ export const getProjects = async (): Promise<ProjectData[]> => {
       date: frontmatter.date,
       areas: frontmatter.areas,
       cover: coverUrl,
-      excerpt: frontmatter.title,
+      excerpt: frontmatter.description || frontmatter.title,
+      description: frontmatter.description,
+      ogImage: frontmatter.ogImage,
       coverHash: metadata?.hash,
       coverWidth: metadata?.width,
       coverHeight: metadata?.height,
@@ -106,7 +109,7 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
     return projectImagesCache.get(normalizedSlug)!;
   }
 
-  const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
+  const modules = import.meta.glob<MdxModule>("@/content/*/index.mdx", {
     eager: true,
   });
 

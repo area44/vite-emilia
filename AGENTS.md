@@ -40,7 +40,7 @@ The build process is defined in `package.json` and executed sequentially:
 - Prefer functional components and hooks.
 - Use Tailwind CSS 4 utility classes for styling.
 - All projects must have an `index.mdx` file with valid frontmatter in `src/content`.
-- Native Vite path resolution is used; avoid adding path aliases unless necessary.
+- Path aliases are used; the @/ prefix points to the src directory.
 
 ## Accessibility
 

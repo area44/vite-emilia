@@ -26,6 +26,8 @@ export default async function handleRequest(
     },
   });
 
+  await stream.allReady;
+
   responseHeaders.set("Content-Type", "text/html; charset=utf-8");
 
   return new Response(stream, {

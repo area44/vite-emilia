@@ -1,6 +1,6 @@
 import React from "react";
 
-import { siteConfig } from "@/lib/site.config";
+import { siteConfig } from "../lib/site.config";
 
 // This component is now mostly a side-effect manager for things Meta can't easily do
 // like lang attribute or other head elements that need effect-based updates.

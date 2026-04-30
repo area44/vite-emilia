@@ -1,9 +1,8 @@
-import avatarUrl from "@/assets/avatar.svg";
-import locationSvg from "@/assets/location.svg?raw";
-import { siteConfig } from "@/lib/site.config";
-
+import avatarUrl from "../assets/avatar.svg";
+import locationSvg from "../assets/location.svg?raw";
 import HeaderBackground from "./header-background";
 import SocialMediaList from "./social-media-list";
+import { siteConfig } from "../lib/site.config";
 
 const Header = () => {
   const { name, location, assetsPath } = siteConfig;

@@ -1,9 +1,7 @@
-const viteSiteUrl = (import.meta.env.VITE_SITE_URL || "https://vite-emilia.onrender.com").replace(
+const siteUrl = (import.meta.env.VITE_SITE_URL || "https://vite-emilia.onrender.com").replace(
   /\/$/,
   "",
 );
-const basePath = (process.env.BASE || "/").replace(/\/$/, "");
-const siteUrl = `${viteSiteUrl}${basePath}`;
 
 export const siteConfig = {
   // Emilia Config
@@ -17,7 +15,6 @@ export const siteConfig = {
   siteTitleAlt: "Vite Emilia | AREA44",
   siteHeadline: "Vite Emilia | AREA44",
   siteUrl: siteUrl || "/",
-  basePath: basePath || "/",
   siteDescription:
     "Minimalistic portfolio/photography site with masonry grid, page transitions and big images.",
   siteImage: `${siteUrl}/og-image.jpg`,

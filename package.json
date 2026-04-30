@@ -17,8 +17,8 @@
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.2.4",
-    "@tanstack/react-router": "^1.168.23",
-    "@tanstack/router-plugin": "^1.167.23",
+    "@tanstack/react-router": "^1.168.26",
+    "@tanstack/router-plugin": "^1.167.29",
     "@vitejs/plugin-react": "^6.0.1",
     "blurhash": "^2.0.5",
     "react": "^19.2.5",
@@ -34,8 +34,8 @@
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "oxfmt": "^0.46.0",
-    "oxlint": "^1.61.0",
+    "oxfmt": "^0.47.0",
+    "oxlint": "^1.62.0",
     "typescript": "^6.0.3"
   }
 }

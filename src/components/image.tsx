@@ -1,7 +1,9 @@
 import { decode } from "blurhash";
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
 
 const blurhashCache = new Map<string, Uint8ClampedArray>();
+
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
 
 interface ImageProps {
   src: string;
@@ -33,7 +35,7 @@ const Image: React.FC<ImageProps> = React.memo(
     const imgRef = useRef<HTMLImageElement>(null);
     const canvasRef = useRef<HTMLCanvasElement>(null);
 
-    useEffect(() => {
+    useIsomorphicLayoutEffect(() => {
       // On mount (client-side), check if we need to hide it for Blurhash
       const img = imgRef.current;
       if (img && hash && !img.complete) {
@@ -90,6 +92,8 @@ const Image: React.FC<ImageProps> = React.memo(
               opacity: isLoaded ? 0 : 1,
               zIndex: 1,
               pointerEvents: "none",
+              filter: "blur(20px)",
+              transform: "scale(1.1)",
             }}
           >
             <canvas
@@ -99,7 +103,6 @@ const Image: React.FC<ImageProps> = React.memo(
               style={{
                 width: "100%",
                 height: "100%",
-                imageRendering: "pixelated",
                 display: "block",
               }}
             />

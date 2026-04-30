@@ -56,7 +56,7 @@ async function prerender() {
     const fullHtml = await streamToString(response.body);
 
     const headTags = [];
-    const headEndIndex = fullHtml.indexOf("<!--himBHs->");
+    const headEndIndex = fullHtml.indexOf("<!--$-->");
     let contentToScan = fullHtml;
     let bodyHtml = fullHtml;
 

@@ -7,8 +7,13 @@ import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig } from "vite";
 import { imagetools } from "vite-imagetools";
 
+const base = process.env.BASE || "/";
+
 export default defineConfig({
-  base: "/",
+  base,
+  define: {
+    "process.env.BASE": JSON.stringify(base),
+  },
   plugins: [
     TanStackRouterVite({
       routesDirectory: "./src/routes",

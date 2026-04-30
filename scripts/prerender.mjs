@@ -46,7 +46,7 @@ async function prerender() {
 
   const template = fs.readFileSync(toAbsolute("dist/index.html"), "utf-8");
 
-  const base = "";
+  const base = (process.env.BASE || "/").replace(/\/$/, "");
 
   for (const url of routes) {
     const requestUrl = `http://localhost${base}${url}`;

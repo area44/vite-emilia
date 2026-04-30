@@ -15,7 +15,6 @@ export const siteConfig = {
   siteTitleAlt: "Vite Emilia | AREA44",
   siteHeadline: "Vite Emilia | AREA44",
   siteUrl: siteUrl || "/",
-  basePath: "/",
   siteDescription:
     "Minimalistic portfolio/photography site with masonry grid, page transitions and big images.",
   siteImage: `${siteUrl}/og-image.jpg`,

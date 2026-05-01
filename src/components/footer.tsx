@@ -1,5 +1,5 @@
-import ColorModeToggle from "./colormode-toggle";
-import SocialMediaList from "./social-media-list";
+import ColorModeToggle from "@/components/colormode-toggle";
+import SocialMediaList from "@/components/social-media-list";
 
 const Footer = () => {
   return (

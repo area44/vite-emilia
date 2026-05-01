@@ -1,9 +1,9 @@
 import React, { useEffect, useCallback, useRef } from "react";
 
-import closeIcon from "../assets/close.svg?raw";
-import leftArrowIcon from "../assets/left-arrow.svg?raw";
-import rightArrowIcon from "../assets/right-arrow.svg?raw";
-import Image from "./image";
+import closeIcon from "@/assets/close.svg?raw";
+import leftArrowIcon from "@/assets/left-arrow.svg?raw";
+import rightArrowIcon from "@/assets/right-arrow.svg?raw";
+import Image from "@/components/image";
 
 interface LightboxProps {
   images: {

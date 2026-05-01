@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 
-import HeaderProject from "./header-project";
-import Image from "./image";
-import Layout from "./layout";
-import Lightbox from "./lightbox";
-import ProjectPagination from "./project-pagination";
-import Seo from "./seo";
+import HeaderProject from "@/components/header-project";
+import Image from "@/components/image";
+import Layout from "@/components/layout";
+import Lightbox from "@/components/lightbox";
+import ProjectPagination from "@/components/project-pagination";
+import Seo from "@/components/seo";
 
 export type EmiliaProjectProps = {
   project: {

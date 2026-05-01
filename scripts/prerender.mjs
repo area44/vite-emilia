@@ -45,7 +45,6 @@ async function prerender() {
   console.log("Prerendering routes:", routes);
 
   const template = fs.readFileSync(toAbsolute("dist/index.html"), "utf-8");
-
   const base = (process.env.BASE || "/").replace(/\/$/, "");
 
   for (const url of routes) {
@@ -54,7 +53,23 @@ async function prerender() {
     const responseHeaders = new Headers();
 
     const response = await handleRequest(request, 200, responseHeaders);
-    const bodyHtml = await streamToString(response.body);
+    const fullHtml = await streamToString(response.body);
+
+    const headTags = [];
+    const headEndIndex = fullHtml.indexOf("<!--$-->");
+    let contentToScan = fullHtml;
+    let bodyHtml = fullHtml;
+
+    if (headEndIndex !== -1) {
+      contentToScan = fullHtml.substring(0, headEndIndex);
+      bodyHtml = fullHtml.substring(headEndIndex);
+    }
+
+    const tagRegex = /<(title|meta|link)[^>]*>(?:.*?<\/title>)?/gi;
+    let match;
+    while ((match = tagRegex.exec(contentToScan)) !== null) {
+      headTags.push(match[0]);
+    }
 
     const filePath = path.join(dist, url === "/" ? "index.html" : `${url}/index.html`);
     const dirPath = path.dirname(filePath);
@@ -63,7 +78,13 @@ async function prerender() {
       fs.mkdirSync(dirPath, { recursive: true });
     }
 
-    const finalHtml = template.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`);
+    let finalHtml = template.replace('<div id="root"></div>', `<div id="root">${bodyHtml}</div>`);
+
+    if (headTags.length > 0) {
+      finalHtml = finalHtml.replace(/<title>[^<]*<\/title>/gi, "");
+      finalHtml = finalHtml.replace(/<meta name="description"[^>]*>/gi, "");
+      finalHtml = finalHtml.replace("</head>", `  ${headTags.join("\n    ")}\n  </head>`);
+    }
 
     fs.writeFileSync(filePath, finalHtml);
     console.log("Prerendered:", url, "using URL:", requestUrl);

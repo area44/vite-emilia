@@ -2,9 +2,9 @@ import type { ComponentType } from "react";
 
 import { createFileRoute } from "@tanstack/react-router";
 
-import Project from "../components/project";
-import { getProjects, getProjectImages } from "../lib/data";
-import { siteConfig } from "../lib/site.config";
+import Project from "@/components/project";
+import { getProjects, getProjectImages } from "@/lib/data";
+import { siteConfig } from "@/lib/site.config";
 
 interface MdxModule {
   frontmatter: {
@@ -36,22 +36,30 @@ export const Route = createFileRoute("/$slug")({
     return { project, images, prev, next };
   },
   head: ({ data }) => {
-    if (!data) return {};
-    const { project } = data;
+    const project = data?.project;
+
+    if (!project) {
+      return {
+        meta: [{ title: siteConfig.siteTitle }],
+      };
+    }
+
     const title = `${project.title} | ${siteConfig.siteTitle}`;
+    const description = project.description || project.excerpt;
+    const ogImage = project.ogImage || project.cover;
 
     return {
       meta: [
         { title },
-        { name: "description", content: project.excerpt },
+        { name: "description", content: description },
         { property: "og:title", content: title },
-        { property: "og:description", content: project.excerpt },
-        { property: "og:image", content: project.cover },
+        { property: "og:description", content: description },
+        { property: "og:image", content: ogImage },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
-        { name: "twitter:description", content: project.excerpt },
-        { name: "twitter:image", content: project.cover },
+        { name: "twitter:description", content: description },
+        { name: "twitter:image", content: ogImage },
       ],
     };
   },
@@ -61,7 +69,7 @@ export const Route = createFileRoute("/$slug")({
 function ProjectDetailComponent() {
   const { project, images, prev, next } = Route.useLoaderData();
 
-  const mdxModules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
+  const mdxModules = import.meta.glob<MdxModule>("@/content/*/index.mdx", {
     eager: true,
   });
 

@@ -1,8 +1,8 @@
-import Card from "./card";
-import Header from "./header";
+import Card from "@/components/card";
+import Header from "@/components/header";
 /* eslint no-shadow: 0 */
-import Layout from "./layout";
-import Seo from "./seo";
+import Layout from "@/components/layout";
+import Seo from "@/components/seo";
 
 type Props = {
   projects: {

@@ -1,7 +1,7 @@
 import { RouterProvider, createMemoryHistory } from "@tanstack/react-router";
 import { renderToReadableStream } from "react-dom/server";
 
-import { createRouter } from "./router";
+import { createRouter } from "@/router";
 
 export default async function handleRequest(
   request: Request,

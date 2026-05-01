@@ -2,9 +2,9 @@ import type { ComponentType } from "react";
 
 import { createFileRoute } from "@tanstack/react-router";
 
-import Project from "../components/project";
-import { getProjects, getProjectImages } from "../lib/data";
-import { siteConfig } from "../lib/site.config";
+import Project from "@/components/project";
+import { getProjects, getProjectImages } from "@/lib/data";
+import { siteConfig } from "@/lib/site.config";
 
 interface MdxModule {
   frontmatter: {
@@ -69,7 +69,7 @@ export const Route = createFileRoute("/$slug")({
 function ProjectDetailComponent() {
   const { project, images, prev, next } = Route.useLoaderData();
 
-  const mdxModules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
+  const mdxModules = import.meta.glob<MdxModule>("@/content/*/index.mdx", {
     eager: true,
   });
 

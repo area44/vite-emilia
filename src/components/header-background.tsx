@@ -1,6 +1,6 @@
 import React from "react";
 
-import bgPatternSvg from "../assets/bg-pattern.svg?raw";
+import bgPatternSvg from "@/assets/bg-pattern.svg?raw";
 
 const HeaderBackground = () => {
   return (

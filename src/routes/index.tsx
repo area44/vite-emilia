@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-import Projects from "../components/projects";
-import { getProjects } from "../lib/data";
-import { siteConfig } from "../lib/site.config";
+import Projects from "@/components/projects";
+import { getProjects } from "@/lib/data";
+import { siteConfig } from "@/lib/site.config";
 
 export const Route = createFileRoute("/")({
   loader: async () => {

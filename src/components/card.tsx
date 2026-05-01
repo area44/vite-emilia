@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import React from "react";
 
-import Image from "./image";
+import Image from "@/components/image";
 
 type CardProps = {
   item: {

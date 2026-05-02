@@ -1,6 +1,8 @@
+import { createRequire } from "module";
 import { defineConfig } from "oxfmt";
 
-import oxfmtConfig from "@area44/oxfmt-config";
+const require = createRequire(import.meta.url);
+const oxfmtConfig = require("@area44/oxfmt-config");
 
 export default defineConfig({
   ...oxfmtConfig,

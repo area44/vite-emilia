@@ -1,6 +1,6 @@
 import { defineConfig } from "oxfmt";
 
-import oxfmtConfig from "./node_modules/@area44/oxfmt-config/.oxfmtrc.json" with { type: "json" };
+import oxfmtConfig from "@area44/oxfmt-config";
 
 export default defineConfig({
   ...oxfmtConfig,

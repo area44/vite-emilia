@@ -17,4 +17,3 @@ jobs:
 
       - name: Run lint/format scripts
         uses: area44/workflows/lint-format@v4.3.0
-  

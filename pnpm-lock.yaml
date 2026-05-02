@@ -51,6 +51,12 @@ importers:
         specifier: ^10.0.0
         version: 10.0.0(rollup@4.60.2)(vite@8.0.10(@types/node@25.6.0)(esbuild@0.27.7)(jiti@2.6.1)(terser@5.46.2)(tsx@4.21.0)(yaml@2.8.3))
     devDependencies:
+      '@area44/oxfmt-config':
+        specifier: ^0.1.0
+        version: 0.1.0(oxfmt@0.47.0)
+      '@area44/oxlint-config':
+        specifier: ^0.1.0
+        version: 0.1.0(oxlint@1.62.0)
       '@types/node':
         specifier: ^25.6.0
         version: 25.6.0
@@ -71,6 +77,16 @@ importers:
         version: 6.0.3
 
 packages:
+
+  '@area44/oxfmt-config@0.1.0':
+    resolution: {integrity: sha512-SZ+LPixNaJlAUqJizYSvwj+0PD0p1HDh4awUQ4qi00tou6qffA/bCHyOnVMUo05gIiQ/9nfOWfvPvk7EdXhxIQ==}
+    peerDependencies:
+      oxfmt: '>=0.0.0'
+
+  '@area44/oxlint-config@0.1.0':
+    resolution: {integrity: sha512-vcSs7T0i+MAttIO9nzzkIHxhrUOoRLMeSNBU+No8S4H62hAUSMoBSzO03abCNtn/bieD3JvsJ31Ks36VFn6opw==}
+    peerDependencies:
+      oxlint: '>=1.0.0'
 
   '@babel/code-frame@7.29.0':
     resolution: {integrity: sha512-9NhCeYjq9+3uxgdtp20LSiJXJvN0FeCtNGpJxuMFZ1Kv3cWUNb6DOhJwUvcVCzKGR66cw4njwM6hrJLqgOwbcw==}
@@ -2104,6 +2120,14 @@ packages:
     resolution: {integrity: sha512-bXE4cR/kVZhKZX/RjPEflHaKVhUVl85noU3v6b8apfQEc1x4A+zBxjZ4lN8LqGd6WZ3dl98pY4o717VFmoPp+A==}
 
 snapshots:
+
+  '@area44/oxfmt-config@0.1.0(oxfmt@0.47.0)':
+    dependencies:
+      oxfmt: 0.47.0
+
+  '@area44/oxlint-config@0.1.0(oxlint@1.62.0)':
+    dependencies:
+      oxlint: 1.62.0
 
   '@babel/code-frame@7.29.0':
     dependencies:

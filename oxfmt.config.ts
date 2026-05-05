@@ -1,8 +1,11 @@
-import oxfmtConfig from "@area44/oxfmt-config";
+import { createRequire } from "module";
 import { defineConfig } from "oxfmt";
 
+const require = createRequire(import.meta.url);
+const oxfmtConfig = require("@area44/oxfmt-config");
+
 export default defineConfig({
-  extends: [oxfmtConfig],
+  ...oxfmtConfig,
   sortTailwindcss: {
     stylesheet: "./src/index.css",
     attributes: ["class", "className"],

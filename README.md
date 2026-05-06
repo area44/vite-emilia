@@ -48,6 +48,7 @@ Example `index.mdx`:
 
 ```md
 ---
+slug: "/my-project"
 cover: "./cover-image.jpg"
 date: "2024-03-20"
 title: "My New Project"

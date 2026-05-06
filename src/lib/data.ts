@@ -1,6 +1,6 @@
 import type { ComponentType } from "react";
 
-import imageMetadataRaw from "@/content/image-metadata.json";
+import imageMetadataRaw from "../content/image-metadata.json";
 
 const imageMetadata = imageMetadataRaw as Record<
   string,
@@ -40,7 +40,7 @@ interface MdxModule {
 }
 
 // All images from src/content
-const allImages = import.meta.glob<string>("@/content/**/*.{jpg,jpeg,png,webp}", {
+const allImages = import.meta.glob<string>("../content/**/*.{jpg,jpeg,png,webp}", {
   eager: true,
   query: "?url",
   import: "default",
@@ -61,7 +61,7 @@ const projectImagesCache = new Map<string, ProjectImage[]>();
 export const getProjects = async (): Promise<ProjectData[]> => {
   if (projectsCache) return projectsCache;
 
-  const modules = import.meta.glob<MdxModule>("@/content/*/index.mdx", {
+  const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
 
@@ -113,7 +113,7 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
     return projectImagesCache.get(normalizedSlug)!;
   }
 
-  const modules = import.meta.glob<MdxModule>("@/content/*/index.mdx", {
+  const modules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
 

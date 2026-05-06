@@ -35,8 +35,8 @@ export const Route = createFileRoute("/$slug")({
 
     return { project, images, prev, next };
   },
-  head: ({ data }) => {
-    const project = data?.project;
+  head: ({ loaderData }) => {
+    const project = loaderData?.project;
 
     if (!project) {
       return {
@@ -69,7 +69,7 @@ export const Route = createFileRoute("/$slug")({
 function ProjectDetailComponent() {
   const { project, images, prev, next } = Route.useLoaderData();
 
-  const mdxModules = import.meta.glob<MdxModule>("@/content/*/index.mdx", {
+  const mdxModules = import.meta.glob<MdxModule>("../content/*/index.mdx", {
     eager: true,
   });
 

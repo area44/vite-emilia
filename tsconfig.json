@@ -21,7 +21,8 @@
     "verbatimModuleSyntax": true,
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "types": ["node", "react", "react-dom", "vite/client"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

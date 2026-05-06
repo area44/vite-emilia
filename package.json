@@ -31,8 +31,8 @@
     "vite-imagetools": "^10.0.0"
   },
   "devDependencies": {
-    "@area44/oxfmt-config": "^0.2.1",
-    "@area44/oxlint-config": "^0.2.1",
+    "@area44/oxfmt-config": "^0.2.2",
+    "@area44/oxlint-config": "^0.2.2",
     "@types/node": "^25.6.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",

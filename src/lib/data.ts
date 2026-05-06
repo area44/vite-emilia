@@ -12,26 +12,26 @@ export interface ProjectFrontmatter {
   date: string;
   areas: string[];
   cover: string;
-  background?: string;
-  slug?: string;
-  description?: string;
-  ogImage?: string;
+  background?: string | undefined;
+  slug?: string | undefined;
+  description?: string | undefined;
+  ogImage?: string | undefined;
 }
 
 export interface ProjectData extends ProjectFrontmatter {
   slug: string;
   excerpt: string;
-  coverHash?: string;
-  coverWidth?: number;
-  coverHeight?: number;
+  coverHash?: string | undefined;
+  coverWidth?: number | undefined;
+  coverHeight?: number | undefined;
 }
 
 export interface ProjectImage {
   name: string;
   url: string;
-  hash?: string;
-  width?: number;
-  height?: number;
+  hash?: string | undefined;
+  width?: number | undefined;
+  height?: number | undefined;
 }
 
 interface MdxModule {

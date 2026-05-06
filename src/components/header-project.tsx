@@ -21,17 +21,17 @@ const HeaderProject = ({ title, areas, description = "", date }: HeaderProjectPr
       <HeaderBackground />
       <div className="z-10 container mt-8 mb-32 text-center md:mb-40">
         <div className="animate-in fade-in duration-700">
-          <div className="flex justify-center">
+          <div className="flex justify-start">
             <Link
               to="/"
               aria-label={`${name} - Back to homepage`}
-              className="group flex items-center text-heading no-underline transition-all duration-300 hover:text-primary"
+              className="group flex items-center text-heading no-underline transition-all duration-300"
             >
               <div
-                className="h-[18px] w-5 text-icon-primary transition-transform group-hover:-translate-x-1 group-hover:text-primary"
+                className="h-[18px] w-5 text-icon-primary transition-transform group-hover:-translate-x-1"
                 dangerouslySetInnerHTML={{ __html: leftArrowSvg }}
               />
-              <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full bg-white shadow-md transition-transform group-hover:scale-110">
+              <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full bg-white shadow-md transition-transform">
                 {avatarUrl && (
                   <img
                     src={avatarUrl}

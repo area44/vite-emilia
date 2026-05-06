@@ -8,10 +8,10 @@ const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffec
 interface ImageProps {
   src: string;
   alt: string;
-  hash?: string;
-  width?: number;
-  height?: number;
-  aspectRatio?: string;
+  hash?: string | undefined;
+  width?: number | undefined;
+  height?: number | undefined;
+  aspectRatio?: string | undefined;
   className?: string;
   loading?: "lazy" | "eager";
   crossOrigin?: "anonymous" | "use-credentials";

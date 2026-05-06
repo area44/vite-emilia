@@ -8,16 +8,16 @@ type CardProps = {
     slug: string;
     cover: string;
     title: string;
-    areas?: string[];
-    contentFilePath?: string;
-    coverHash?: string;
-    coverWidth?: number;
-    coverHeight?: number;
+    areas?: string[] | undefined;
+    contentFilePath?: string | undefined;
+    coverHash?: string | undefined;
+    coverWidth?: number | undefined;
+    coverHeight?: number | undefined;
   };
-  overlay?: string;
-  shadow?: string[];
-  eager?: boolean;
-  aspectRatio?: string;
+  overlay?: string | undefined;
+  shadow?: string[] | undefined;
+  eager?: boolean | undefined;
+  aspectRatio?: string | undefined;
 };
 
 const Card = React.memo(({ item, overlay = "#000000", eager, aspectRatio }: CardProps) => {

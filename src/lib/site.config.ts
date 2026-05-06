@@ -1,4 +1,4 @@
-const siteUrl = (import.meta.env.VITE_SITE_URL || "https://vite-emilia.onrender.com").replace(
+const siteUrl = (import.meta.env["VITE_SITE_URL"] || "https://vite-emilia.onrender.com").replace(
   /\/$/,
   "",
 );

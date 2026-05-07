@@ -15,32 +15,32 @@ export type EmiliaProjectProps = {
     title: string;
     areas: string[];
     cover: string;
-    coverHash?: string;
-    coverWidth?: number;
-    coverHeight?: number;
+    coverHash?: string | undefined;
+    coverWidth?: number | undefined;
+    coverHeight?: number | undefined;
   };
   images: {
     name: string;
     url: string;
-    hash?: string;
-    width?: number;
-    height?: number;
+    hash?: string | undefined;
+    width?: number | undefined;
+    height?: number | undefined;
   }[];
   prev: {
     slug: string;
     title: string;
     cover: string;
-    coverHash?: string;
-    coverWidth?: number;
-    coverHeight?: number;
+    coverHash?: string | undefined;
+    coverWidth?: number | undefined;
+    coverHeight?: number | undefined;
   } | null;
   next: {
     slug: string;
     title: string;
     cover: string;
-    coverHash?: string;
-    coverWidth?: number;
-    coverHeight?: number;
+    coverHash?: string | undefined;
+    coverWidth?: number | undefined;
+    coverHeight?: number | undefined;
   } | null;
 };
 

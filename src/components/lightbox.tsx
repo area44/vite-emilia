@@ -9,9 +9,9 @@ interface LightboxProps {
   images: {
     url: string;
     name: string;
-    hash?: string;
-    width?: number;
-    height?: number;
+    hash?: string | undefined;
+    width?: number | undefined;
+    height?: number | undefined;
   }[];
   index: number;
   onClose: () => void;
@@ -42,13 +42,19 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
   }, [handleKeyDown]);
 
   const handleTouchStart = (e: React.TouchEvent) => {
-    touchStartX.current = e.touches[0].clientX;
+    const touch = e.touches[0];
+    if (touch) {
+      touchStartX.current = touch.clientX;
+    }
   };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX.current === null) return;
 
-    const touchEndX = e.changedTouches[0].clientX;
+    const touch = e.changedTouches[0];
+    if (!touch) return;
+
+    const touchEndX = touch.clientX;
     const diff = touchStartX.current - touchEndX;
 
     // Minimum swipe distance of 50px

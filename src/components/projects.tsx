@@ -10,10 +10,10 @@ type Props = {
     title: string;
     areas: string[];
     cover: string;
-    background?: string;
-    coverHash?: string;
-    coverWidth?: number;
-    coverHeight?: number;
+    background?: string | undefined;
+    coverHash?: string | undefined;
+    coverWidth?: number | undefined;
+    coverHeight?: number | undefined;
   }[];
 };
 

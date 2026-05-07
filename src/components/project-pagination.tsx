@@ -5,21 +5,21 @@ type ProjectPaginationProps = {
     slug: string;
     title: string;
     cover: string;
-    areas?: string[];
-    background?: string;
-    coverHash?: string;
-    coverWidth?: number;
-    coverHeight?: number;
+    areas?: string[] | undefined;
+    background?: string | undefined;
+    coverHash?: string | undefined;
+    coverWidth?: number | undefined;
+    coverHeight?: number | undefined;
   } | null;
   next: {
     slug: string;
     title: string;
     cover: string;
-    areas?: string[];
-    background?: string;
-    coverHash?: string;
-    coverWidth?: number;
-    coverHeight?: number;
+    areas?: string[] | undefined;
+    background?: string | undefined;
+    coverHash?: string | undefined;
+    coverWidth?: number | undefined;
+    coverHeight?: number | undefined;
   } | null;
 };
 

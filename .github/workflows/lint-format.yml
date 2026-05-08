@@ -8,11 +8,12 @@ on:
 permissions:
   contents: write
 
+env:
+  PNPM_ONLY_BUILT_DEPENDENCIES: sharp
+
 jobs:
   lint-format:
     runs-on: ubuntu-latest
-    env:
-      PNPM_CONFIG_ONLY_BUILT_DEPENDENCIES: esbuild,sharp
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6

@@ -10,11 +10,12 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  PNPM_ONLY_BUILT_DEPENDENCIES: sharp
+
 jobs:
   build:
     runs-on: ubuntu-slim
-    env:
-      PNPM_CONFIG_ONLY_BUILT_DEPENDENCIES: esbuild,sharp
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6

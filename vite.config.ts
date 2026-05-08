@@ -5,7 +5,7 @@ import react from "@vitejs/plugin-react";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import { defineConfig } from "vite";
-import { imagetools } from "vite-imagetools";
+import { ViteImageOptimizer } from "vite-plugin-image-optimizer";
 
 const base = process.env.BASE || "/";
 
@@ -24,7 +24,7 @@ export default defineConfig({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
     }),
     tailwindcss(),
-    imagetools(),
+    ViteImageOptimizer(),
   ],
   build: {
     minify: "oxc",

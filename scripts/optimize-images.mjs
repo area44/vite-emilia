@@ -26,7 +26,9 @@ async function optimizeImage(filePath) {
   if (optimizedBuffer.length < buffer.length) {
     await fs.promises.writeFile(filePath, optimizedBuffer);
     const savings = ((1 - optimizedBuffer.length / buffer.length) * 100).toFixed(2);
-    console.log(`Optimized ${filePath}: ${savings}% savings (${(buffer.length / 1024).toFixed(2)}KB -> ${(optimizedBuffer.length / 1024).toFixed(2)}KB)`);
+    console.log(
+      `Optimized ${filePath}: ${savings}% savings (${(buffer.length / 1024).toFixed(2)}KB -> ${(optimizedBuffer.length / 1024).toFixed(2)}KB)`,
+    );
   } else {
     console.log(`Skipped ${filePath}: Already optimized`);
   }

@@ -8,10 +8,10 @@
   "scripts": {
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
-    "prerender": "node scripts/prerender.mjs",
-    "dev": "node --run generate:metadata && vite",
-    "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
-    "build": "node --run generate:metadata && vite build && node --run optimize:images && node --run ssr:build && node --run prerender",
+    "prerender": "BASE=/ node scripts/prerender.mjs",
+    "dev": "node --run generate:metadata && BASE=/ vite",
+    "ssr:build": "BASE=/ vite build --ssr src/entry.server.tsx --outDir dist/server",
+    "build": "node --run generate:metadata && BASE=/ vite build && node --run optimize:images && node --run ssr:build && node --run prerender",
     "format": "oxfmt",
     "lint": "oxlint"
   },

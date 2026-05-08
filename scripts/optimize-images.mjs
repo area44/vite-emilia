@@ -10,10 +10,25 @@ async function optimizeImage(filePath) {
   const buffer = await fs.promises.readFile(filePath);
 
   if (ext === ".svg") {
+    // Be extremely conservative with SVGs to avoid breaking masks, filters, or P3 colors
     const result = optimize(buffer.toString(), {
       path: filePath,
       multipass: true,
-      plugins: ["preset-default"],
+      plugins: [
+        {
+          name: "preset-default",
+          params: {
+            overrides: {
+              // Disable plugins that can break complex SVGs or change colors
+              convertColors: false,
+              cleanupIds: false,
+              minifyStyles: false,
+              // removeViewBox is handled automatically by preset-default in v4,
+              // but we'll leave it out of overrides if it causes issues.
+            },
+          },
+        },
+      ],
     });
 
     const optimizedBuffer = Buffer.from(result.data);
@@ -34,11 +49,11 @@ async function optimizeImage(filePath) {
   let pipeline = image;
 
   if (ext === ".jpg" || ext === ".jpeg") {
-    pipeline = pipeline.jpeg({ quality: 80, progressive: true });
+    pipeline = pipeline.jpeg({ quality: 90, progressive: true });
   } else if (ext === ".png") {
-    pipeline = pipeline.png({ quality: 80, palette: true });
+    pipeline = pipeline.png({ quality: 90, palette: true });
   } else if (ext === ".webp") {
-    pipeline = pipeline.webp({ quality: 80 });
+    pipeline = pipeline.webp({ quality: 90 });
   } else {
     return;
   }

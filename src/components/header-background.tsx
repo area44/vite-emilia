@@ -10,7 +10,7 @@ const HeaderBackground = () => {
         aria-hidden="true"
       >
         <div
-          className="absolute inset-0 h-full w-full origin-top scale-[2] md:scale-100"
+          className="absolute inset-0 h-full w-full"
           dangerouslySetInnerHTML={{ __html: bgPatternSvg }}
         />
       </div>

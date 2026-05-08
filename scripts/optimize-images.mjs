@@ -1,14 +1,36 @@
 import fs from "node:fs";
 import path from "node:path";
 import sharp from "sharp";
+import { optimize } from "svgo";
 
 const DIST_DIR = "dist/assets";
 
 async function optimizeImage(filePath) {
   const ext = path.extname(filePath).toLowerCase();
   const buffer = await fs.promises.readFile(filePath);
-  const image = sharp(buffer);
 
+  if (ext === ".svg") {
+    const result = optimize(buffer.toString(), {
+      path: filePath,
+      multipass: true,
+      plugins: ["preset-default"],
+    });
+
+    const optimizedBuffer = Buffer.from(result.data);
+
+    if (optimizedBuffer.length < buffer.length) {
+      await fs.promises.writeFile(filePath, optimizedBuffer);
+      const savings = ((1 - optimizedBuffer.length / buffer.length) * 100).toFixed(2);
+      console.log(
+        `Optimized ${filePath}: ${savings}% savings (${(buffer.length / 1024).toFixed(2)}KB -> ${(optimizedBuffer.length / 1024).toFixed(2)}KB)`,
+      );
+    } else {
+      console.log(`Skipped ${filePath}: Already optimized`);
+    }
+    return;
+  }
+
+  const image = sharp(buffer);
   let pipeline = image;
 
   if (ext === ".jpg" || ext === ".jpeg") {
@@ -46,7 +68,7 @@ async function walk(dir) {
     const stat = await fs.promises.stat(filePath);
     if (stat.isDirectory()) {
       fileList.push(...(await walk(filePath)));
-    } else if (/\.(jpg|jpeg|png|webp)$/i.test(file)) {
+    } else if (/\.(jpg|jpeg|png|webp|svg)$/i.test(file)) {
       fileList.push(filePath);
     }
   }

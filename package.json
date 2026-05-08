@@ -7,10 +7,11 @@
   "type": "module",
   "scripts": {
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
+    "optimize:images": "node scripts/optimize-dist-images.mjs",
     "prerender": "node scripts/prerender.mjs",
     "dev": "node --run generate:metadata && vite",
     "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
-    "build": "node --run generate:metadata && vite build && node --run ssr:build && node --run prerender",
+    "build": "node --run generate:metadata && vite build && node --run optimize:images && node --run ssr:build && node --run prerender",
     "format": "oxfmt",
     "lint": "oxlint"
   },
@@ -36,9 +37,7 @@
     "esbuild": "^0.27.7",
     "oxfmt": "^0.47.0",
     "oxlint": "^1.62.0",
-    "svgo": "^4.0.1",
-    "typescript": "^6.0.3",
-    "vite-plugin-image-optimizer": "^2.0.3"
+    "typescript": "^6.0.3"
   },
   "pnpm": {
     "onlyBuiltDependencies": [

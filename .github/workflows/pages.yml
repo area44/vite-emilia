@@ -10,9 +10,6 @@ permissions:
   pages: write
   id-token: write
 
-env:
-  PNPM_ONLY_BUILT_DEPENDENCIES: sharp
-
 jobs:
   build:
     runs-on: ubuntu-slim

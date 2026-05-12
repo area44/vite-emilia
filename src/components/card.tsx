@@ -21,11 +21,14 @@ type CardProps = {
 };
 
 const Card = React.memo(({ item, overlay = "#000000", eager, aspectRatio }: CardProps) => {
+  const slug = item.slug.startsWith("/") ? item.slug.substring(1) : item.slug;
+
   return (
     <Link
       aria-label={`Visit ${item.title} project page`}
       className="group relative block shadow-fan transition-all duration-300 ease-in-out outline-none hover:z-20 focus:ring-[10px] focus:ring-black/50"
-      to={item.slug}
+      to="/$slug"
+      params={{ slug }}
       onClick={(e) => e.currentTarget.blur()}
     >
       <div

@@ -13,8 +13,12 @@ export function createRouter() {
   return router;
 }
 
+export const router = createRouter();
+
+export const getRouter = () => router;
+
 declare module "@tanstack/react-router" {
   interface Register {
-    router: ReturnType<typeof createRouter>;
+    router: typeof router;
   }
 }

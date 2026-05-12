@@ -8,10 +8,8 @@
   "scripts": {
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
-    "prerender": "node scripts/prerender.mjs",
     "dev": "node --run generate:metadata && vite",
-    "ssr:build": "vite build --ssr src/entry.server.tsx --outDir dist/server",
-    "build": "node --run generate:metadata && vite build && node --run optimize:images && node --run ssr:build && node --run prerender",
+    "build": "node --run generate:metadata && vite build && node --run optimize:images",
     "format": "oxfmt",
     "lint": "oxlint"
   },
@@ -19,7 +17,7 @@
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.3.0",
     "@tanstack/react-router": "^1.169.2",
-    "@tanstack/router-plugin": "^1.167.35",
+    "@tanstack/react-start": "^1.167.65",
     "@vitejs/plugin-react": "^6.0.1",
     "blurhash": "^2.0.5",
     "react": "^19.2.6",

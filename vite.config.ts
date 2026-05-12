@@ -1,6 +1,6 @@
 import mdx from "@mdx-js/rollup";
 import tailwindcss from "@tailwindcss/vite";
-import { tanstackRouter } from "@tanstack/router-plugin/vite";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
 import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
@@ -14,9 +14,15 @@ export default defineConfig({
     tsconfigPaths: true,
   },
   plugins: [
-    tanstackRouter({
+    tanstackStart({
       routesDirectory: "./src/routes",
       generatedRouteTree: "./src/routeTree.gen.ts",
+      prerender: {
+        enabled: true,
+        crawlLinks: true,
+        autoStaticPathsDiscovery: true,
+        failOnError: false,
+      },
     }),
     react(),
     mdx({
@@ -26,10 +32,5 @@ export default defineConfig({
   ],
   build: {
     minify: "oxc",
-    rolldownOptions: {
-      input: {
-        main: "./index.html",
-      },
-    },
   },
 });

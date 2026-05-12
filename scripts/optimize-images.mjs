@@ -3,7 +3,7 @@ import path from "node:path";
 import sharp from "sharp";
 import { optimize } from "svgo";
 
-const DIST_DIR = "dist/assets";
+const DIST_DIR = "dist/client/assets";
 
 async function optimizeImage(filePath) {
   const ext = path.extname(filePath).toLowerCase();

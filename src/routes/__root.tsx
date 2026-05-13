@@ -5,11 +5,22 @@ import "@/index.css";
 export const Route = createRootRoute({
   component: RootComponent,
   notFoundComponent: () => (
-    <div style={{ padding: '5rem 2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontSize: '3rem', fontWeight: 'bold' }}>404</h1>
-      <p style={{ fontSize: '1.25rem', marginTop: '1rem', color: '#666' }}>Page Not Found (TanStack Router)</p>
-      <div style={{ marginTop: '2rem' }}>
-        <a href="/" style={{ padding: '0.75rem 1.5rem', backgroundColor: '#000', color: '#fff', borderRadius: '0.5rem', textDecoration: 'none' }}>
+    <div style={{ padding: "5rem 2rem", textAlign: "center", fontFamily: "system-ui, sans-serif" }}>
+      <h1 style={{ fontSize: "3rem", fontWeight: "bold" }}>404</h1>
+      <p style={{ fontSize: "1.25rem", marginTop: "1rem", color: "#666" }}>
+        Page Not Found (TanStack Router)
+      </p>
+      <div style={{ marginTop: "2rem" }}>
+        <a
+          href="/"
+          style={{
+            padding: "0.75rem 1.5rem",
+            backgroundColor: "#000",
+            color: "#fff",
+            borderRadius: "0.5rem",
+            textDecoration: "none",
+          }}
+        >
           Go Back Home
         </a>
       </div>

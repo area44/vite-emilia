@@ -19,22 +19,30 @@ export const Route = createFileRoute("/$slug")({
     const { slug } = params;
     const allProjects = await getProjects();
 
-    const index = allProjects.findIndex((p) => {
-      const pSlug = p.slug.startsWith("/") ? p.slug.substring(1) : p.slug;
-      return pSlug === slug;
-    });
+    const project = allProjects.find((p) => p.slug === slug);
 
-    if (index === -1) {
+    if (!project) {
       throw new Error(`Project not found: ${slug}`);
     }
 
-    const project = allProjects[index]!;
+    const index = allProjects.indexOf(project);
     const prev = index > 0 ? (allProjects[index - 1] ?? null) : null;
     const next = index < allProjects.length - 1 ? (allProjects[index + 1] ?? null) : null;
     const images = await getProjectImages(project.slug);
 
     return { project, images, prev, next };
   },
+  errorComponent: ({ error }) => (
+    <div style={{ padding: '5rem 2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
+      <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>Error</h1>
+      <p style={{ marginTop: '1rem', color: '#666' }}>{error.message}</p>
+      <div style={{ marginTop: '2rem' }}>
+        <a href="/" style={{ padding: '0.75rem 1.5rem', backgroundColor: '#000', color: '#fff', borderRadius: '0.5rem', textDecoration: 'none' }}>
+          Back to Home
+        </a>
+      </div>
+    </div>
+  ),
   head: ({ loaderData }) => {
     const project = loaderData?.project;
 
@@ -47,7 +55,6 @@ export const Route = createFileRoute("/$slug")({
     const title = `${project.title} | ${siteConfig.siteTitle}`;
     const description = project.description || project.excerpt;
 
-    // Ensure OG image is an absolute URL
     let ogImage = project.ogImage || project.cover;
     if (ogImage && !ogImage.startsWith("http")) {
       ogImage = `${siteConfig.siteUrl.replace(/\/$/, "")}${ogImage.startsWith("/") ? "" : "/"}${ogImage}`;
@@ -79,8 +86,9 @@ function ProjectDetailComponent() {
   });
 
   const mdxModule = Object.values(mdxModules).find((module) => {
-    const mSlug =
-      module.frontmatter.slug ?? `/${module.frontmatter.title.toLowerCase().replace(/\s+/g, "-")}`;
+    const mSlug = (
+      module.frontmatter.slug ?? module.frontmatter.title.toLowerCase().replace(/\s+/g, "-")
+    ).replace(/^\/+|\/+$/g, "");
     return mSlug === project.slug;
   });
 

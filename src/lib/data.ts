@@ -47,14 +47,12 @@ const allImages = import.meta.glob<string>("../content/**/*.{jpg,jpeg,png,webp}"
 });
 
 const getMetadataKey = (path: string) => {
-  // Convert path to "src/content/..." format used in image-metadata.json
   return path
     .replace(/^.*\/src\/content\//, "src/content/")
     .replace(/^\.\.\/content\//, "src/content/")
     .replace(/^@\/content\//, "src/content/");
 };
 
-// Memoization caches
 let projectsCache: ProjectData[] | null = null;
 const projectImagesCache = new Map<string, ProjectImage[]>();
 
@@ -77,10 +75,9 @@ export const getProjects = async (): Promise<ProjectData[]> => {
     const metadataKey = getMetadataKey(fullCoverPath);
     const metadata = imageMetadata[metadataKey];
 
-    let slug = frontmatter.slug ?? `/${folderName}`;
-    if (!slug.startsWith("/")) {
-      slug = `/${slug}`;
-    }
+    // Normalize slug: no leading or trailing slashes
+    let slug = frontmatter.slug ?? folderName;
+    slug = slug.replace(/^\/+|\/+$/g, "");
 
     const project: ProjectData = {
       slug,
@@ -108,7 +105,7 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 };
 
 export const getProjectImages = async (slug: string): Promise<ProjectImage[]> => {
-  const normalizedSlug = slug.startsWith("/") ? slug : `/${slug}`;
+  const normalizedSlug = slug.replace(/^\/+|\/+$/g, "");
   if (projectImagesCache.has(normalizedSlug)) {
     return projectImagesCache.get(normalizedSlug)!;
   }
@@ -121,10 +118,8 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
 
   for (const [path, module] of Object.entries(modules)) {
     const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
-    let currentSlug = module.frontmatter.slug ?? `/${folderName}`;
-    if (!currentSlug.startsWith("/")) {
-      currentSlug = `/${currentSlug}`;
-    }
+    let currentSlug = module.frontmatter.slug ?? folderName;
+    currentSlug = currentSlug.replace(/^\/+|\/+$/g, "");
 
     if (currentSlug === normalizedSlug) {
       projectDir = path.substring(0, path.lastIndexOf("/") + 1);

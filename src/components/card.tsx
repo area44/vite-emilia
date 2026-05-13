@@ -21,7 +21,7 @@ type CardProps = {
 };
 
 const Card = React.memo(({ item, overlay = "#000000", eager, aspectRatio }: CardProps) => {
-  const slug = item.slug.startsWith("/") ? item.slug.substring(1) : item.slug;
+  const { slug } = item;
 
   return (
     <Link

@@ -21,7 +21,7 @@ export default defineConfig({
         enabled: true,
         crawlLinks: true,
         autoStaticPathsDiscovery: true,
-        failOnError: false,
+        failOnError: true,
       },
     }),
     react(),

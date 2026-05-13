@@ -19,8 +19,8 @@ export default defineConfig({
       generatedRouteTree: "./src/routeTree.gen.ts",
       prerender: {
         enabled: true,
-        routes: ["/", "/ars-aurea/", "/jodie/", "/minimal-blog/", "/neon-lights/", "/masonry/"],
-        crawlLinks: true,
+        routes: ["/", "/ars-aurea", "/jodie", "/minimal-blog", "/neon-lights", "/masonry"],
+        crawlLinks: false,
         failOnError: false,
       },
     }),

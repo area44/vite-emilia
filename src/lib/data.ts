@@ -75,9 +75,8 @@ export const getProjects = async (): Promise<ProjectData[]> => {
     const metadataKey = getMetadataKey(fullCoverPath);
     const metadata = imageMetadata[metadataKey];
 
-    // Normalize slug: no leading or trailing slashes
-    let slug = frontmatter.slug ?? folderName;
-    slug = slug.replace(/^\/+|\/+$/g, "");
+    // Normalize slug: remove all leading and trailing slashes for the data object
+    let slug = (frontmatter.slug ?? folderName).trim().replace(/^\/+|\/+$/g, "");
 
     const project: ProjectData = {
       slug,
@@ -105,7 +104,7 @@ export const getProjects = async (): Promise<ProjectData[]> => {
 };
 
 export const getProjectImages = async (slug: string): Promise<ProjectImage[]> => {
-  const normalizedSlug = slug.replace(/^\/+|\/+$/g, "");
+  const normalizedSlug = slug.trim().replace(/^\/+|\/+$/g, "");
   if (projectImagesCache.has(normalizedSlug)) {
     return projectImagesCache.get(normalizedSlug)!;
   }
@@ -118,8 +117,7 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
 
   for (const [path, module] of Object.entries(modules)) {
     const folderName = path.split("/").slice(-2, -1)[0] ?? "unknown";
-    let currentSlug = module.frontmatter.slug ?? folderName;
-    currentSlug = currentSlug.replace(/^\/+|\/+$/g, "");
+    let currentSlug = (module.frontmatter.slug ?? folderName).trim().replace(/^\/+|\/+$/g, "");
 
     if (currentSlug === normalizedSlug) {
       projectDir = path.substring(0, path.lastIndexOf("/") + 1);

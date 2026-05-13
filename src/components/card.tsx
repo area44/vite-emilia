@@ -21,6 +21,7 @@ type CardProps = {
 };
 
 const Card = React.memo(({ item, overlay = "#000000", eager, aspectRatio }: CardProps) => {
+  // item.slug is already normalized in data.ts
   const { slug } = item;
 
   return (

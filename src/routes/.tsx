@@ -32,17 +32,6 @@ export const Route = createFileRoute("/$slug")({
 
     return { project, images, prev, next };
   },
-  errorComponent: ({ error }) => (
-    <div style={{ padding: '5rem 2rem', textAlign: 'center', fontFamily: 'system-ui, sans-serif' }}>
-      <h1 style={{ fontSize: '2rem', fontWeight: 'bold' }}>Error</h1>
-      <p style={{ marginTop: '1rem', color: '#666' }}>{error.message}</p>
-      <div style={{ marginTop: '2rem' }}>
-        <a href="/" style={{ padding: '0.75rem 1.5rem', backgroundColor: '#000', color: '#fff', borderRadius: '0.5rem', textDecoration: 'none' }}>
-          Back to Home
-        </a>
-      </div>
-    </div>
-  ),
   head: ({ loaderData }) => {
     const project = loaderData?.project;
 
@@ -55,6 +44,7 @@ export const Route = createFileRoute("/$slug")({
     const title = `${project.title} | ${siteConfig.siteTitle}`;
     const description = project.description || project.excerpt;
 
+    // Ensure OG image is an absolute URL
     let ogImage = project.ogImage || project.cover;
     if (ogImage && !ogImage.startsWith("http")) {
       ogImage = `${siteConfig.siteUrl.replace(/\/$/, "")}${ogImage.startsWith("/") ? "" : "/"}${ogImage}`;
@@ -88,7 +78,7 @@ function ProjectDetailComponent() {
   const mdxModule = Object.values(mdxModules).find((module) => {
     const mSlug = (
       module.frontmatter.slug ?? module.frontmatter.title.toLowerCase().replace(/\s+/g, "-")
-    ).replace(/^\/+|\/+$/g, "");
+    ).trim().replace(/^\/+|\/+$/g, "");
     return mSlug === project.slug;
   });
 

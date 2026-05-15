@@ -92,7 +92,7 @@ const Image: React.FC<ImageProps> = React.memo(
               opacity: isLoaded ? 0 : 1,
               zIndex: 1,
               pointerEvents: "none",
-              filter: "blur(20px)",
+              filter: "blur(10px)",
               transform: "scale(1.1)",
             }}
           >

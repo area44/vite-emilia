@@ -2,8 +2,8 @@ import { Link } from "@tanstack/react-router";
 import React from "react";
 
 import avatarUrl from "@/assets/avatar.svg";
-import leftArrowSvg from "@/assets/left-arrow.svg?raw";
 import HeaderBackground from "@/components/header-background";
+import { LeftArrowIcon } from "@/components/icons";
 import { siteConfig } from "@/lib/site.config";
 
 type HeaderProjectProps = {
@@ -27,11 +27,8 @@ const HeaderProject = ({ title, areas, description = "", date }: HeaderProjectPr
               aria-label={`${name} - Back to homepage`}
               className="group flex items-center text-heading no-underline transition-all duration-300"
             >
-              <div
-                className="h-[18px] w-5 text-icon-primary transition-transform group-hover:-translate-x-1"
-                dangerouslySetInnerHTML={{ __html: leftArrowSvg }}
-              />
-              <div className="mx-2 inline-block h-10 w-10 overflow-hidden rounded-full bg-white shadow-md transition-transform">
+              <LeftArrowIcon className="h-[18px] w-5 text-icon-primary transition-transform group-hover:-translate-x-1" />
+              <div className="mx-2 inline-block size-10 overflow-hidden rounded-full bg-white shadow-md transition-transform">
                 {avatarUrl && (
                   <img
                     src={avatarUrl}
@@ -46,7 +43,7 @@ const HeaderProject = ({ title, areas, description = "", date }: HeaderProjectPr
         </div>
         <div className="mt-8">
           <div className="animate-in slide-in-from-top-8 duration-700">
-            <h1 className="mt-4 text-4xl font-bold text-heading md:text-5xl">{title}</h1>
+            <h1 className="mt-4 text-4xl font-semibold text-heading md:text-5xl">{title}</h1>
           </div>
           <div className="animate-in fade-in delay-500 duration-700">
             <p className="mt-8 mb-0 text-lg">{date}</p>

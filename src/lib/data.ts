@@ -134,19 +134,20 @@ export const getProjectImages = async (slug: string): Promise<ProjectImage[]> =>
 
   if (!projectDir) return [];
 
-  const images = Object.entries(allImages)
-    .filter(([path]) => path.startsWith(projectDir))
-    .map(([path, url]) => {
+  const images: ProjectImage[] = [];
+  for (const [path, url] of Object.entries(allImages)) {
+    if (path.startsWith(projectDir)) {
       const metadataKey = getMetadataKey(path);
       const metadata = imageMetadata[metadataKey];
-      return {
+      images.push({
         name: path.split("/").pop() ?? "",
         url: url,
         hash: metadata?.hash,
         width: metadata?.width,
         height: metadata?.height,
-      };
-    });
+      });
+    }
+  }
 
   projectImagesCache.set(normalizedSlug, images);
   return images;

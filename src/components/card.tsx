@@ -33,7 +33,7 @@ const Card = React.memo(({ item, overlay = "#000000", eager, aspectRatio }: Card
         style={{ backgroundColor: `${overlay}E6` }}
         data-name="card-overlay"
       >
-        <h2 className="m-0 text-center text-2xl font-bold text-white shadow-text-soft md:text-3xl">
+        <h2 className="m-0 text-center text-2xl font-semibold text-white shadow-text-soft md:text-3xl">
           {item.title}
         </h2>
       </div>

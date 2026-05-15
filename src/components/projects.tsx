@@ -23,7 +23,7 @@ const Projects = ({ projects }: Props) => {
       <Layout>
         <Header />
         <div className="container py-20 text-center">
-          <h2 className="mb-4 text-3xl font-bold">No projects found</h2>
+          <h2 className="mb-4 text-3xl font-semibold">No projects found</h2>
           <p className="text-text-muted">
             It looks like you haven't added any projects yet. Check the README for instructions on
             how to get started!

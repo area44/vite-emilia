@@ -1,15 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useSyncExternalStore } from "react";
+
+const subscribe = (callback: () => void) => {
+  const observer = new MutationObserver(callback);
+  observer.observe(document.documentElement, {
+    attributes: true,
+    attributeFilter: ["class"],
+  });
+  return () => observer.disconnect();
+};
+
+const getSnapshot = () => document.documentElement.classList.contains("dark");
+
+const getServerSnapshot = () => false;
 
 const ColorModeToggle = () => {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    setIsDark(document.documentElement.classList.contains("dark"));
-  }, []);
+  const isDark = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   const toggleColorMode = () => {
     const nextDark = !isDark;
-    setIsDark(nextDark);
 
     if (nextDark) {
       document.documentElement.classList.add("dark");

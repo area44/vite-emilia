@@ -1,8 +1,6 @@
 import React, { useEffect, useCallback, useRef } from "react";
 
-import closeIcon from "@/assets/close.svg?raw";
-import leftArrowIcon from "@/assets/left-arrow.svg?raw";
-import rightArrowIcon from "@/assets/right-arrow.svg?raw";
+import { CloseIcon, LeftArrowIcon, RightArrowIcon } from "@/components/icons";
 import Image from "@/components/image";
 
 interface LightboxProps {
@@ -32,14 +30,18 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
     [onClose, onPrev, onNext],
   );
 
+  const handlerRef = useRef(handleKeyDown);
+  handlerRef.current = handleKeyDown;
+
   useEffect(() => {
     document.body.style.overflow = "hidden";
-    window.addEventListener("keydown", handleKeyDown);
+    const listener = (e: KeyboardEvent) => handlerRef.current(e);
+    window.addEventListener("keydown", listener);
     return () => {
       document.body.style.overflow = "auto";
-      window.removeEventListener("keydown", handleKeyDown);
+      window.removeEventListener("keydown", listener);
     };
-  }, [handleKeyDown]);
+  }, []);
 
   const handleTouchStart = (e: React.TouchEvent) => {
     const touch = e.touches[0];
@@ -85,11 +87,11 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
           e.currentTarget.blur();
           onClose();
         }}
-        className="absolute top-4 right-4 z-[110] cursor-pointer p-2 text-white/70 transition-colors hover:text-white focus:text-white"
+        className="absolute top-4 right-4 z-[110] flex size-12 cursor-pointer items-center justify-center p-2 text-white/70 transition-colors hover:text-white focus:text-white"
         aria-label="Close lightbox"
-        dangerouslySetInnerHTML={{ __html: closeIcon }}
-        style={{ width: "48px", height: "48px" }}
-      />
+      >
+        <CloseIcon className="size-full" />
+      </button>
 
       <div className="relative flex h-full w-full items-center justify-center">
         <button
@@ -98,11 +100,11 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
             e.currentTarget.blur();
             onPrev();
           }}
-          className="absolute left-0 z-[110] hidden cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-left-12 md:left-0 md:block"
+          className="absolute left-0 z-[110] hidden size-16 cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-left-12 md:left-0 md:block"
           aria-label="Previous image"
-          dangerouslySetInnerHTML={{ __html: leftArrowIcon }}
-          style={{ width: "64px", height: "64px" }}
-        />
+        >
+          <LeftArrowIcon className="size-full" />
+        </button>
 
         <div className="relative max-h-full max-w-full overflow-hidden shadow-2xl">
           <Image
@@ -124,11 +126,11 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
             e.currentTarget.blur();
             onNext();
           }}
-          className="absolute right-0 z-[110] hidden cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-right-12 md:right-0 md:block"
+          className="absolute right-0 z-[110] hidden size-16 cursor-pointer p-4 text-white/50 transition-colors hover:text-white focus:text-white md:-right-12 md:right-0 md:block"
           aria-label="Next image"
-          dangerouslySetInnerHTML={{ __html: rightArrowIcon }}
-          style={{ width: "64px", height: "64px" }}
-        />
+        >
+          <RightArrowIcon className="size-full" />
+        </button>
       </div>
 
       <button

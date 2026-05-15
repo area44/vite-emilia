@@ -12,7 +12,8 @@ const Footer = () => {
               <SocialMediaList />
             </div>
             <div className="text-text-muted">
-              Copyright &copy; {new Date().getFullYear()}. All rights reserved.
+              Copyright &copy; <span suppressHydrationWarning>{new Date().getFullYear()}</span>. All
+              rights reserved.
             </div>
           </div>
         </div>

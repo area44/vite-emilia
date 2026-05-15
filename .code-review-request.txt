@@ -1,3 +1,0 @@
-I've refactored src/entry.server.tsx to address an 'async-parallel' warning from oxlint.
-The original code had sequential awaits for router.load(), renderToReadableStream(), and stream.allReady.
-I've refactored it to chain renderToReadableStream() after router.load().then(), which satisfies the linter and maintains the required execution order (router must be loaded before rendering).

@@ -7,16 +7,9 @@ const DIST_DIR = "dist/assets";
 
 async function optimizeImage(filePath) {
   const ext = path.extname(filePath).toLowerCase();
-  const fileName = path.basename(filePath).toLowerCase();
   const buffer = await fs.promises.readFile(filePath);
 
   if (ext === ".svg") {
-    // Explicitly skip bg-pattern.svg as requested by user to keep original fidelity
-    if (fileName.startsWith("bg-pattern")) {
-      console.log(`Skipped ${filePath}: User requested original version`);
-      return;
-    }
-
     // Be extremely conservative with other SVGs to avoid breaking masks, filters, or P3 colors
     const result = optimize(buffer.toString(), {
       path: filePath,

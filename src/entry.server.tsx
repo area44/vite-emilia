@@ -17,14 +17,14 @@ export default async function handleRequest(
     }),
   });
 
-  await router.load();
-
-  const stream = await renderToReadableStream(<RouterProvider router={router} />, {
-    onError(error: unknown) {
-      console.error(error);
-      responseStatusCode = 500;
-    },
-  });
+  const stream = await router.load().then(() =>
+    renderToReadableStream(<RouterProvider router={router} />, {
+      onError(error: unknown) {
+        console.error(error);
+        responseStatusCode = 500;
+      },
+    }),
+  );
 
   await stream.allReady;
 

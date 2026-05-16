@@ -31,10 +31,10 @@ The build process is defined in `package.json` and executed sequentially:
 
 1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
 2. `vite build`: Generates the static production build with prerendering enabled (`NITRO_PRESET=static`).
-3. Output Flattening: The build script flattens `dist/client` into `dist/` and creates a `404.html` and `.nojekyll` fallback for better static host compatibility (especially GitHub Pages).
-4. `optimize:images`: Optimizes images in the production output directory (`dist/assets`).
+3. 404 Fallback: The build script creates a `404.html` fallback in `dist/client` for better static host compatibility (especially GitHub Pages).
+4. `optimize:images`: Optimizes images in the production output directory (`dist/client/assets`).
 
-The static output is generated in `dist/`.
+The static output is generated in `dist/client`.
 
 ## Coding Conventions
 

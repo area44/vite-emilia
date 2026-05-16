@@ -31,28 +31,12 @@ The build process is defined in `package.json` and executed sequentially:
 
 1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
 2. `vite build`: Generates the static production build with prerendering enabled (`NITRO_PRESET=static`).
-3. Output Flattening: The build script flattens `dist/client` into `dist/` and creates a `404.html` fallback for better static host compatibility.
+3. Output Flattening: The build script flattens `dist/client` into `dist/` and creates a `404.html` and `.nojekyll` fallback for better static host compatibility (especially GitHub Pages).
 4. `optimize:images`: Optimizes images in the production output directory (`dist/assets`).
 
 The static output is generated in `dist/`.
 
 ## Coding Conventions
-
-- No emojis are allowed in any part of the project (source code, commits, documentation).
-- Use a package manager like `pnpm`, `npm`, or `bun` for all script execution (install, lint, build, format). `pnpm` is preferred for this repository.
-- Use `oxfmt` for formatting and `oxlint` for linting.
-- Prefer functional components and hooks.
-- Use Tailwind CSS 4 utility classes for styling.
-- All projects must have an `index.mdx` file with valid frontmatter in `src/content`.
-- Path aliases are used; the @/ prefix points to the src directory.
-
-## Accessibility
-
-- Maintain the "Skip to Content" link in `src/components/layout.tsx`.
-- Ensure all interactive elements have visible `focus-visible` rings (defined in `src/index.css`).
-- Use descriptive `aria-label` attributes for icon-only buttons.
-
-## Asset Handling
 
 - Images are optimized during build. Metadata is stored in `src/content/image-metadata.json`.
 - Use the `Image` component for lazy loading and BlurHash placeholders.

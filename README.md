@@ -31,7 +31,7 @@ To build the static site:
 pnpm build
 ```
 
-The generated static files will be in the `dist/` directory.
+The generated static files will be in the `dist/client` directory.
 
 ## Quick Start
 

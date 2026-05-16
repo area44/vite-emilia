@@ -30,11 +30,10 @@ Site configuration and metadata are centralized in `src/lib/site.config.ts`. Thi
 The build process is defined in `package.json` and executed sequentially:
 
 1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
-2. `vite build`: Generates the static production build with prerendering enabled (`NITRO_PRESET=static`).
-3. Output Flattening: The build script flattens `dist/client` into `dist/` and creates a `404.html` fallback for better static host compatibility.
-4. `optimize:images`: Optimizes images in the production output directory (`dist/assets`).
+2. `vite build`: Generates the static production build with prerendering enabled (`NITRO_PRESET=github_pages`).
+3. `optimize:images`: Optimizes images in the production output directory (`dist/client/assets`).
 
-The static output is generated in `dist/`.
+The static output is generated in `dist/client`.
 
 ## Coding Conventions
 

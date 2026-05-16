@@ -9,7 +9,7 @@
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "dev": "node --run generate:metadata && vite",
-    "build": "node --run generate:metadata && NITRO_PRESET=static BASE=/ vite build && node --run optimize:images && cp dist/client/index.html dist/client/404.html",
+    "build": "node --run generate:metadata && NITRO_PRESET=static BASE=/ vite build && mv dist/client/* dist/ && rm -rf dist/client dist/server && cp dist/index.html dist/404.html && node --run optimize:images",
     "format": "oxfmt",
     "lint": "oxlint"
   },
@@ -17,7 +17,7 @@
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.3.0",
     "@tanstack/react-router": "^1.169.2",
-    "@tanstack/react-start": "^1.168.1",
+    "@tanstack/react-start": "1.168.1",
     "@tanstack/router-plugin": "^1.167.35",
     "@vitejs/plugin-react": "^6.0.1",
     "blurhash": "^2.0.5",

@@ -7,7 +7,7 @@ export function createRouter() {
     routeTree,
     defaultPreload: "intent",
     scrollRestoration: true,
-    basepath: import.meta.env.BASE_URL,
+    basepath: "/",
   });
 
   return router;

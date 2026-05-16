@@ -34,7 +34,7 @@ The build process is defined in `package.json` and executed sequentially:
 3. 404 Fallback: The build script creates a `404.html` fallback in `dist/client` for better static host compatibility (especially GitHub Pages).
 4. `optimize:images`: Optimizes images in the production output directory (`dist/client/assets`).
 
-The static output is generated in `dist/client`.
+The static output is generated in `dist/client` (with a compatibility fallback in `dist/`).
 
 ## Coding Conventions
 

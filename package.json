@@ -9,7 +9,7 @@
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
     "dev": "node --run generate:metadata && vite",
-    "build": "node --run generate:metadata && NITRO_PRESET=static vite build && cp dist/client/index.html dist/client/404.html && node --run optimize:images && cp -r dist/client/* dist/",
+    "build": "node --run generate:metadata && vite build && node --run optimize:images",
     "format": "oxfmt",
     "lint": "oxlint"
   },

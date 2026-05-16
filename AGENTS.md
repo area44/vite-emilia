@@ -1,4 +1,4 @@
-# Project Context for AI Agents
+# AI Agents Guide
 
 This repository is a modern React portfolio site built with TanStack Start, optimized for pure Static Site Generation (SSG).
 
@@ -19,7 +19,7 @@ This repository is a modern React portfolio site built with TanStack Start, opti
 - `src/content`: Project data in MDX format and associated images.
 - `src/routes`: TanStack Router/Start route definitions.
 - `src/lib`: Shared utilities and site configuration.
-- `scripts/`: Build and utility scripts.
+- `scripts`: Build and utility scripts.
 
 ## Configuration
 
@@ -30,11 +30,10 @@ Site configuration and metadata are centralized in `src/lib/site.config.ts`. Thi
 The build process is defined in `package.json` and executed sequentially:
 
 1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
-2. `vite build`: Generates the static production build with prerendering enabled (`NITRO_PRESET=static`).
-3. 404 Fallback: The build script creates a `404.html` fallback in `dist/client` for better static host compatibility (especially GitHub Pages).
-4. `optimize:images`: Optimizes images in the production output directory (`dist/client/assets`).
+2. `vite build`: Generates the static production build with prerendering enabled.
+3. `optimize:images`: Optimizes images in the production output directory (`dist/client/assets`).
 
-The static output is generated in `dist/client` (with a compatibility fallback in `dist/`).
+The static output is generated in `dist/client`.
 
 ## Coding Conventions
 

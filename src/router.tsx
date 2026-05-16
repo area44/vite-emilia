@@ -1,17 +1,20 @@
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 
-import { routeTree } from "@/routeTree.gen";
+import { routeTree } from "./routeTree.gen";
 
 export function createRouter() {
   const router = createTanStackRouter({
     routeTree,
     defaultPreload: "intent",
     scrollRestoration: true,
-    basepath: import.meta.env.BASE_URL,
+    basepath: "/",
   });
 
   return router;
 }
+
+// TanStack Start expects getRouter to be exported
+export const getRouter = createRouter;
 
 declare module "@tanstack/react-router" {
   interface Register {

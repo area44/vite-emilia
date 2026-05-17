@@ -17,7 +17,7 @@ interface MdxModule {
 export const Route = createFileRoute("/$slug")({
   loader: async ({ params }) => {
     const { slug } = params;
-    const allProjects = await getProjects();
+    const [allProjects, images] = await Promise.all([getProjects(), getProjectImages(slug)]);
 
     const index = allProjects.findIndex((p) => {
       const pSlug = p.slug.startsWith("/") ? p.slug.substring(1) : p.slug;
@@ -31,7 +31,6 @@ export const Route = createFileRoute("/$slug")({
     const project = allProjects[index]!;
     const prev = index > 0 ? (allProjects[index - 1] ?? null) : null;
     const next = index < allProjects.length - 1 ? (allProjects[index + 1] ?? null) : null;
-    const images = await getProjectImages(project.slug);
 
     return { project, images, prev, next };
   },

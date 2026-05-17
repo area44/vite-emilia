@@ -8,24 +8,26 @@ import { defineConfig } from "vite-plus";
 
 const base = process.env.BASE || "/";
 
+const ignorePatterns = [
+  "*.min.*",
+  "*.map",
+  "**/public",
+  "**/build",
+  "**/dist",
+  "**/out",
+  "**/.github",
+  "**/.next",
+  "**/.astro",
+  "**/.netlify",
+  "**/*.gen.*",
+];
+
 export default defineConfig({
   staged: {
     "*": "vp check --fix",
   },
   fmt: {
-    ignorePatterns: [
-      "*.min.*",
-      "*.map",
-      "**/public",
-      "**/build",
-      "**/dist",
-      "**/out",
-      "**/.github",
-      "**/.next",
-      "**/.astro",
-      "**/.netlify",
-      "src/routeTree.gen.ts",
-    ],
+    ignorePatterns,
     sortImports: {
       groups: [
         "type-import",
@@ -55,19 +57,11 @@ export default defineConfig({
       "promise",
       "vitest",
     ],
-    ignorePatterns: [
-      "*.min.*",
-      "*.map",
-      "**/public",
-      "**/build",
-      "**/dist",
-      "**/out",
-      "**/.github",
-      "**/.next",
-      "**/.astro",
-      "**/.netlify",
-      "src/routeTree.gen.ts",
-    ],
+    ignorePatterns,
+    options: {
+      typeAware: true,
+      typeCheck: true,
+    },
   },
   base,
   resolve: {
@@ -88,7 +82,4 @@ export default defineConfig({
     }),
     tailwindcss(),
   ],
-  build: {
-    minify: "oxc",
-  },
 });

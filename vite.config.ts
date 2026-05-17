@@ -69,8 +69,10 @@ export default defineConfig({
   },
   plugins: [
     tanstackStart({
-      routesDirectory: "./src/routes",
-      generatedRouteTree: "./src/routeTree.gen.ts",
+      router: {
+        routesDirectory: "routes",
+        generatedRouteTree: "routeTree.gen.ts",
+      },
       prerender: {
         enabled: true,
         crawlLinks: true,

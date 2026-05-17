@@ -8,10 +8,10 @@
   "scripts": {
     "generate:metadata": "node scripts/generate-image-metadata.mjs",
     "optimize:images": "node scripts/optimize-images.mjs",
-    "dev": "node --run generate:metadata && vite",
-    "build": "node --run generate:metadata && vite build && node --run optimize:images",
-    "format": "oxfmt",
-    "lint": "oxlint"
+    "dev": "node --run generate:metadata && vp dev",
+    "build": "node --run generate:metadata && vp build && node --run optimize:images",
+    "check": "vp check --fix",
+    "prepare": "vp config"
   },
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
@@ -25,16 +25,15 @@
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
     "sharp": "^0.34.5",
-    "tailwindcss": "^4.3.0",
-    "vite": "^8.0.13"
+    "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
     "@types/node": "^25.8.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "oxfmt": "^0.50.0",
-    "oxlint": "^1.65.0",
     "svgo": "^4.0.1",
-    "typescript": "^6.0.3"
-  }
+    "typescript": "^6.0.3",
+    "vite-plus": "catalog:"
+  },
+  "packageManager": "pnpm@11.1.2"
 }

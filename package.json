@@ -17,7 +17,7 @@
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.3.0",
     "@tanstack/react-router": "^1.170.4",
-    "@tanstack/react-start": "1.168.6",
+    "@tanstack/react-start": "^1.168.6",
     "@tanstack/router-plugin": "^1.168.6",
     "@vitejs/plugin-react": "^6.0.2",
     "blurhash": "^2.0.5",

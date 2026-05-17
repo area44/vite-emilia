@@ -22,7 +22,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["node", "react", "react-dom", "vite/client"]
+    "types": ["node", "react", "react-dom", "vite-plus/client"]
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules"]

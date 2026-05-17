@@ -1,16 +1,27 @@
 # AI Agents Guide
 
-This repository is a modern React portfolio site built with TanStack Start, optimized for pure Static Site Generation (SSG).
+This repository is a modern React portfolio site built with TanStack Start and Vite+, optimized for pure Static Site Generation (SSG).
 
 ## Tech Stack
 
 - React 19
+- Vite+ (Unified toolchain)
 - Vite 8+
 - TanStack Start (Full-stack framework)
 - TanStack Router (File-based routing)
 - Tailwind CSS 4
 - MDX for content
 - Sharp for image processing
+
+## Commands
+
+Vite+ replaces standalone tools for common tasks:
+
+- `vp install`: Install dependencies.
+- `vp dev`: Start the development server.
+- `vp build`: Build the production site.
+- `vp check`: Run linting, formatting, and type checks.
+- `vp run <script>`: Run custom scripts from `package.json`.
 
 ## Directory Structure
 
@@ -24,13 +35,14 @@ This repository is a modern React portfolio site built with TanStack Start, opti
 ## Configuration
 
 Site configuration and metadata are centralized in `src/lib/site.config.ts`. This includes profile details, SEO settings, and social links.
+Tool configurations for Vite, Oxlint, and Oxfmt are unified in `vite.config.ts`.
 
 ## Build Pipeline
 
-The build process is defined in `package.json` and executed sequentially:
+The build process is managed by Vite+ and custom scripts in `package.json`:
 
 1. `generate:metadata`: Pre-calculates BlurHash and dimensions for images in `src/content`.
-2. `vite build`: Generates the static production build with prerendering enabled.
+2. `vp build`: Generates the static production build with prerendering enabled.
 3. `optimize:images`: Optimizes images in the production output directory (`dist/client/assets`).
 
 The static output is generated in `dist/client`.

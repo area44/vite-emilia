@@ -1,14 +1,12 @@
 # AI Agents Guide
 
-This repository is a modern React portfolio site built with TanStack Start and Vite+, optimized for pure Static Site Generation (SSG).
+This repository is a modern React portfolio site built with TanStack Start and Vite+, optimized for Static Site Generation (SSG).
 
 ## Tech Stack
 
 - React 19
 - Vite+ (Unified toolchain)
-- Vite 8+
 - TanStack Start (Full-stack framework)
-- TanStack Router (File-based routing)
 - Tailwind CSS 4
 - MDX for content
 - Sharp for image processing

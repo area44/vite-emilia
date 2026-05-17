@@ -10,8 +10,7 @@
     "optimize:images": "node scripts/optimize-images.mjs",
     "dev": "node --run generate:metadata && vp dev",
     "build": "node --run generate:metadata && vp build && node --run optimize:images",
-    "format": "vp fmt",
-    "lint": "vp lint --no-type-check",
+    "check": "vp check --fix",
     "prepare": "vp config"
   },
   "dependencies": {

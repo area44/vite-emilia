@@ -18,7 +18,7 @@ importers:
         specifier: ^1.170.4
         version: 1.170.4(react-dom@19.2.6(react@19.2.6))(react@19.2.6)
       '@tanstack/react-start':
-        specifier: 1.168.6
+        specifier: ^1.168.6
         version: 1.168.6(react-dom@19.2.6(react@19.2.6))(react@19.2.6)(vite@8.0.13(@types/node@25.8.0)(jiti@2.7.0)(yaml@2.8.4))
       '@tanstack/router-plugin':
         specifier: ^1.168.6

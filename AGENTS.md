@@ -52,6 +52,7 @@ The static output is generated in `dist/client`.
 - SVG icons and components are centralized in `src/components/icons.tsx`.
 
 ## Animated Backgrounds
+
 - Use custom @keyframes and CSS variables in src/index.css under the @theme block for global animations.
 - Implement dual-layered patterns with varying opacities and animation timings to create visual depth and a "dynamic texture" effect.
 - Utilize transform scaling and subtle blurs on background layers to enhance the focus on foreground content.

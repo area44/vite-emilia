@@ -33,8 +33,22 @@ const GeometricLines = () => (
 
     <g className="opacity-30">
       {/* Decorative rectangles */}
-      <rect x="1000" y="200" width="150" height="150" stroke="currentColor" vectorEffect="non-scaling-stroke" />
-      <rect x="1150" y="250" width="50" height="50" stroke="currentColor" vectorEffect="non-scaling-stroke" />
+      <rect
+        x="1000"
+        y="200"
+        width="150"
+        height="150"
+        stroke="currentColor"
+        vectorEffect="non-scaling-stroke"
+      />
+      <rect
+        x="1150"
+        y="250"
+        width="50"
+        height="50"
+        stroke="currentColor"
+        vectorEffect="non-scaling-stroke"
+      />
     </g>
 
     {/* The signature curve from hero-01 */}
@@ -54,13 +68,13 @@ const HeaderBackground = () => {
       <div className="absolute inset-0 bg-background" />
 
       {/* Layer 1 - Primary Lines */}
-      <div className="mask-fade-out absolute inset-0 h-full w-full animate-drift opacity-80">
+      <div className="absolute inset-0 h-full w-full animate-drift mask-fade-out opacity-80">
         <GeometricLines />
       </div>
 
       {/* Layer 2 - Secondary Offset Lines */}
       <div
-        className="mask-fade-out absolute inset-0 h-full w-full scale-110 animate-drift-slow opacity-30 blur-[0.5px]"
+        className="absolute inset-0 h-full w-full scale-110 animate-drift-slow mask-fade-out opacity-30 blur-[0.5px]"
         style={{ transformOrigin: "center center" }}
       >
         <GeometricLines />

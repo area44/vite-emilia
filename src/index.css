@@ -93,3 +93,7 @@
 @utility shadow-text-soft {
   text-shadow: rgba(0, 0, 0, 0.2) 0px 2px 12px;
 }
+
+@utility mask-fade-out {
+  mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}

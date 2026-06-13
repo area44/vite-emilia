@@ -16,24 +16,24 @@
   "dependencies": {
     "@mdx-js/rollup": "^3.1.1",
     "@tailwindcss/vite": "^4.3.0",
-    "@tanstack/react-router": "^1.170.13",
-    "@tanstack/react-start": "^1.168.22",
+    "@tanstack/react-router": "^1.170.15",
+    "@tanstack/react-start": "^1.168.25",
     "@vitejs/plugin-react": "^6.0.2",
     "blurhash": "^2.0.5",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
     "remark-frontmatter": "^5.0.0",
     "remark-mdx-frontmatter": "^5.2.0",
-    "sharp": "^0.34.5",
+    "sharp": "^0.35.1",
     "tailwindcss": "^4.3.0"
   },
   "devDependencies": {
-    "@types/node": "^25.9.2",
+    "@types/node": "^25.9.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",
     "svgo": "^4.0.1",
     "typescript": "^6.0.3",
     "vite-plus": "catalog:"
   },
-  "packageManager": "pnpm@11.5.2"
+  "packageManager": "pnpm@11.6.0"
 }

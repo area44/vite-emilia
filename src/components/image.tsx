@@ -1,5 +1,5 @@
 import { decode } from "blurhash";
-import React, { useState, useEffect, useRef, useLayoutEffect } from "react";
+import React, { useState, useEffect, useRef, useLayoutEffect, useCallback } from "react";
 
 const blurhashCache = new Map<string, Uint8ClampedArray>();
 
@@ -33,7 +33,6 @@ const Image: React.FC<ImageProps> = React.memo(
     // We only hide it on the client if we have a hash and it's not loaded yet.
     const [isLoaded, setIsLoaded] = useState(true);
     const imgRef = useRef<HTMLImageElement>(null);
-    const canvasRef = useRef<HTMLCanvasElement>(null);
 
     useIsomorphicLayoutEffect(() => {
       // On mount (client-side), check if we need to hide it for Blurhash
@@ -43,24 +42,27 @@ const Image: React.FC<ImageProps> = React.memo(
       }
     }, [hash]);
 
-    useEffect(() => {
-      if (!hash || !canvasRef.current) return;
-      try {
-        let pixels = blurhashCache.get(hash);
-        if (!pixels) {
-          pixels = decode(hash, 32, 32);
-          blurhashCache.set(hash, pixels);
+    const canvasRef = useCallback(
+      (node: HTMLCanvasElement | null) => {
+        if (!hash || !node) return;
+        try {
+          let pixels = blurhashCache.get(hash);
+          if (!pixels) {
+            pixels = decode(hash, 32, 32);
+            blurhashCache.set(hash, pixels);
+          }
+          const ctx = node.getContext("2d");
+          if (ctx) {
+            const imageData = ctx.createImageData(32, 32);
+            imageData.data.set(pixels);
+            ctx.putImageData(imageData, 0, 0);
+          }
+        } catch (err) {
+          console.error("Blurhash error:", err);
         }
-        const ctx = canvasRef.current.getContext("2d");
-        if (ctx) {
-          const imageData = ctx.createImageData(32, 32);
-          imageData.data.set(pixels);
-          ctx.putImageData(imageData, 0, 0);
-        }
-      } catch (err) {
-        console.error("Blurhash error:", err);
-      }
-    }, [hash]);
+      },
+      [hash],
+    );
 
     const finalAspectRatio = aspectRatio || (width && height ? `${width} / ${height}` : undefined);
 
@@ -100,6 +102,7 @@ const Image: React.FC<ImageProps> = React.memo(
               ref={canvasRef}
               width={32}
               height={32}
+              aria-hidden="true"
               style={{
                 width: "100%",
                 height: "100%",

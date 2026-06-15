@@ -75,6 +75,7 @@ const Project: React.FC<React.PropsWithChildren<EmiliaProjectProps>> = ({
             const ratio = image.width && image.height ? image.width / image.height : 1;
             return (
               <button
+                type="button"
                 key={image.url}
                 onClick={() => openLightbox(index)}
                 className="relative h-auto w-full cursor-zoom-in border-none p-0 text-left outline-none md:h-64 md:w-auto md:grow lg:h-80"

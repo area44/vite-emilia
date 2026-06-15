@@ -74,15 +74,16 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
   if (!currentImage) return null;
 
   return (
-    <div
-      role="dialog"
+    <dialog
+      open
       aria-modal="true"
       aria-label="Image Lightbox"
-      className="animate-in fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 duration-300 md:p-8"
+      className="animate-in fade-in fixed inset-0 z-[100] flex h-full w-full items-center justify-center border-none bg-black/90 p-4 duration-300 md:p-8"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >
       <button
+        type="button"
         onClick={(e) => {
           e.currentTarget.blur();
           onClose();
@@ -95,6 +96,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
 
       <div className="relative flex h-full w-full items-center justify-center">
         <button
+          type="button"
           onClick={(e) => {
             e.stopPropagation();
             e.currentTarget.blur();
@@ -121,6 +123,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
         </div>
 
         <button
+          type="button"
           onClick={(e) => {
             e.stopPropagation();
             e.currentTarget.blur();
@@ -134,12 +137,13 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
       </div>
 
       <button
+        type="button"
         className="absolute inset-0 z-0 cursor-default border-none bg-transparent p-0"
         onClick={onClose}
         aria-label="Close overlay"
         tabIndex={-1}
       />
-    </div>
+    </dialog>
   );
 };
 

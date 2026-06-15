@@ -40,7 +40,7 @@ export default defineConfig({
       ],
     },
     sortTailwindcss: {
-      stylesheet: "./src/index.css",
+      stylesheet: "./src/styles/globals.css",
       attributes: ["class", "className"],
       functions: ["clsx", "cn", "cva", "tv"],
     },

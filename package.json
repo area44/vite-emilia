@@ -18,7 +18,7 @@
     "@tailwindcss/vite": "^4.3.1",
     "@tanstack/react-router": "^1.170.16",
     "@tanstack/react-start": "^1.168.26",
-    "@vitejs/plugin-react": "^6.0.2",
+    "@vitejs/plugin-react": "^6.0.3",
     "blurhash": "^2.0.5",
     "react": "^19.2.7",
     "react-dom": "^19.2.7",
@@ -37,5 +37,5 @@
     "vite-plus": "^0.2.1",
     "vitest": "npm:@voidzero-dev/vite-plus-test@^0.1.24"
   },
-  "packageManager": "pnpm@11.8.0"
+  "packageManager": "pnpm@11.9.0"
 }

@@ -46,6 +46,9 @@ export const Route = createFileRoute("/$slug")({
     const title = `${project.title} | ${siteConfig.siteTitle}`;
     const description = project.description || project.excerpt;
     const ogImage = project.ogImage || project.cover;
+    const absoluteOgImage = ogImage.startsWith("/")
+      ? `${(import.meta.env["VITE_SITE_URL"] || "https://vite-emilia.onrender.com").replace(/\/$/, "")}${ogImage}`
+      : ogImage;
 
     return {
       meta: [
@@ -53,12 +56,12 @@ export const Route = createFileRoute("/$slug")({
         { name: "description", content: description },
         { property: "og:title", content: title },
         { property: "og:description", content: description },
-        { property: "og:image", content: ogImage },
+        { property: "og:image", content: absoluteOgImage },
         { property: "og:type", content: "article" },
         { name: "twitter:card", content: "summary_large_image" },
         { name: "twitter:title", content: title },
         { name: "twitter:description", content: description },
-        { name: "twitter:image", content: ogImage },
+        { name: "twitter:image", content: absoluteOgImage },
       ],
     };
   },

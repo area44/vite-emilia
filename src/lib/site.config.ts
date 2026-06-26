@@ -14,10 +14,10 @@ export const siteConfig = {
   siteTitle: "Vite Emilia",
   siteTitleAlt: "Vite Emilia | AREA44",
   siteHeadline: "Vite Emilia | AREA44",
-  siteUrl: siteUrl || "/",
+  siteUrl: `${siteUrl}${import.meta.env.BASE_URL}` || "/",
   siteDescription:
     "Minimalistic portfolio/photography site with masonry grid, page transitions and big images.",
-  siteImage: `${siteUrl}/og-image.jpg`,
+  siteImage: `${siteUrl}${import.meta.env.BASE_URL}og-image.jpg`,
   siteLanguage: "en",
   author: "@torn4dom4n",
 };

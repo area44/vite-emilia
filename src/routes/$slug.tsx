@@ -47,7 +47,7 @@ export const Route = createFileRoute("/$slug")({
     const description = project.description || project.excerpt;
     const ogImage = project.ogImage || project.cover;
     const absoluteOgImage = ogImage.startsWith("/")
-      ? `${(import.meta.env["VITE_SITE_URL"] || "https://vite-emilia.onrender.com").replace(/\/$/, "")}${ogImage}`
+      ? `${siteConfig.siteOrigin}${ogImage}`
       : ogImage;
 
     return {

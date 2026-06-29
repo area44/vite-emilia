@@ -1,9 +1,7 @@
-import mdx from "@mdx-js/rollup";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import react from "@vitejs/plugin-react";
-import remarkFrontmatter from "remark-frontmatter";
-import remarkMdxFrontmatter from "remark-mdx-frontmatter";
+import satteri from "vite-plugin-satteri";
 import { defineConfig } from "vite-plus";
 
 const base = process.env.BASE || "/";
@@ -79,8 +77,11 @@ export default defineConfig({
       },
     }),
     react(),
-    mdx({
-      remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
+    satteri({
+      features: {
+        gfm: true,
+        frontmatter: true,
+      },
     }),
     tailwindcss(),
   ],

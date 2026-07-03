@@ -1,4 +1,5 @@
 import React, { useEffect, useCallback, useRef } from "react";
+import { preload } from "react-dom";
 
 import { CloseIcon, LeftArrowIcon, RightArrowIcon } from "@/components/icons";
 import Image from "@/components/image";
@@ -73,9 +74,20 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
 
   if (!currentImage) return null;
 
+  // React 19 Preloading for next/prev images to improve perceived performance
+  const nextIdx = (index + 1) % images.length;
+  const prevIdx = (index - 1 + images.length) % images.length;
+
+  if (images[nextIdx]) {
+    preload(images[nextIdx].url, { as: "image" });
+  }
+  if (images[prevIdx]) {
+    preload(images[prevIdx].url, { as: "image" });
+  }
+
   return (
-    <div
-      role="dialog"
+    <dialog
+      open
       aria-modal="true"
       aria-label="Image Lightbox"
       className="animate-in fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 duration-300 md:p-8"
@@ -139,7 +151,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
         aria-label="Close overlay"
         tabIndex={-1}
       />
-    </div>
+    </dialog>
   );
 };
 

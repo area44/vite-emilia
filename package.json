@@ -31,9 +31,9 @@
     "satteri": "^0.9.4",
     "svgo": "^4.0.1",
     "typescript": "^7.0.2",
-    "vite": "catalog:",
+    "vite": "npm:@voidzero-dev/vite-plus-core@^0.2.4",
     "vite-plugin-satteri": "^0.2.14",
-    "vite-plus": "catalog:"
+    "vite-plus": "^0.2.4"
   },
   "packageManager": "pnpm@11.9.0"
 }

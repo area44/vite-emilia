@@ -19,6 +19,8 @@
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
     "verbatimModuleSyntax": true,
+    "rootDir": "./src",
+    "incremental": true,
     "paths": {
       "@/*": ["./src/*"]
     },

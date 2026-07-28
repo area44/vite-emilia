@@ -74,8 +74,8 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
   if (!currentImage) return null;
 
   return (
-    <div
-      role="dialog"
+    <dialog
+      open
       aria-modal="true"
       aria-label="Image Lightbox"
       className="animate-in fade-in fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 duration-300 md:p-8"
@@ -139,7 +139,7 @@ const Lightbox: React.FC<LightboxProps> = ({ images, index, onClose, onPrev, onN
         aria-label="Close overlay"
         tabIndex={-1}
       />
-    </div>
+    </dialog>
   );
 };
 

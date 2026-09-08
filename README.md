@@ -28,13 +28,13 @@ The site will be running at `http://localhost:5173`.
 To build the static site:
 
 ```bash
-vp build
+vpr build
 ```
 
 To run all checks (linting, formatting, type-checking):
 
 ```bash
-vp check
+vpr check
 ```
 
 The generated static files will be in the `dist/client` directory.

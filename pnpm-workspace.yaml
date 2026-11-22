@@ -1,6 +1,8 @@
 allowBuilds:
   sharp: false
 autoDedupe: true
+lockfile:
+  includeResolutionSettings: true
 minimumReleaseAge: 0
 overrides:
   vite: npm:@voidzero-dev/vite-plus-core@^1.6.0
